@@ -8,7 +8,7 @@
                     
                     <span class="text-white text-2xl mx-2 font-semibold">Dashboard</span>
                 </div> --}}
-                <h1 class="font-bold text-center text-3xl text-yellow-500">AMH<span class="text-blue-500">Softwares</span></h1>
+                <h1 class="font-bold text-center tracking-wider text-5xl text-yellow-500">AMH<span class="text-blue-500">Soft</span></h1>
             </div>
     
             <nav class="mt-10">
