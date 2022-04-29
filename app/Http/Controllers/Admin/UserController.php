@@ -32,6 +32,7 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $user= User::latest()->get();
 
         return view('setting.user.index',['users'=>$user]);
@@ -92,7 +93,7 @@ class UserController extends Controller
     {
         $role = Role::get();
         $user->roles;
-       return view('setting.user.edit',['user'=>$user,'roles' => $role]);
+        return view('setting.user.edit',['user'=>$user,'roles' => $role]);
     }
 
     /**
@@ -116,7 +117,6 @@ class UserController extends Controller
             $validated['password'] = bcrypt($request->password);
         }
 
-        
         $abc = User::find(1);
         if ($user == $abc) {
             return redirect('/admin/users')->withSuccess('This user cannot be update!');

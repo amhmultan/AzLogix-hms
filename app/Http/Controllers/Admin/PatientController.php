@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\Patient;
 //use Auth;
 use Illuminate\Support\Facades\Auth;
+use App\Images;
 
 
-class PostController extends Controller
+class PatientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +18,10 @@ class PostController extends Controller
      */
     function __construct()
     {
-        $this->middleware('role_or_permission:Post access|Post create|Post edit|Post delete', ['only' => ['index','show']]);
-        $this->middleware('role_or_permission:Post create', ['only' => ['create','store']]);
-        $this->middleware('role_or_permission:Post edit', ['only' => ['edit','update']]);
-        $this->middleware('role_or_permission:Post delete', ['only' => ['destroy']]);
+        $this->middleware('role_or_permission:Patient access|Patient create|Patient edit|Patient delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Patient create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Patient edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Patient delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -30,9 +31,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $Post= Post::paginate(4);
+        $Patient= Patient::paginate(4);
 
-        return view('post.index',['posts'=>$Post]);
+        return view('patient.index',['patients'=>$Patient]);
     }
 
     /**
@@ -42,7 +43,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.new');
+        return view('patient.new');
     }
 
     /**
@@ -55,8 +56,8 @@ class PostController extends Controller
     {
         $data= $request->all();
         $data['user_id'] = Auth::user()->id;
-        $Post = Post::create($data);
-        return redirect()->back()->withSuccess('Post created !!!');
+        $Patient = Patient::create($data);
+        return redirect('/admin/patients')->withSuccess('Patient created !!!');
     }
 
     /**
@@ -76,9 +77,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Patient $patient)
     {
-       return view('post.edit',['post' => $post]);
+       return view('patient.edit',['patient' => $patient]);
     }
 
     /**
@@ -88,10 +89,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Patient $patient)
     {
-        $post->update($request->all());
-        return redirect()->back()->withSuccess('Post updated !!!');
+        $patient->update($request->all());
+        return redirect('/admin/patients')->withSuccess('Patient updated !!!');
     }
 
     /**
@@ -100,9 +101,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Patient $patient)
     {
-        $post->delete();
-        return redirect()->back()->withSuccess('Post deleted !!!');
+        $patient->delete();
+        return redirect()->back()->withSuccess('Patient deleted !!!');
     }
 }
