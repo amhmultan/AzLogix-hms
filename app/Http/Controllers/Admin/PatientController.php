@@ -104,6 +104,6 @@ class PatientController extends Controller
     public function destroy(Patient $patient)
     {
         $patient->delete();
-        return redirect()->back()->withSuccess('Patient deleted !!!');
+        return redirect('/admin/patients')->withSuccess('Patient deleted !!!');
     }
 }

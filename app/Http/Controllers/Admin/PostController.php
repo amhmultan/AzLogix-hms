@@ -30,7 +30,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $Post= Post::paginate(4);
+        $Post= Post::paginate(6);
 
         return view('post.index',['posts'=>$Post]);
     }
@@ -56,7 +56,7 @@ class PostController extends Controller
         $data= $request->all();
         $data['user_id'] = Auth::user()->id;
         $Post = Post::create($data);
-        return redirect()->back()->withSuccess('Post created !!!');
+        return redirect('/admin/posts')->withSuccess('Post created !!!');
     }
 
     /**
@@ -91,7 +91,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $post->update($request->all());
-        return redirect()->back()->withSuccess('Post updated !!!');
+        return redirect('/admin/posts')->withSuccess('Post updated !!!');
     }
 
     /**
@@ -103,6 +103,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->back()->withSuccess('Post deleted !!!');
+        return redirect('/admin/posts')->withSuccess('Post deleted !!!');
     }
 }

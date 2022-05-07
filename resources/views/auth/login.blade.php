@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="font-sans min-h-screen antialiased bg-gray-900 pt-24 pb-5">
         <div class="flex flex-col justify-center sm:w-96 sm:m-auto mx-5 mb-5 space-y-8">
-          <h1 class="font-bold text-center text-6xl text-yellow-500">AMH<span class="text-blue-500">SOFT</span></h1>
+          <h1 class="font-bold text-center text-6xl text-yellow-500">Amh<span class="text-blue-500">Soft</span></h1>
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
             <!-- Validation Errors -->
