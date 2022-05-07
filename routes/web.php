@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PatientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,8 +31,6 @@ Route::get('/admin/dashboard', function () {
 })->middleware(['auth'])->name('admin.dashboard');
 
 require __DIR__.'/auth.php';
-
-
 
 
 Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')

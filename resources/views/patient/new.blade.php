@@ -7,6 +7,7 @@
                   @csrf
                   
                 <div class="flex flex-col space-y-2">
+                    
                     <label for="mr_number" class="text-gray-700 select-none font-medium">MR No.</label>
                     <input id="mr_number" type="number" name="mr_number" value="{{ old('mr_number') }}" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200" />
                     </div>

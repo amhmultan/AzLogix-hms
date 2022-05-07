@@ -4,10 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Patient;
-//use Auth;
 use Illuminate\Support\Facades\Auth;
-use App\Images;
-
 
 class PatientController extends Controller
 {
@@ -31,8 +28,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $Patient= Patient::paginate(4);
-
+        $Patient= Patient::paginate(6);
         return view('patient.index',['patients'=>$Patient]);
     }
 
