@@ -12,7 +12,7 @@
             <thead>
               <tr>
                 <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Patient Id</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Mr. No.</th>
+                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">MR. No.</th>
                 <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Patient Name</th>
                 <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Date Of Birth</th>
                 <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Gender</th>

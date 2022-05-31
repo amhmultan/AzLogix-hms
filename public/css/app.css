@@ -32141,7 +32141,7 @@ select {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
   --tw-bg-opacity: 1;
-  background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
+  background-color: rgb(255, 140, 0, var(--tw-bg-opacity));
 }
 
 @media (min-width: 640px) {
