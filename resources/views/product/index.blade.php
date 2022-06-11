@@ -1,31 +1,31 @@
 <x-app-layout>
   <main class="flex-1 bg-gray-200">
-      <div class="container-fluid py-20">
+      <div class="container-fluid py-10">
           <div class="text-right">
             @can('Product create')
               <a href="{{route('admin.products.create')}}" class="text-decoration-none bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">New Product</a>
             @endcan
           </div>
-        <div class="bg-white shadow-md rounded my-6 overflow-auto">
+        <div class="bg-white shadow-md rounded mt-5 overflow-auto">
 
           <table class="text-left w-full border-collapse">
             <thead>
               <tr>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Product Id</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Product Name</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Generic Name</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Pack Size</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Trade Price</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Retail Price</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Company Name</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Status</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Purchase Qty</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Batch No.</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Expiry Date</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Remarks</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Created At</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Updated At</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Actions</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Product Id</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Product Name</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Generic Name</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Pack Size</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Trade Price</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Retail Price</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Company Name</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Status</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Purchase Qty</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Batch No.</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Expiry Date</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Remarks</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Created At</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Updated At</th>
+                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Actions</th>
               </tr>
             </thead>
             <tbody>

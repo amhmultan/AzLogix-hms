@@ -1,35 +1,38 @@
 <x-app-layout>
   <main class="flex-1 bg-gray-200">
-      <div class="container-fluid py-20">
+      <div class="container-fluid py-10">
           <div class="text-right">
             @can('Patient create')
               <a href="{{route('admin.patients.create')}}" class="text-decoration-none bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">New Patient</a>
             @endcan
           </div>
-        <div class="bg-white shadow-md rounded my-6 overflow-auto">
+        
+        <div class="bg-white shadow-md rounded mt-5 overflow-auto">
 
           <table class="text-left w-full border-collapse">
             <thead>
               <tr>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Patient Id</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">MR. No.</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Patient Name</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Date Of Birth</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Gender</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Marital Status</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Phone</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">email</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">CNIC No.</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Picture</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Address</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">In Case Of Emergency Name</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Emergency Person Relation</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Emergency Person Phone</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Patient Weight</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Patient Height</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Patient History</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Reffered By</th>
-                <th class="py-2 px-2 bg-gray-900 font-bold text-sm text-white text-center border border-grey-light">Actions</th>
+                <th class="py-3 px-1 bg-success font-bold text-sm text-white text-center border border-grey-light">Patient ID</th>
+                <th class="py-3 px-1 bg-success font-bold text-sm text-white text-center border border-grey-light">MR. No.</th>
+                <th class="py-3 px-3 bg-success font-bold text-sm text-white text-center border border-grey-light">Date of Registration</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Last Updated Date</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Patient Name</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Date Of Birth</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Gender</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Marital Status</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Phone</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Email ID</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">CNIC No.</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Picture</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Address</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">In Case Of Emergency Name</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Emergency Person Relation</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Emergency Person Phone</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Patient Weight</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Patient Height</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Patient History</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Reffered By</th>
+                <th class="py-3 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -38,6 +41,8 @@
                   <tr class="hover:bg-grey-lighter">
                     <td class="text-xs py-4 px-6 border border-grey-light">{{ $patient->id }}</td>
                     <td class="text-xs py-4 px-6 border border-grey-light">{{ $patient->mr_number }}</td>
+                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $patient->created_at }}</td>
+                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $patient->updated_at }}</td>
                     <td class="text-xs py-4 px-6 border border-grey-light">{{ $patient->name }}</td>
                     <td class="text-xs py-4 px-6 border border-grey-light">{{ $patient->dob }}</td>
                     <td class="text-xs py-4 px-6 border border-grey-light">{{ $patient->gender }}</td>
