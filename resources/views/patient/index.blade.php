@@ -1,15 +1,16 @@
 <x-app-layout>
   <main class="flex-1 bg-gray-200">
-      <div class="container-fluid py-10">
+      <div class="container py-10">
           <div class="text-right">
             @can('Patient create')
               <a href="{{route('admin.patients.create')}}" class="text-decoration-none bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">New Patient</a>
             @endcan
           </div>
         
-        <div class="bg-white shadow-md rounded mt-5 overflow-auto">
-
-          <table class="text-left w-full border-collapse">
+        <div class="overflow-auto">
+          <h3 class="h2 mb-4 fw-bold text-success">Patients Information</h3>
+          <hr />
+          <table class="bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
             <thead>
               <tr>
                 <th class="py-3 px-1 bg-success font-bold text-sm text-white text-center border border-grey-light">Patient ID</th>
