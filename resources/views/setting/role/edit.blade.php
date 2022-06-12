@@ -19,7 +19,7 @@
                 </div>
 
                 <h3 class="text-xl my-4 text-gray-600">Permissions</h3>
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-4 gap-4">
                   @foreach($permissions as $permission)
                       <div class="flex flex-col justify-cente">
                           <div class="flex flex-col">
@@ -29,6 +29,7 @@
                                     @endif
                                   ><span class="ml-2 text-gray-700">{{ $permission->name }}</span>
                               </label>
+                              <hr />
                           </div>
                       </div>
                   @endforeach

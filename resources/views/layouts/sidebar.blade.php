@@ -60,14 +60,14 @@
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0" id="menu">
             <li>
                 @canany('User access','User add','User edit','User delete')
-                <a href="#submenu3" data-bs-toggle="collapse" class="dropdown-toggle text-decoration-none flex items-center mt-2 py-2 px-6 text-light fw-bold fs-6 hover:bg-red-500 {{ Route::currentRouteNamed('admin.users.index') }}">
+                <a href="#submenu1" data-bs-toggle="collapse" class="dropdown-toggle text-decoration-none flex items-center mt-2 py-2 px-6 text-light fw-bold fs-6 hover:bg-red-500 {{ Route::currentRouteNamed('admin.users.index') }}">
                     <i class="fs-4 bi-grid"></i> 
                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#62adfc"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M7.35,18.5C8.66,17.56,10.26,17,12,17 s3.34,0.56,4.65,1.5C15.34,19.44,13.74,20,12,20S8.66,19.44,7.35,18.5z M18.14,17.12L18.14,17.12C16.45,15.8,14.32,15,12,15 s-4.45,0.8-6.14,2.12l0,0C4.7,15.73,4,13.95,4,12c0-4.42,3.58-8,8-8s8,3.58,8,8C20,13.95,19.3,15.73,18.14,17.12z"/><path d="M12,6c-1.93,0-3.5,1.57-3.5,3.5S10.07,13,12,13s3.5-1.57,3.5-3.5S13.93,6,12,6z M12,11c-0.83,0-1.5-0.67-1.5-1.5 S11.17,8,12,8s1.5,0.67,1.5,1.5S12.83,11,12,11z"/></g></g></svg>
                     <span class="mx-3">Users</span> 
                 </a>
                 @endcan
 
-                <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                     <li class="w-100">
                         @canany('User access','User add','User edit','User delete')
                         <a href="{{ route('admin.users.index')}}" class="text-decoration-none flex items-center mt-2 py-2 px-6 text-light fw-bold fs-6 hover:bg-red-500 {{ Route::currentRouteNamed('admin.users.index') ? 'active' : '' }}">
@@ -126,6 +126,50 @@
             <span class="mx-3">Products</span>
         </a>
         @endcanany
+
+        {{-- Lab Sub Menu Starting --}}
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0" id="menu">
+            <li>
+                @canany('Lab access','Lab add','Lab edit','Lab delete')
+                <a href="#submenu2" data-bs-toggle="collapse" class="dropdown-toggle text-decoration-none flex items-center mt-2 py-2 px-6 text-light fw-bold fs-6 hover:bg-red-500 {{ Route::currentRouteNamed('admin.p_lab.index') }}">
+                    <i class="fs-4 bi-grid"></i> 
+                    <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#62adfc"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M7.35,18.5C8.66,17.56,10.26,17,12,17 s3.34,0.56,4.65,1.5C15.34,19.44,13.74,20,12,20S8.66,19.44,7.35,18.5z M18.14,17.12L18.14,17.12C16.45,15.8,14.32,15,12,15 s-4.45,0.8-6.14,2.12l0,0C4.7,15.73,4,13.95,4,12c0-4.42,3.58-8,8-8s8,3.58,8,8C20,13.95,19.3,15.73,18.14,17.12z"/><path d="M12,6c-1.93,0-3.5,1.57-3.5,3.5S10.07,13,12,13s3.5-1.57,3.5-3.5S13.93,6,12,6z M12,11c-0.83,0-1.5-0.67-1.5-1.5 S11.17,8,12,8s1.5,0.67,1.5,1.5S12.83,11,12,11z"/></g></g></svg>
+                    <span class="mx-3">Lab</span>
+                </a>
+                @endcan
+
+                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                    <li class="w-100">
+                        @canany('Pathology lab access','Pathology lab add','Pathology lab edit','Pathology lab delete')
+                        <a href="{{ route('admin.p_lab.index')}}" class="text-decoration-none flex items-center mt-2 py-2 px-6 text-light fw-bold fs-6 hover:bg-red-500 {{ Route::currentRouteNamed('admin.p_labs.index') ? 'active' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right ml-5" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg>
+                            <span class="d-none d-sm-inline px-3">Pathology Lab</span>
+                        </a>
+                        @endcanany
+                    </li>
+                    {{-- <li>
+                        @canany('Role access','Role add','Role edit','Role delete')
+                            <a href="{{ route('admin.roles.index') }}" class="text-decoration-none flex items-center mt-2 py-2 px-6 text-light fw-bold fs-6 hover:bg-red-500 {{ Route::currentRouteNamed('admin.roles.index') ? 'active' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right ml-5" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg>
+                                <span class="d-none d-sm-inline px-3">User Roles</span>
+                            </a>
+                        @endcanany
+                    </li>
+                    <li>
+                        @canany('Permission access','Permission add','Permission edit','Permission delete')
+                            <a href="{{ route('admin.permissions.index') }}" class="text-decoration-none flex items-center mt-2 py-2 px-6 text-light fw-bold fs-6 hover:bg-red-500 {{ Route::currentRouteNamed('admin.permissions.index') ? 'active' : '' }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right ml-5" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg>
+                                <span class="d-none d-sm-inline px-3">User Permissions</span>
+                            </a>
+                        @endcanany
+                    </li> --}}
+
+                </ul>
+            </li>
+        </ul>
+
+
+        {{-- Users Sub Menu End --}}
         
     </nav>
 </div>
