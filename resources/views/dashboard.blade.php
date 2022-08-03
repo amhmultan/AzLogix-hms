@@ -50,7 +50,12 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="row">
+            <div class="container card mt-5">
+                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            </div>
+        </div>
 
     </div>
 

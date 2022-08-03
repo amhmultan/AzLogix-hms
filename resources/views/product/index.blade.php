@@ -7,7 +7,7 @@
             @endcan
           </div>
         <div class="overflow-auto">
-          <h3 class="h2 mb-4 fw-bold text-success">Products Information</h3>
+          <h3 class="h2 mb-4 fw-bold">Products Information</h3>
           <hr />
           <table class="bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
             <thead>

@@ -6,7 +6,8 @@
               <a href="{{route('admin.posts.create')}}" class="text-decoration-none bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">New post</a>
             @endcan
           </div>
-
+          <h3 class="h2 mb-4 fw-bold">Post Information</h3>
+          <hr />
         <div class="bg-white shadow-md rounded my-6">
           <table class="text-left w-full border-collapse">
             <thead>

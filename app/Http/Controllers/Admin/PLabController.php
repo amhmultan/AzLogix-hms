@@ -17,7 +17,7 @@ class PLabController extends Controller
     public function index()
     {
         $PLab= PLab::paginate(5);
-        return view('lab.p_lab_index',['p_lab'=>$PLab]);
+        return view('p_lab.lab_index',['p_lab'=>$PLab]);
     }
 
     /**
@@ -27,7 +27,7 @@ class PLabController extends Controller
      */
     public function create()
     {
-        return view('lab.p_lab_new');
+        return view('p_lab.lab_new');
     }
 
     /**
@@ -63,7 +63,7 @@ class PLabController extends Controller
      */
     public function edit(PLab $pLab)
     {
-        return view('lab.p_lab_edit',['p_lab' => $pLab]);
+        return view('p_lab.lab_edit',['p_lab' => $pLab]);
     }
 
     /**
