@@ -4,7 +4,7 @@
             <div class="container bg-white shadow-md rounded my-6 px-5 py-4">
               
 
-                <form method="POST" action="{{ route('admin.patients.store') }}">
+                <form method="POST" action="{{ route('admin.patients.store') }}" enctype="multipart/form-data">
                   @csrf
 
                 <h3 class="h2 mb-4 fw-bold text-success">Add Patients</h3>
@@ -26,19 +26,19 @@
                     <div class="col-md-2">
                       <label for="gender" class="text-gray-700 font-black">Gender:</label>
                       <select class="form-control" name="gender">
-                        <option value="0">Male</option>
-                        <option value="1">Female</option>
-                        <option value="2">Others</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Others">Others</option>
                       </select>
                     </div>
                     <div class="col-md-2">
                       <label for="marital_status" class="text-gray-700 font-black">Marital Status:</label>
                       <select class="form-control" name="marital_status">
-                        <option value="0">Single</option>
-                        <option value="1">Married</option>
-                        <option value="2">Widowed</option>
-                        <option value="3">Divorced</option>
-                        <option value="4">Separated</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Widowed">Widowed</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Separated">Separated</option>
                       </select>
                     </div>
 
@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-md-5">
                       <label for="pic" class="text-gray-700 font-black">Picture</label>
-                      <input type="file" id="pic" name="pic" value="{{ old('pic') }}" class="form-control" accept="image/png, image/jpeg">
+                      <input type="file" id="pic" name="pic" value="{{ old('pic') }}" class="form-control" accept="image/png, image/jpeg" required>
                     </div>
                     
                   </div>

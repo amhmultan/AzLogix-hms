@@ -27,19 +27,19 @@
                    <div class="col-md-2">
                      <label for="gender" class="text-gray-700 font-black">Gender:</label>
                      <select class="form-control" name="gender">
-                      <option value="0">Male</option>
-                      <option value="1" @if($patient->gender) selected @endif>Female</option>
-                      <option value="2" @if($patient->gender) selected @endif>Others</option>
+                      <option value="Male">Male</option>
+                      <option value="Female" @if($patient->gender) selected @endif>Female</option>
+                      <option value="Others" @if($patient->gender) selected @endif>Others</option>
                      </select>
                    </div>
                    <div class="col-md-2">
                      <label for="marital_status" class="text-gray-700 font-black">Marital Status:</label>
                      <select class="form-control" name="marital_status">
-                      <option value="0">Single</option>
-                      <option value="1" @if($patient->marital_status) selected @endif>Married</option>
-                      <option value="2" @if($patient->marital_status) selected @endif>Widowed</option>
-                      <option value="3" @if($patient->marital_status) selected @endif>Divorced</option>
-                      <option value="4" @if($patient->marital_status) selected @endif>Separated</option>
+                      <option value="Single">Single</option>
+                      <option value="Married" @if($patient->marital_status) selected @endif>Married</option>
+                      <option value="Widowed" @if($patient->marital_status) selected @endif>Widowed</option>
+                      <option value="Divorced" @if($patient->marital_status) selected @endif>Divorced</option>
+                      <option value="Separated" @if($patient->marital_status) selected @endif>Separated</option>
                      </select>
                    </div>
 
@@ -116,7 +116,7 @@
                  <div class="row mt-5">
 
                    <div class="col-md-12 text-center">
-                     <a class="btn btn-info mx-2" href="{{ route('admin.patients.index')}}" role="button">Back</a>
+                     <a class="btn btn-warning mx-2" href="{{ route('admin.patients.index')}}" role="button">Patient Info</a>
                      <button type="submit" class="btn btn-success mx-2">Submit</button>
                    </div>
 

@@ -23,7 +23,7 @@ class CreatePatientsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('cnic');
-            $table->binary('pic')->nullable();
+            $table->string('pic');
             $table->string('address');
             $table->string('emr_name');
             $table->string('relationship');

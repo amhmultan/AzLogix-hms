@@ -62,9 +62,9 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Patient $patient)
     {
-        //
+        return view('patient.show',['patient' => $patient]);
     }
 
     /**
