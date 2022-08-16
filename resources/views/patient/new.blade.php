@@ -8,6 +8,24 @@
                   @csrf
 
                 <h3 class="h2 mb-4 fw-bold text-success">Add Patients</h3>
+                
+                <!-- Loop for MR. No Input -->
+
+                @for ($i = 0; $i < 10; $i++)
+
+                  {{ ($i) }}
+
+                @endfor
+
+                @for ($i = 0; $i > 0; $i++)
+                  
+                  {{ ($i) }}
+
+                @endfor
+
+                
+                
+                
                 <hr />
                   <div class="row pt-5 pb-4">
 
