@@ -7,36 +7,20 @@
                 <form method="POST" action="{{ route('admin.patients.store') }}" enctype="multipart/form-data">
                   @csrf
 
-                <h3 class="h2 mb-4 fw-bold text-success">Add Patients</h3>
-                
-                <!-- Loop for MR. No Input -->
-
-                @for ($i = 0; $i < 10; $i++)
-
-                  {{ ($i) }}
-
-                @endfor
-
-                @for ($i = 0; $i > 0; $i++)
-                  
-                  {{ ($i) }}
-
-                @endfor
-
-                
-                
-                
+                <h3 class="h2 mb-3 fw-bold text-success">Add Patient</h3>
                 <hr />
-                  <div class="row pt-5 pb-4">
+                  <div class="row pt-4 pb-4">
 
-                    <div class="col-md-2">
-                      <label for="mr_number" class="text-gray-700 font-black mr-2">MR. No.</label>
-                      <input id="mr_number" type="number" name="mr_number" value="{{ old('mr_number') }}" class="form-control" />
-                    </div>
-                    <div class="col-md-4">
-                      <label for="name" class="text-gray-700 font-black">Full Name:</label>
+                    <div class="col-md-3">
+                      <label for="name" class="text-gray-700 font-black">Patient Name:</label>
                       <input id="name" type="text" name="name" value="{{ old('name') }}" class="form-control" />
                     </div>
+                    
+                    <div class="col-md-3">
+                      <label for="name" class="text-gray-700 font-black">Father Name:</label>
+                      <input id="fname" type="text" name="fname" value="{{ old('fname') }}" class="form-control" />
+                    </div>
+
                     <div class="col-md-2">
                       <label for="name" class="text-gray-700 font-black">Date Of Birth:</label>
                       <input id="dob" type="date" name="dob" value="{{ old('dob') }}" class="form-control" />
@@ -70,13 +54,13 @@
                     </div>
                     <div class="col-md-3">
                       <label for="email" class="text-gray-700 font-black">Email</label>
-                      <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Please enter your email address" class="form-control" />
+                      <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Enter your email address" class="form-control" />
                     </div>
-                    <div class="col-md-2">
-                      <label for="cnic" class="text-gray-700 font-black">CNIC</label>
+                    <div class="col-md-3">
+                      <label for="cnic" class="text-gray-700 font-black">CNIC (with dashes)</label>
                       <input type="tel" id="cnic" name="cnic" placeholder="XXXXX-XXXXXXX-X" pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}" value="{{ old('cnic') }}" class="form-control" />
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                       <label for="pic" class="text-gray-700 font-black">Picture</label>
                       <input type="file" id="pic" name="pic" value="{{ old('pic') }}" class="form-control" accept="image/png, image/jpeg" required>
                     </div>
@@ -91,37 +75,26 @@
                     </div>
 
                   </div>
-
-                  <div class="row mt-4">
+                  <hr class="my-5" />
+                  <div class="row">
                     
                     <div class="col-md-3">
                       <label for="emr_name" class="text-gray-700 font-black">Emergency Person Name</label>
                       <input id="emr_name" type="text" name="emr_name" value="{{ old('emr_name') }}" class="form-control" />
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                       <label for="relationship" class="text-gray-700 font-black">Relationship</label>
                       <input id="relationship" type="text" name="relationship" value="{{ old('relationship') }}" class="form-control" />
                     </div>
-                    <div class="col-md-2">
-                      <label for="emr_phone" class="text-gray-700 font-black">Emergency Number</label>
+                    <div class="col-md-3">
+                      <label for="emr_phone" class="text-gray-700 font-black">Number</label>
                       <input type="tel" id="emr_phone" name="emr_phone" placeholder="XXXXXXXXXXX" pattern="[0-9]{4}[0-9]{7}" value="{{ old('phone') }}" class="form-control" />
                     </div>
-                    <div class="col-md-1">
-                      <label for="weight" class="text-gray-700 font-black">Weight</label>
-                      <input id="weight" type="text" name="weight" value="{{ old('weight') }}" class="form-control" />
-                    </div>
-                    <div class="col-md-1">
-                      <label for="height" class="text-gray-700 font-black">Height</label>
-                      <input id="height" type="text" name="height" value="{{ old('height') }}" class="form-control" />
-                    </div>
-                    <div class="col-md-3">
-                      <label for="reffered_by" class="text-gray-700 font-black">Reffered By</label>
-                      <input id="reffered_by" type="text" name="reffered_by" value="{{ old('reffered_by') }}" class="form-control" />
-                    </div>
-
                   </div>
 
-                  <div class="row mt-4">
+                  <hr class="my-5" />
+                  
+                  <div class="row">
 
                     <div class="col-md-12">
                       <label for="history" class="text-gray-700 font-black">History</label>
@@ -130,6 +103,21 @@
 
                   </div>
                   
+                  <div class="row mt-4">
+                    <div class="col-md-4">
+                      <label for="weight" class="text-gray-700 font-black">Weight</label>
+                      <input id="weight" type="text" name="weight" value="{{ old('weight') }}" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                      <label for="height" class="text-gray-700 font-black">Height</label>
+                      <input id="height" type="text" name="height" value="{{ old('height') }}" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                      <label for="reffered_by" class="text-gray-700 font-black">Reffered By</label>
+                      <input id="reffered_by" type="text" name="reffered_by" value="{{ old('reffered_by') }}" class="form-control" />
+                    </div>
+                  </div>
+
                   <div class="row mt-5">
 
                     <div class="col-md-12 text-center">

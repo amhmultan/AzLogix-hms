@@ -28,7 +28,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $Patient= Patient::paginate(6);
+        $Patient= Patient::paginate(4);
         return view('patient.index',['patients'=>$Patient]);
     }
 
@@ -50,10 +50,12 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
+        
         $data= $request->all();
         $data['user_id'] = Auth::user()->id;
-        $Patient = Patient::create($data);
+        $Patient = Patient::create($data,);
         return redirect('/admin/patients')->withSuccess('Patient created !!!');
+        
     }
 
     /**

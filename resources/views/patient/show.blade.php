@@ -1,17 +1,17 @@
 <x-app-layout>
-    <div class="container bg-white shadow-md rounded my-6 px-5 py-4">
+    <div  id="printableArea" class="container bg-white shadow-md rounded my-6 px-5 py-4">
         @can('Patient access')
             
             <div class="row">
                 
                 <div class="col-sm-3">
-                    <h6>Patient ID:</h6><span>{{ $patient->id }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Patient MR No:</h6><span>{{ $patient->mr_number }}</span>
+                    <h6>MR No:</h6><span>{{ $patient->id }}</span>
                 </div>
                 <div class="col-sm-3">
                     <h6>Patient Name:</h6><span>{{ $patient->name }}</span>
+                </div>
+                <div class="col-sm-3">
+                    <h6>Father Name:</h6><span>{{ $patient->fname }}</span>
                 </div>
                 <div class="col-sm-3">
                     <h6>Patient Picture:</h6><span>{{ $patient->pic }}</span>
@@ -88,7 +88,12 @@
             <div class="row mt-5">
                 <div class="col-sm-12 text-center">
                     <a href="{{ route('admin.patients.index')}}" class="btn btn-info text-light">Back</a>
-                    <a href="#" class="btn btn-success text-light">Print</a>
+                    
+                    {{-- <a class="btn btn-success text-light">Print</a> --}}
+
+                    <input class="btn btn-success text-light" type="button" onclick="printDiv('printableArea')" value="Print" />
+                    
+                    
                     @can('Patient edit')
                       <a href="{{route('admin.patients.edit',$patient->id)}}" class="btn btn-warning">Edit</a>
                       @endcan
@@ -105,4 +110,16 @@
             
         @endcan
     </div>
+<script>
+    function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
 </x-app-layout>
