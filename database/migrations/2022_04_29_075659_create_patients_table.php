@@ -23,7 +23,6 @@ class CreatePatientsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('cnic');
-            $table->string('pic');
             $table->string('address');
             $table->string('emr_name');
             $table->string('relationship');

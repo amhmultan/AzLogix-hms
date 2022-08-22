@@ -7,7 +7,7 @@
                 <form method="POST" action="{{ route('admin.patients.store') }}" enctype="multipart/form-data">
                   @csrf
 
-                <h3 class="h2 mb-3 fw-bold text-success">Add Patient</h3>
+                  <p class="h3 text-danger"><strong><em>Add <span class="text-success">Patient</span></em></strong></p>
                 <hr />
                   <div class="row pt-4 pb-4">
 
@@ -48,21 +48,17 @@
                   
                   <div class="row">
 
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                       <label for="phone" class="text-gray-700 font-black">Phone Number</label>
-                      <input type="tel" id="phone" name="phone" placeholder="XXXXXXXXXXX" pattern="[0-9]{4}[0-9]{7}" value="{{ old('phone') }}" class="form-control" required>
+                      <input type="tel" id="phone" name="phone" placeholder="xxxxxxxxxxx" pattern="[0-9]{4}[0-9]{7}" value="{{ old('phone') }}" class="form-control" required>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <label for="email" class="text-gray-700 font-black">Email</label>
                       <input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Enter your email address" class="form-control" />
                     </div>
-                    <div class="col-md-3">
-                      <label for="cnic" class="text-gray-700 font-black">CNIC (with dashes)</label>
-                      <input type="tel" id="cnic" name="cnic" placeholder="XXXXX-XXXXXXX-X" pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}" value="{{ old('cnic') }}" class="form-control" />
-                    </div>
                     <div class="col-md-4">
-                      <label for="pic" class="text-gray-700 font-black">Picture</label>
-                      <input type="file" id="pic" name="pic" value="{{ old('pic') }}" class="form-control" accept="image/png, image/jpeg" required>
+                      <label for="cnic" class="text-gray-700 font-black">CNIC (with dashes)</label>
+                      <input type="tel" id="cnic" name="cnic" placeholder="xxxxx-xxxxxxx-x" pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}" value="{{ old('cnic') }}" class="form-control" />
                     </div>
                     
                   </div>
@@ -88,7 +84,7 @@
                     </div>
                     <div class="col-md-3">
                       <label for="emr_phone" class="text-gray-700 font-black">Number</label>
-                      <input type="tel" id="emr_phone" name="emr_phone" placeholder="XXXXXXXXXXX" pattern="[0-9]{4}[0-9]{7}" value="{{ old('phone') }}" class="form-control" />
+                      <input type="tel" id="emr_phone" name="emr_phone" placeholder="xxxxxxxxxxx" pattern="[0-9]{4}[0-9]{7}" value="{{ old('phone') }}" class="form-control" />
                     </div>
                   </div>
 
@@ -104,15 +100,7 @@
                   </div>
                   
                   <div class="row mt-4">
-                    <div class="col-md-4">
-                      <label for="weight" class="text-gray-700 font-black">Weight</label>
-                      <input id="weight" type="text" name="weight" value="{{ old('weight') }}" class="form-control" />
-                    </div>
-                    <div class="col-md-4">
-                      <label for="height" class="text-gray-700 font-black">Height</label>
-                      <input id="height" type="text" name="height" value="{{ old('height') }}" class="form-control" />
-                    </div>
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                       <label for="reffered_by" class="text-gray-700 font-black">Reffered By</label>
                       <input id="reffered_by" type="text" name="reffered_by" value="{{ old('reffered_by') }}" class="form-control" />
                     </div>
@@ -121,7 +109,7 @@
                   <div class="row mt-5">
 
                     <div class="col-md-12 text-center">
-                      <a class="btn btn-info mx-2" href="{{ route('admin.patients.index')}}" role="button">Back</a>
+                      <a class="btn btn-info mx-2" href="{{ route('admin.patients.index')}}" accesskey="b" role="button"><u>B</u>ack</a>
                       <button type="submit" class="btn btn-success mx-2">Submit</button>
                     </div>
 

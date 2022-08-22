@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Patient;
 use App\Models\Hospital;
 
-class PatientController extends Controller
+class HospitalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,10 @@ class PatientController extends Controller
      */
     function __construct()
     {
-        $this->middleware('role_or_permission:Patient access|Patient create|Patient edit|Patient delete', ['only' => ['index','show']]);
-        $this->middleware('role_or_permission:Patient create', ['only' => ['create','store']]);
-        $this->middleware('role_or_permission:Patient edit', ['only' => ['edit','update']]);
-        $this->middleware('role_or_permission:Patient delete', ['only' => ['destroy']]);
+        $this->middleware('role_or_permission:Hospital access|Hospital create|Hospital edit|Hospital delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Hospital create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Hospital edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Hospital delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -33,9 +33,9 @@ class PatientController extends Controller
         // $Patient= Patient::paginate(10);
         // return view('patient.index',['patients'=>$Patient]);
 
-        $patients = Patient::all();
+        $hospitals = Hospital::all();
 
-        return view('patient.index', ['patients' => $patients]);
+        return view('hospital.index', ['hospitals' => $hospitals]);
     }
 
     /**
@@ -45,7 +45,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('patient.new');
+        return view('hospital.new');
     }
 
     /**
@@ -59,8 +59,8 @@ class PatientController extends Controller
         
         $data= $request->all();
         $data['user_id'] = Auth::user()->id;
-        $Patient = Patient::create($data,);
-        return redirect('/admin/patients')->withSuccess('Patient created !!!');
+        $hospital = Hospital::create($data,);
+        return redirect('/admin/hospitals')->withSuccess('Hospital created !!!');
         
     }
 
@@ -70,9 +70,9 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show(Hospital $hospital)
     {
-        return view('patient.show',['patient' => $patient]);
+        return view('hospital.show',['hospital' => $hospital]);
     }
 
     /**
@@ -81,9 +81,9 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient)
+    public function edit(Hospital $hospital)
     {
-       return view('patient.edit',['patient' => $patient]);
+       return view('hospital.edit',['hospital' => $hospital]);
     }
 
     /**
@@ -93,10 +93,10 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Hospital $hospital)
     {
-        $patient->update($request->all());
-        return redirect('/admin/patients')->withSuccess('Patient updated !!!');
+        $hospital->update($request->all());
+        return redirect('/admin/hospitals')->withSuccess('Hospital updated !!!');
     }
 
     /**
@@ -105,9 +105,9 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Hospital $hospital)
     {
-        $patient->delete();
-        return redirect('/admin/patients')->withSuccess('Patient deleted !!!');
+        $hospital->delete();
+        return redirect('/admin/hospitals')->withSuccess('Hospital deleted !!!');
     }
 }

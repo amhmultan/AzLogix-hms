@@ -46,7 +46,7 @@
                             
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg>
                             
-                            <span class="ml-3">User Info</span>
+                            <span class="ml-3">Users Management</span>
                         </a>
                         @endcanany
                     </li>
@@ -74,14 +74,23 @@
 
         {{-- Users Sub Menu End --}}
         
-        @canany('Post access','Post add','Post edit','Post delete')
+        @canany('Hospital access','Hospital create','Hospital edit','Hospital delete')
+         <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.hospitalconfig.index') ? 'active' : '' }}"
+            href="{{ route('admin.hospitals.index')}}">
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#62adfc"><rect fill="none" height="24" width="24"/><path d="M3,10h11v2H3V10z M3,8h11V6H3V8z M3,16h7v-2H3V16z M18.01,12.87l0.71-0.71c0.39-0.39,1.02-0.39,1.41,0l0.71,0.71 c0.39,0.39,0.39,1.02,0,1.41l-0.71,0.71L18.01,12.87z M17.3,13.58l-5.3,5.3V21h2.12l5.3-5.3L17.3,13.58z"/></svg>
+            
+            <span class="mx-3">Hospital Config</span>
+        </a>
+        @endcanany
+
+        {{-- @canany('Post access','Post add','Post edit','Post delete')
          <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.posts.index') ? 'active' : '' }}"
             href="{{ route('admin.posts.index')}}">
             <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#62adfc"><rect fill="none" height="24" width="24"/><path d="M3,10h11v2H3V10z M3,8h11V6H3V8z M3,16h7v-2H3V16z M18.01,12.87l0.71-0.71c0.39-0.39,1.02-0.39,1.41,0l0.71,0.71 c0.39,0.39,0.39,1.02,0,1.41l-0.71,0.71L18.01,12.87z M17.3,13.58l-5.3,5.3V21h2.12l5.3-5.3L17.3,13.58z"/></svg>
             
             <span class="mx-3">Post Notes</span>
         </a>
-        @endcanany
+        @endcanany --}}
 
         @canany('Patient access','Patient add','Patient edit','Patient delete')
          <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.patients.index') ? 'active' : '' }}"
@@ -92,17 +101,17 @@
         </a>
         @endcanany
         
-        @canany('Product access','Product add','Product edit','Product delete')
+        {{-- @canany('Product access','Product add','Product edit','Product delete')
          <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.products.index') ? 'active' : '' }}"
             href="{{ route('admin.products.index')}}">
             <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 384 512" width="24px" fill="#62adfc"><rect fill="none" height="24" width="24"/><path d="M32 192h112C152.8 192 160 199.2 160 208C160 216.8 152.8 224 144 224H32v64h112C152.8 288 160 295.2 160 304C160 312.8 152.8 320 144 320H32v64h112C152.8 384 160 391.2 160 400C160 408.8 152.8 416 144 416H32v32c0 35.2 28.8 64 64 64h192c35.2 0 64-28.8 64-64V128H32V192zM360 0H24C10.75 0 0 10.75 0 24v48C0 85.25 10.75 96 24 96h336C373.3 96 384 85.25 384 72v-48C384 10.75 373.3 0 360 0z"/></svg>
 
             <span class="mx-3">Products</span>
         </a>
-        @endcanany
+        @endcanany --}}
 
         {{-- Lab Sub Menu Starting --}}
-        <ul class="nav nav-pills flex-column mb-sm-auto mb-0" id="menu">
+        {{-- <ul class="nav nav-pills flex-column mb-sm-auto mb-0" id="menu">
             <li>
                 @canany('Lab access','Lab add','Lab edit','Lab delete')
                 <a href="#submenu2" data-bs-toggle="collapse" class="dropdown-toggle text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.p_lab.index') }}">
@@ -125,9 +134,9 @@
 
                 </ul>
             </li>
-        </ul>
+        </ul> --}}
 
-    {{-- Users Sub Menu End --}}
+    {{-- Lab Sub Menu End --}}
         
     </nav>
 </div> 

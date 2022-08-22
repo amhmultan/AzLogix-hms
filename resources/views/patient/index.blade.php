@@ -1,23 +1,24 @@
 <x-app-layout>
-  <main class="flex-1 bg-gray-200">
-      <div class="container-fluid py-5 px-5">
-          
-        <div class="">
-          <h3 class="h2 mb-4 fw-bold text-success">Patients Information</h3>
-          <div class="text-right">
-            @can('Patient create')
-              <a href="{{route('admin.patients.create')}}" class="text-decoration-none bg-black text-white font-bold px-5 py-2 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">New Patient</a>
-            @endcan
-          </div>
-          
+  <main>
+      <div class="container-fluid py-4 px-5">
 
+            <div class="row mb-4">
+              <div class="col-sm-6">
+                <p class="h3 text-danger"><strong><em>Patients <span class="text-success">Dashboard</span></em></strong></p>
+              </div>
+              <div class="col-sm-6 text-right">
+                @can('Patient create')
+                  <a href="{{route('admin.patients.create')}}" class="text-decoration-none bg-black text-white font-bold px-5 py-2 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors" accesskey="n"><u>N</u>ew Patient</a>
+                @endcan
+              </div>
+            </div>
+          
           @if (!$patients->isEmpty())
 
-          <table id="table1" class="table-responsive bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
+          <table id="patientTable" class="display table-responsive bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
             <thead>
               <tr>
                 <th class="py-3 px-1 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MR No.</th>
-                <th class="py-3 px-1 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PICTURE</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">NAME</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">FATHERS NAME</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">DOB</th>
@@ -35,22 +36,21 @@
             <tbody>
               @can('Patient access')
                 @foreach($patients as $patient)
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->id }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->pic }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->name }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->fname }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->dob }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->gender }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->marital_status }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->phone }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->email }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->cnic }}</td>
-                    <td class="text-nowrap text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->address }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->created_at }}</td>
-                    <td class="text-nowrap text-xs py-4 px-6 border border-grey-light">{{ $patient->updated_at }}</td>
+                  <tr>
+                    <td class="text-nowrap text-xs px-4 border-grey-light">{{ $patient->id }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->name }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->fname }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->dob }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->gender }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->marital_status }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->phone }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->email }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->cnic }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->address }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->created_at }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->updated_at }}</td>
                     
-                    <td class="text-nowrap py-4 px-6 border-b border-grey-light">
+                    <td class="text-nowrap text-xs px-3 border-grey-light">
                       @can('Patient access')
                         <a href="{{route('admin.patients.show',$patient->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-green-400">Show</a>
                       @endcan
@@ -73,13 +73,12 @@
           </table>
           
 
-          @can('Patient access')
+          {{-- @can('Patient access')
           <div class="py-3 px-5">
             {{ $patients->links() }}
           </div>
-          @endcan
-        </div>
-
+          @endcan --}}
+        
         @else
 
           <div class="row flex text-center mt-5 pt-5">
@@ -90,9 +89,15 @@
         
         @endif
 
-          
-
       </div>
   </main>
 </div>
+@section('script')
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready( function () {
+    $('#patientTable').DataTable();
+} );
+</script>
+@stop
 </x-app-layout>
