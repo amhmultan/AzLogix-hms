@@ -1,110 +1,92 @@
 <x-app-layout>
 
-    <div  id="printableArea" class="container bg-white shadow-md rounded my-6 px-5 py-4">
+    <div class="container bg-white shadow-md rounded my-6 px-5 py-4">
         @can('Patient access')
-            
-            <div class="row">
-                
-                <div class="col-sm-3">
-                    <h6>MR No:</h6><span>{{ $patient->id }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Patient Name:</h6><span>{{ $patient->name }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Father Name:</h6><span>{{ $patient->fname }}</span>
-                </div>
-                <div class="col-sm-3">
-                    
+
+            <div class="container" id="printableArea">
+                <div class="row mt-2 mb-2">
+                    <div class="col-sm-12 text-center">
+                        <h1 class="display-6 text-primary text-uppercase font-weight-bold">{{ str_replace( array('[','"','"',']') , ''  , $hospitals) }}</h1>
+                    </div>
                 </div>
 
-            </div>
-            <div class="row mt-5">
-                
-                <div class="col-sm-3">
-                    <h6>Patient Gender:</h6><span>{{ $patient->gender }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Patient Marital Status:</h6><span>{{ $patient->marital_status }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Patient Phone:</h6><span>{{ $patient->phone }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Patient Email:</h6><span>{{ $patient->email }}</span>
-                </div>
+            <div class="row mx-auto">
+                <div class="col-sm-12">
+                    <div class="card border-dark mb-3">
+                        <div class="card-header text-center"><h5 class="card-title font-weight-bold">Patient Information</h5></div>
+                            <div class="card-body text-dark">
+                            <p class="card-text">
 
-            </div>
-            <div class="row mt-5">
-                
-                <div class="col-sm-3">
-                    <h6>Patient CNIC:</h6><span>{{ $patient->cnic }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Patient DOB:</h6><span>{{ $patient->dob }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Patient Address:</h6><span>{{ $patient->address }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Patient History:</h6><span>{{ $patient->history }}</span>
-                </div>
-                
-            </div>
+                                <table class="table table-bordered">
+                                    <tbody>
 
-            <div class="row mt-5">
-                
-                <div class="col-sm-3">
-                    <h6>Emergency Person:</h6><span>{{ $patient->emr_name }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Relation:</h6><span>{{ $patient->relationship }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Emergency Number:</h6><span>{{ $patient->emr_phone }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Reffered By:</h6><span>{{ $patient->reffered_by }}</span>
-                </div>
+                                        <tr>
+                                            <td><h6 class="font-weight-bold">MR Number:</h6><span> {{ $patient->id }} </span></td>
+                                            <td><h6 class="font-weight-bold">Patient Name:</h6><span> {{ $patient->name }} </span></td>
+                                            <td><h6 class="font-weight-bold">Father Name:</h6><span> {{ $patient->fname }} </span></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td><h6 class="font-weight-bold">Patient Gender:</h6><span> {{ $patient->gender }} </span></td>
+                                            <td><h6 class="font-weight-bold">Patient Marital Status:</h6><span> {{ $patient->marital_status }} </span></td>
+                                            <td><h6 class="font-weight-bold">Patient Phone:</h6><span> {{ $patient->phone }} </span></td>
+                                        </tr>
 
-            </div>
+                                        <tr>
+                                            <td><h6 class="font-weight-bold">Patient Email:</h6><span> {{ $patient->email }} </span></td>
+                                            <td><h6 class="font-weight-bold">Patient CNIC:</h6><span> {{ $patient->cnic }} </span></td>
+                                            <td><h6 class="font-weight-bold">Patient DOB:</h6><span> {{ $patient->dob }} </span></td>
+                                        </tr>
 
-            <div class="row mt-5">
-                
-                <div class="col-sm-3">
-                    <h6>Created At:</h6><span>{{ $patient->created_at }}</span>
-                </div>
-                <div class="col-sm-3">
-                    <h6>Updated At:</h6><span>{{ $patient->updated_at }}</span>
-                </div>
+                                        <tr>
+                                            <td><h6 class="font-weight-bold">Patient Address:</h6><span> {{ $patient->address }} </span></td>
+                                            <td><h6 class="font-weight-bold">Patient History:</h6><span> {{ $patient->history }} </span></td>
+                                            <td><h6 class="font-weight-bold">Emergency Person:</h6><span> {{ $patient->emr_name }} </span></td>
+                                        </tr>
 
-            </div>
+                                        <tr>
+                                            <td><h6 class="font-weight-bold">Relation:</h6><span> {{ $patient->relationship }} </span></td>
+                                            <td><h6 class="font-weight-bold">Emergency Number:</h6><span> {{ $patient->emr_phone }} </span></td>
+                                            <td><h6 class="font-weight-bold">Reffered By:</h6><span> {{ $patient->reffered_by }} </span></td>
+                                        </tr>
 
-            <div class="row mt-5">
-                <div class="col-sm-12 text-center">
-                    <a href="{{ route('admin.patients.index')}}" accesskey="b" class="btn btn-info text-light"><u>B</u>ack</a>
-                    
-                    {{-- <a class="btn btn-success text-light">Print</a> --}}
+                                        <tr>
+                                            <td><h6 class="font-weight-bold">Created At:</h6><span> {{ $patient->created_at }} </span></td>
+                                            <td colspan="2"><h6 class="font-weight-bold">Updated At:</h6><span> {{ $patient->updated_at }} </span></td>
+                                        </tr>
 
-                    <input class="btn btn-success text-light" accesskey="p" type="button" onclick="printDiv('printableArea')" value="Print" />
-                    
-                    
-                    @can('Patient edit')
-                      <a href="{{route('admin.patients.edit',$patient->id)}}" accesskey="e" class="btn btn-warning"><u>E</u>dit</a>
-                      @endcan
-  
-                      @can('Patient delete')
-                      <form action="{{ route('admin.patients.destroy', $patient->id) }}" accesskey="d" method="POST" class="inline">
-                          @csrf
-                          @method('delete')
-                          <button class="btn btn-danger"><u>D</u>elete</button>
-                      </form>
-                      @endcan
+                                    </tbody>
+                                </table>
+                                
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
+        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <a href="{{ route('admin.patients.index')}}" accesskey="b" class="btn btn-info text-light"><u>B</u>ack</a>
+                        <input class="btn btn-success text-light" accesskey="p" type="button" onclick="printDiv('printableArea')" value="Print" />
+                        @can('Patient edit')
+                          <a href="{{route('admin.patients.edit',$patient->id)}}" accesskey="e" class="btn btn-warning"><u>E</u>dit</a>
+                          @endcan
+                          @can('Patient delete')
+                          <form action="{{ route('admin.patients.destroy', $patient->id) }}" accesskey="d" method="POST" class="inline">
+                              @csrf
+                              @method('delete')
+                              <button class="btn btn-danger"><u>D</u>elete</button>
+                          </form>
+                          @endcan
+                    </div>
+                </div>
+            </div>
         @endcan
     </div>
+
+    
+        
 <script>
     function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;

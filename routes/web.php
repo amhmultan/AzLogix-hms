@@ -41,6 +41,7 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('hospitals','HospitalController');
         // Route::resource('posts','PostController');
         Route::resource('patients','PatientController');
+        Route::resource('tokens','TokenController');
         // Route::resource('products','ProductController');
         // Route::resource('p_lab','PLabController');
 });

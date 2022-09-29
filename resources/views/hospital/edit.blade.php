@@ -18,7 +18,7 @@
                    </div>
                    <div class="col-md-4">
                      <label for="logo" class="text-gray-700 font-black">Logo:</label>
-                     <input id="logo" type="file" name="logo" value="{{ old('logo',$hospital->logo) }}" class="form-control" />
+                     <input id="logo" type="file" name="logo" value="{{ old('logo',$hospital->logo) }}" class="form-control" required/>
                    </div>
                    <div class="col-md-4">
                      <label for="phc_no" class="text-gray-700 font-black">PHC No:</label>
