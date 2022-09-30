@@ -2,4 +2,5 @@
 - users management
 - create roles and permissions
 - assign roles and permissions to user
-- posts management
+- patient registration
+- token information
