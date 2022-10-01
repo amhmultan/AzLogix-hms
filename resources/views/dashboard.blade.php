@@ -6,7 +6,16 @@
             <div class="col-md-3">
                 <div class="card-counter primary">
                     <i class="fa fa-code-fork"></i>
-                    <span class="count-numbers">0</span>
+                    <span class="count-numbers">
+                        @php
+
+                            $sales_count = DB::table('tokens')
+                                            ->whereDate('updated_at', today())
+                                            ->sum('tokens.denomination');
+                        
+                        @endphp
+                            {{ $sales_count }}
+                    </span>
                     <span class="count-name">Sales</span>
                 </div>
             </div>
@@ -16,7 +25,9 @@
                     <i class="fa fa-ticket"></i>
                     <span class="count-numbers">
                         @php
-                            $patients_count = DB::table('patients')->count();
+                            $patients_count = DB::table('patients')
+                                                ->whereDate('created_at', today())
+                                                ->count();
                         @endphp
                         {{ $patients_count }}
                     </span>
@@ -52,8 +63,8 @@
         </div>
 
         <div class="row">
-            <div class="container card mt-5">
-                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+            <div class="container card mt-5 border border-dark rounded">
+                <div id="chartContainer" style="height: 540px; width: 100%;" class="my-4"></div>
             </div>
         </div>
 

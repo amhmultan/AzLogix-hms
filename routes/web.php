@@ -39,9 +39,12 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('permissions','PermissionController');
         Route::resource('users','UserController');
         Route::resource('hospitals','HospitalController');
-        // Route::resource('posts','PostController');
+        Route::resource('posts','PostController');
         Route::resource('patients','PatientController');
         Route::resource('tokens','TokenController');
-        // Route::resource('products','ProductController');
-        // Route::resource('p_lab','PLabController');
+        Route::resource('manufacturers','ManufacturerController');
+        Route::resource('suppliers','SupplierController');
+        Route::resource('tokens','TokenController');
+        Route::resource('products','ProductController');
+        Route::resource('p_lab','PLabController');
 });

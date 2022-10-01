@@ -72,7 +72,7 @@ class HospitalController extends Controller
      */
     public function show(Hospital $hospital)
     {
-        return view('hospital.show',['hospital' => $hospital]);
+        //
     }
 
     /**

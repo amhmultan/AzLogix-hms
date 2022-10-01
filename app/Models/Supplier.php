@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Token extends Model
+class Supplier extends Model
 {
-    
     use HasFactory;
 
     protected $fillable = [
-        'fk_patients_id','fees','denomination','balance'
+        'name','description','fbr_no','license_no','address','contact','remarks',
     ];
-    
-
 }

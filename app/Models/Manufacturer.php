@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Token extends Model
+class Manufacturer extends Model
 {
-    
     use HasFactory;
-
-    protected $fillable = [
-        'fk_patients_id','fees','denomination','balance'
-    ];
     
-
+    protected $fillable = [
+        'name','description','fbr_no','address','logo','contact','email','website','remarks',
+    ];
 }
