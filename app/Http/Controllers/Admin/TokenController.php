@@ -47,14 +47,17 @@ class TokenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $tokens = DB::table('patients')
-            ->get();
-
-        //dd($tokens);
-
-        return view('token.new', ['tokens' => $tokens]);
+        
+        $search = $request['search'] ?? "";
+        
+        $patients = DB::table('patients')
+                    ->where('patients.id','LIKE',"%$search%")
+                    ->get();
+            
+        return view('token.new', ['search' => $search], ['patients' => $patients]);
+        
     }
 
     /**
@@ -65,9 +68,11 @@ class TokenController extends Controller
      */
     public function store(Request $request)
     {
+
         $data= $request->all();
         $data['user_id'] = Auth::user()->id;
         $token = Token::create($data);
+        
         
         return redirect('/admin/tokens')->withSuccess('Token created !!!');
         
