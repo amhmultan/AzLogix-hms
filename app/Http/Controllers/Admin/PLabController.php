@@ -14,6 +14,19 @@ class PLabController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct()
+    {
+        $this->middleware('role_or_permission:PathologyLabConfig access|PathologyLabConfig new|PathologyLabConfig edit|PathologyLabConfig delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:PathologyLabConfig new', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:PathologyLabConfig edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:PathologyLabConfig delete', ['only' => ['destroy']]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $PLab= PLab::paginate(5);

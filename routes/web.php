@@ -47,4 +47,5 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('tokens','TokenController');
         Route::resource('products','ProductController');
         Route::resource('p_lab','PLabController');
+        Route::resource('doctor_notes','DoctorNotesController');
 });

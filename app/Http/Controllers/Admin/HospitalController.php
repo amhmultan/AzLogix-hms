@@ -17,10 +17,10 @@ class HospitalController extends Controller
      */
     function __construct()
     {
-        $this->middleware('role_or_permission:Hospital access|Hospital create|Hospital edit|Hospital delete', ['only' => ['index','show']]);
-        $this->middleware('role_or_permission:Hospital create', ['only' => ['create','store']]);
-        $this->middleware('role_or_permission:Hospital edit', ['only' => ['edit','update']]);
-        $this->middleware('role_or_permission:Hospital delete', ['only' => ['destroy']]);
+        $this->middleware('role_or_permission:HospitalConfig access|HospitalConfig create|HospitalConfig edit|HospitalConfig delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:HospitalConfig create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:HospitalConfig edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:HospitalConfig delete', ['only' => ['destroy']]);
     }
 
     /**

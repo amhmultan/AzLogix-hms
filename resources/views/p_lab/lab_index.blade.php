@@ -2,13 +2,13 @@
   <main class="flex-1 bg-gray-200">
       <div class="container py-10">
           <div class="text-right">
-            @can('Pathology lab add')
-              <a href="{{route('admin.p_lab.create')}}" class="text-decoration-none bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">Add Pathology Lab</a>
+            @can('PathologyLabConfig new')
+              <a href="{{route('admin.p_lab.create')}}" class="text-decoration-none bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">New</a>
             @endcan
           </div>
         
         <div class="overflow-auto">
-          <h3 class="h2 mb-4 fw-bold">Pathology Lab Information</h3>
+          <p class="h3 text-danger"><strong><em>Pathology Lab <span class="text-success">Configuration</span></em></strong></p>
           <hr />
           <table class="bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
             <thead>
@@ -26,7 +26,7 @@
               </tr>
             </thead>
             <tbody>
-              @can('Pathology lab access')
+              @can('PathologyLabConfig access')
                 @foreach($p_lab as $p_labs)
                   <tr class="hover:bg-grey-lighter">
                     <td class="text-xs py-4 px-6 border border-grey-light">{{ $p_labs->id }}</td>
@@ -41,11 +41,11 @@
                     
                     <td class="py-4 px-6 border-b border-grey-light">
   
-                      @can('Pathology lab edit')
+                      @can('PathologyLabConfig edit')
                       <a href="{{route('admin.p_lab.edit',$p_labs->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
                       @endcan
   
-                      @can('Pathology lab delete')
+                      @can('PathologyLabConfig delete')
                       <form action="{{ route('admin.p_lab.destroy', $p_labs->id) }}" method="POST" class="inline">
                           @csrf
                           @method('delete')

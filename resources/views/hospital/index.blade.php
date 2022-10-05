@@ -6,8 +6,8 @@
               <div class="col-sm-6">
                 <p class="h3 text-danger"><strong><em>Hospital <span class="text-success">Configuration</span></em></strong></p>
               </div>
-              <div class="col-sm-6 text-right">
-                @can('Hospital create')
+              <div class="col-sm-6 text-right" hidden>
+                @can('HospitalConfig create')
                   <a href="{{route('admin.hospitals.create')}}" class="text-decoration-none bg-black text-white font-bold px-5 py-2 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors" accesskey="n"><u>N</u>ew Hospital</a>
                 @endcan
               </div>
@@ -33,7 +33,7 @@
               </tr>
             </thead>
             <tbody>
-              @can('Hospital access')
+              @can('HospitalConfig access')
                 @foreach($hospitals as $hospital)
                   <tr>
                     <td class="text-nowrap text-xs px-4 border-grey-light">{{ $hospital->id }}</td>
@@ -50,12 +50,12 @@
                     
                     <td class="text-nowrap text-xs px-3 border-grey-light">
                       
-                      @can('Hospital edit')
+                      @can('HospitalConfig edit')
                       <a href="{{route('admin.hospitals.edit',$hospital->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
                       @endcan
   
-                      @can('Hospital delete')
-                      <form action="{{ route('admin.hospitals.destroy', $hospital->id) }}" method="POST" class="inline">
+                      @can('HospitalConfig delete')
+                      <form action="{{ route('admin.hospitals.destroy', $hospital->id) }}" method="POST" class="inline" hidden>
                           @csrf
                           @method('delete')
                           <button class="text-decoration-none text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-blue hover:bg-blue-dark text-red-400">Delete</button>
@@ -67,13 +67,6 @@
                 @endcan
             </tbody>
           </table>
-          
-
-          {{-- @can('Patient access')
-          <div class="py-3 px-5">
-            {{ $patients->links() }}
-          </div>
-          @endcan --}}
         
         @else
 
