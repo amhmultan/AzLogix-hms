@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Models\Patient;
-use App\Models\Token;
-use Carbon\Carbon;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
+use App\Models\Patient;
+use App\Models\Token;
 
 class TokenController extends Controller
 {
@@ -55,7 +56,8 @@ class TokenController extends Controller
         $patients = DB::table('patients')
                     ->where('patients.id','LIKE',"%$search%")
                     ->get();
-            
+        
+                            
         return view('token.new', ['search' => $search], ['patients' => $patients]);
         
     }

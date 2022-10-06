@@ -65,14 +65,7 @@
               </tbody>
             </table>
             
-  
-            {{-- @can('Patient access')
-            <div class="py-3 px-5">
-              {{ $patients->links() }}
-            </div>
-            @endcan --}}
-          
-          @else
+           @else
   
             <div class="row flex text-center mt-5 pt-5">
               <div class="col-sm-12">
