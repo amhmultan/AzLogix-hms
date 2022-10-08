@@ -6,10 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\DoctorNotes;
-use App\Models\Patient;
-use App\Models\Token;
 
 class DoctorNotesController extends Controller
 {
@@ -67,14 +66,15 @@ class DoctorNotesController extends Controller
     public function store(Request $request)
     {
         $data = new DoctorNotes();
-        $prescription = $request->prescription;
-        $prescriptionName = time().'.'.$prescription->getClientOriginalExtension();
-        $request->prescription->move('assets', $prescriptionName);
         
         $data->fk_patient_id = $request->fk_patient_id;
         $data->fk_token_id = $request->fk_token_id;
         $data->fk_patient_name = $request->fk_patient_name;
         $data->fk_token_created_at = $request->fk_token_created_at;
+
+        $prescription = $request->prescription;
+        $prescriptionName = time().'.'.$prescription->getClientOriginalExtension();
+        $request->prescription->move('assets', $prescriptionName);
         $data->prescription = $prescriptionName;
         $data->save();
         
@@ -89,7 +89,9 @@ class DoctorNotesController extends Controller
      */
     public function show($id)
     {
-        //
+        $doctor_notes = DoctorNotes::find($id);
+        
+        return view('doctor_notes.show', compact('doctor_notes'));
     }
 
     /**
@@ -100,7 +102,10 @@ class DoctorNotesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $doctor_notes = DoctorNotes::find($id);
+        
+        return view('doctor_notes.edit',['doctor_notes' => $doctor_notes]);
+
     }
 
     /**
@@ -112,7 +117,15 @@ class DoctorNotesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $doctor_notes = DoctorNotes::find($id);
+        $prescription = $request->prescription;
+        $prescriptionName = time().'.'.$prescription->getClientOriginalExtension();
+        $request->prescription->move('assets', $prescriptionName);
+        $doctor_notes->prescription = $prescriptionName;
+        $doctor_notes->update();
+
+        return redirect('/admin/doctor_notes')->withSuccess('Doctor Notes updated !!!');
     }
 
     /**
@@ -123,6 +136,8 @@ class DoctorNotesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $doctor_notes = DoctorNotes::find($id);
+        $doctor_notes->delete();
+        return redirect('/admin/doctor_notes')->withSuccess('Doctor Notes deleted !!!');
     }
 }

@@ -110,7 +110,7 @@ class TokenController extends Controller
      */
     public function edit(Token $token)
     {
-
+        
         return view('token.edit',['token' => $token]);
 
     }

@@ -14,10 +14,56 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Public routes
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::get('/service', function () {
+    return view('service');
+});
+
+Route::get('/doctor', function () {
+    return view('doctor');
+});
+
+Route::get('/doctor-single', function () {
+    return view('doctor-single');
+});
+
+Route::get('/department-single', function () {
+    return view('department-single');
+});
+
+Route::get('/department', function () {
+    return view('department');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/confirmation', function () {
+    return view('confirmation');
+});
+
+Route::get('/blog-single', function () {
+    return view('blog-single');
+});
+
+Route::get('/blog-sidebar', function () {
+    return view('blog-sidebar');
+});
+
+Route::get('/appointment', function () {
+    return view('appointment');
+});
+
+// Front auth routes
 Route::get('/dashboard', function () {
     return view('front.dashboard');
 })->middleware(['front'])->name('dashboard');
@@ -25,13 +71,13 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/front_auth.php';
 
+
 // Admin routes
 Route::get('/admin/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('admin.dashboard');
 
 require __DIR__.'/auth.php';
-
 
 Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
     ->group(function(){
