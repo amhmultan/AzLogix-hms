@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\DoctorNotesController;
 use App\Http\Controllers\Admin\PatientController;
+use App\Models\DoctorNotes;
 use Illuminate\Support\Facades\Route;
 
 /*

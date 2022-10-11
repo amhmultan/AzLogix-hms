@@ -15,10 +15,9 @@
             </div>
 
             <hr />
-            
+
             <div class="row">
-                {{-- <iframe src="{{ url('/assets/1665223522.pdf') }}" frameborder="1" width="400" height="600"></iframe> --}}
-                <iframe src="/assets/{{$doctor_notes->prescription}}" frameborder="1" width="400" height="600"></iframe>
+                <iframe src="{{ url('/assets/'. $doctor_notes->prescription) }}" frameborder="1" width="400" height="600"></iframe>
             </div>
 
             <div class="row mt-5">
