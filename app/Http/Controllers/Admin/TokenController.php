@@ -75,7 +75,6 @@ class TokenController extends Controller
         $data['user_id'] = Auth::user()->id;
         $token = Token::create($data);
         
-        
         return redirect('/admin/tokens')->withSuccess('Token created !!!');
         
     }
@@ -88,7 +87,11 @@ class TokenController extends Controller
      */
     public function show(Token $token)
     {
-        $titles = DB::table('hospitals')->pluck('title');
+        $title = DB::table('hospitals')
+                    ->select('hospitals.title', 'hospitals.logo')
+                    ->get();
+        
+
         $id = $token->id;
         $token = DB::table('patients')
                     ->join('tokens','tokens.fk_patients_id','patients.id')
@@ -99,7 +102,7 @@ class TokenController extends Controller
         
 
         //dd($token);
-        return view('token.show',['token' => $token], ['hospitals' => $titles]);
+        return view('token.show',['token' => $token], ['hospitals' => $title]);
     }
 
     /**

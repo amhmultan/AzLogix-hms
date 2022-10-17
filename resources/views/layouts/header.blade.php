@@ -51,9 +51,9 @@
     <div class="flex items-center">    
         <div x-data="{ dropdownOpen: false }" class="relative">
             <button @click="dropdownOpen = ! dropdownOpen"
-                class="relative block h-8 w-20 rounded-full overflow-hidden shadow focus:outline-none">
+                class="relative block h-12 w-20 rounded-full overflow-hidden shadow focus:outline-none">
                 <img class="h-full w-full object-cover"
-                    src="{{url('/img/logo.png')}}"
+                    src="{{url('/img/logo.PNG')}}"
                     alt="AMH">
             </button>
 

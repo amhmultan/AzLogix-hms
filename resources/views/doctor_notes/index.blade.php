@@ -83,7 +83,10 @@
   <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready( function () {
-      $('#doctorNotesTable').DataTable();
+      $('#doctorNotesTable').DataTable(
+      {
+        order: [[0, 'desc']],
+      });
   } );
   </script>
   @stop

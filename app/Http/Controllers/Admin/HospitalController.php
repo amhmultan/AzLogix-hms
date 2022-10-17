@@ -59,6 +59,16 @@ class HospitalController extends Controller
         
         $data= $request->all();
         $data['user_id'] = Auth::user()->id;
+
+        
+        if ($image = $request->file('logo')) {
+            $destinationPath = 'img/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data['logo'] = "$profileImage";
+        }
+
+        
         $hospital = Hospital::create($data,);
         return redirect('/admin/hospitals')->withSuccess('Hospital created !!!');
         
@@ -96,6 +106,7 @@ class HospitalController extends Controller
     public function update(Request $request, Hospital $hospital)
     {
         $hospital->update($request->all());
+        
         return redirect('/admin/hospitals')->withSuccess('Hospital updated !!!');
     }
 

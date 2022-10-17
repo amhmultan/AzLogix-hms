@@ -3,8 +3,8 @@
     {{-- Logo --}}
     <div class="flex items-center justify-center mt-2 border-bottom border-primary">
         <div>
-            <h1 class="font-bold text-center tracking-wider text-4xl text-warning">Amh<span class="text-info">Soft</span></h1>
-            <h6 class="text-green-400">Hospital Management System</span></h6>
+            <h1 class="font-bold text-center tracking-wider text-4xl" style="color:#DF752E">Az<span class="text-primary">Logix</span></h1>
+            <h6 class="text-indigo-200">Hospital Management System</span></h6>
         </div>
     </div>
     

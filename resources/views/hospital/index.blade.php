@@ -6,7 +6,7 @@
               <div class="col-sm-6">
                 <p class="h3 text-danger"><strong><em>Hospital <span class="text-success">Configuration</span></em></strong></p>
               </div>
-              <div class="col-sm-6 text-right" hidden>
+              <div class="col-sm-6 text-right">
                 @can('HospitalConfig create')
                   <a href="{{route('admin.hospitals.create')}}" class="text-decoration-none bg-black text-white font-bold px-5 py-2 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors" accesskey="n"><u>N</u>ew Hospital</a>
                 @endcan
@@ -38,7 +38,11 @@
                   <tr>
                     <td class="text-nowrap text-xs px-4 border-grey-light">{{ $hospital->id }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $hospital->title }}</td>
-                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $hospital->logo }}</td>
+                    
+                    <td class="text-nowrap text-xs px-3 border-grey-light">
+                      {{-- <img src="{{ asset('img/20221011093603.JPG')}}" width="100px"> --}}
+                      <img src="/img/$hospital->logo" width="100px">
+                    </td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $hospital->phc_no }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $hospital->contact }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $hospital->email }}</td>
@@ -55,7 +59,7 @@
                       @endcan
   
                       @can('HospitalConfig delete')
-                      <form action="{{ route('admin.hospitals.destroy', $hospital->id) }}" method="POST" class="inline" hidden>
+                      <form action="{{ route('admin.hospitals.destroy', $hospital->id) }}" method="POST" class="inline">
                           @csrf
                           @method('delete')
                           <button class="text-decoration-none text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-blue hover:bg-blue-dark text-red-400">Delete</button>

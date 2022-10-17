@@ -4,7 +4,7 @@
            <div class="container bg-white shadow-md rounded my-6 px-5 py-4">
              
 
-               <form method="POST" action="{{ route('admin.hospitals.update',$hospital->id)}}">
+               <form method="POST" action="{{ route('admin.hospitals.update',$hospital->id)}}" enctype="multipart/form-data">
                 @csrf
                 @method('put')
 

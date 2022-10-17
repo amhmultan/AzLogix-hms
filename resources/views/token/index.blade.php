@@ -82,7 +82,10 @@
   <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready( function () {
-      $('#tokenTable').DataTable();
+      $('#tokenTable').DataTable(
+      {
+        order: [[0, 'desc']],
+      });
   } );
   </script>
   @stop
