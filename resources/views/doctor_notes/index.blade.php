@@ -18,7 +18,7 @@
             <table id="doctorNotesTable" class="display table-responsive bg-white shadow-md rounded mt-5 text-left border-collapse">
               <thead>
                 <tr>
-                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ID</th>
+                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PRESCRIPTION ID</th>
                   <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MR NO.</th>
                   <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">TOKEN NO.</th>
                   <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PATIENT NAME</th>
@@ -38,7 +38,7 @@
                       <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_patient_id }}</td>
                       <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_token_id  }}</td>
                       <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_patient_name  }}</td>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_token_created_at  }}</td>
+                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_token_created_at }}</td>
                       <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->prescription }}</td>
                       <td class="text-nowrap text-xs px-4 border-grey-light">{{ $doctors_note->created_at }}</td>
                       <td class="text-nowrap text-xs px-4 border-grey-light">{{ $doctors_note->updated_at }}</td>

@@ -4,7 +4,7 @@
         @can('DoctorNotes access')
 
             
-            <div class="row">
+            {{-- <div class="row">
                 ID: {{$doctor_notes->id }}
                 MR No: {{$doctor_notes->fk_patient_id }}
                 Token No: {{$doctor_notes->fk_token_id }}
@@ -12,9 +12,9 @@
                 Name: {{$doctor_notes->fk_patient_name }}
                 Notes Added {{$doctor_notes->created_at }}
                 Notes Updated {{$doctor_notes->updated_at }}
-            </div>
+            </div> --}}
 
-            <hr />
+            {{-- <hr /> --}}
 
             <div class="row">
                 <iframe src="{{ url('/assets/'. $doctor_notes->prescription) }}" frameborder="1" width="400" height="600"></iframe>

@@ -8,14 +8,14 @@
                 @foreach ($hospitals as $hospital)
                 <div class="row mt-2 mb-2 mx-5">
                     <div class="col-sm-2">
-                        {{-- <img src="{{ asset('img/20221011093603.JPG')}}" alt="hospital-logo" width="100" height="200"> --}}
+                        <img src="{{ asset('img/'.$hospital->logo) }}" width="100px" class="border border-dark border-4 p-2">
                     </div>
                     <div class="col-sm-10">
                         <h1 class="display-5 text-primary text-uppercase font-weight-bold">{{ $hospital->title }}</h1>
                     </div>
                 </div>
                 @endforeach
-            <div class="row mx-auto">
+            <div class="row mx-auto mt-5">
                 <div class="col-sm-12">
                     <div class="card border-dark mb-3">
                         <div class="card-header text-center"><h5 class="card-title font-weight-bold">PATIENT TOKEN</h5></div>
@@ -28,8 +28,9 @@
                                             
                                         
                                         <tr>
-                                            <td><h6 class="font-weight-bold">Token Number:</h6><span> {{ $tokens->id }} </span></td>
-                                            <td colspan="2"><h6 class="font-weight-bold">Patient Name:</h6><span> {{ $tokens->name }} </span></td>                                            
+                                            <td><h6 class="font-weight-bold">Token No:</h6><span> {{ $tokens->id }} </span></td>
+                                            <td><h6 class="font-weight-bold">MR No:</h6><span> {{ $tokens->fk_patients_id }} </span></td>                                            
+                                            <td><h6 class="font-weight-bold">Patient Name:</h6><span> {{ $tokens->name }} </span></td>                                            
                                         </tr>
                                         
                                         <tr>

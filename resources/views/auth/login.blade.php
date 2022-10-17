@@ -1,7 +1,10 @@
 <x-guest-layout>
     <div class="font-sans min-h-screen antialiased bg-gray-900 pt-24 pb-5">
+      <div class="row mb-5">
+        <h1 class="font-bold text-center tracking-wider text-8xl my-5" style="color:#DF752E">Az<span class="text-white">Logix</span></h1>
+        <h6 class="text-center text-indigo-200">Hospital Management System</span></h6>
+      </div>
         <div class="flex flex-col justify-center sm:w-96 sm:m-auto mx-5 mb-5 space-y-8">
-          <h1 class="font-bold text-center text-6xl text-yellow-500">Amh<span class="text-blue-500">Soft</span></h1>
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />
             <!-- Validation Errors -->
@@ -26,7 +29,8 @@
 
               <div class="flex flex-col-reverse sm:flex-row sm:justify-between items-center">
                 @if (Route::has('password.request'))
-                    <a href="{{ route('password.request') }}" class="inline-block text-blue-500 hover:text-blue-800 hover:underline">Forgot your password?</a>
+                    {{-- <a href="{{ route('password.request') }}" class="inline-block text-blue-500 hover:text-blue-800 hover:underline">Forgot your password?</a> --}}
+                    <a href="#" class="inline-block text-blue-500 hover:text-blue-800 hover:underline">Forgot your password?</a>
                 @endif
                 <button type="submit" class="bg-blue-500 text-white font-bold px-5 py-2 rounded focus:outline-none shadow hover:bg-blue-700 transition-colors">Log In</button>
               </div>
