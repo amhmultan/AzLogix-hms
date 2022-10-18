@@ -4,11 +4,17 @@
         @can('Patient access')
 
             <div class="container" id="printableArea">
-                <div class="row mt-2 mb-2">
-                    <div class="col-sm-12 text-center">
-                        <h1 class="display-6 text-primary text-uppercase font-weight-bold">{{ str_replace( array('[','"','"',']') , ''  , $hospitals) }}</h1>
+                
+                @foreach ($hospitals as $hospital)
+                <div class="row mt-2 mb-2 mx-5">
+                    <div class="col-sm-2">
+                        <img src="{{ asset('img/'.$hospital->logo) }}" width="100px" class="border border-dark border-4 p-2">
+                    </div>
+                    <div class="col-sm-10">
+                        <h1 class="display-5 text-primary text-uppercase font-weight-bold">{{ $hospital->title }}</h1>
                     </div>
                 </div>
+                @endforeach
 
             <div class="row mx-auto">
                 <div class="col-sm-12">

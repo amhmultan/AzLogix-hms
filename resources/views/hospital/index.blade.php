@@ -14,8 +14,8 @@
             </div>
           
           @if (!$hospitals->isEmpty())
-
-          <table id="hospitalTable" class="display table-responsive bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
+            <div class="overflow-auto">
+          <table id="hospitalTable" class="bg-white shadow-md rounded text-left border-collapse">
             <thead>
               <tr>
                 <th class="py-3 px-1 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ID</th>
@@ -58,7 +58,7 @@
                       <form action="{{ route('admin.hospitals.destroy', $hospital->id) }}" method="POST" class="inline">
                           @csrf
                           @method('delete')
-                          <button class="text-decoration-none text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-blue hover:bg-blue-dark text-red-400" hidden>Delete</button>
+                          <button class="text-decoration-none text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-blue hover:bg-blue-dark text-red-400" disabled>Delete</button>
                       </form>
                       @endcan
                     </td>
@@ -67,6 +67,7 @@
                 @endcan
             </tbody>
           </table>
+        </div>
         
         @else
 

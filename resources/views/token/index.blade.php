@@ -14,8 +14,8 @@
               </div>
             
             @if (!$tokens->isEmpty())
-  
-            <table id="tokenTable" class="display table-responsive bg-white shadow-md rounded mt-5 text-left border-collapse">
+              <div class="overflow-auto">
+            <table id="tokenTable" class="bg-white shadow-md rounded text-left border-collapse">
               <thead>
                 <tr>
                   <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">Token ID</th>
@@ -64,7 +64,8 @@
                   @endcan
               </tbody>
             </table>
-            
+          </div>
+          
            @else
   
             <div class="row flex text-center mt-5 pt-5">

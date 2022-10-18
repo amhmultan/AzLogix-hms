@@ -14,8 +14,8 @@
             </div>
           
           @if (!$patients->isEmpty())
-
-          <table id="patientTable" class="display table-responsive bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
+            <div class="overflow-auto">
+          <table id="patientTable" class="bg-white shadow-md rounded text-left border-collapse">
             <thead>
               <tr>
                 <th class="py-3 px-1 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MR No.</th>
@@ -71,7 +71,7 @@
                 @endcan
             </tbody>
           </table>
-          
+        </div>
 
           {{-- @can('Patient access')
           <div class="py-3 px-5">
