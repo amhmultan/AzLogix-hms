@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2022 at 10:40 AM
+-- Generation Time: Oct 26, 2022 at 11:13 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -37,6 +37,16 @@ CREATE TABLE `doctor_notes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `doctor_notes`
+--
+
+INSERT INTO `doctor_notes` (`id`, `fk_patient_id`, `fk_token_id`, `fk_patient_name`, `fk_token_created_at`, `prescription`, `created_at`, `updated_at`) VALUES
+(1, 1, 7, 'Arslan Majid', '2022-09-29 01:34:54', '1665404465.pdf', '2022-10-10 07:21:05', '2022-10-10 07:21:05'),
+(2, 1, 7, 'Arslan Majid', '2022-09-29 01:34:54', '1665461126.pdf', '2022-10-10 23:05:26', '2022-10-10 23:05:26'),
+(3, 15, 9, 'Arslan Majid', '2022-10-01 09:51:33', '1665461399.pdf', '2022-10-10 23:09:59', '2022-10-10 23:09:59'),
+(4, 16, 15, 'Aroosh', '2022-10-10 23:15:56', '1665461824.pdf', '2022-10-10 23:17:04', '2022-10-10 23:17:04');
 
 -- --------------------------------------------------------
 
@@ -104,7 +114,7 @@ CREATE TABLE `hospitals` (
 --
 
 INSERT INTO `hospitals` (`id`, `title`, `logo`, `phc_no`, `contact`, `email`, `website`, `address`, `remarks`, `created_at`, `updated_at`) VALUES
-(1, 'Aziz Retina Eye Clinic', '20221017054657.png', '155465', '03006323103', 'amhmultan@gmail.com', 'https://www.google.com', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'sdsdsddsddsd', '2022-10-17 00:46:57', '2022-10-17 00:46:57');
+(2, 'Aziz Retina Eye Clinic', 'C:\\xampp\\tmp\\php4FEA.tmp', '23423', '03006323103', 'amhmultan@gmail.com', 'https://www.google.com', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'sddsdsd', '2022-08-22 06:14:08', '2022-10-13 10:29:56');
 
 -- --------------------------------------------------------
 
@@ -199,7 +209,8 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
-(6, 'App\\Models\\User', 6);
+(2, 'App\\Models\\User', 5),
+(4, 'App\\Models\\User', 3);
 
 -- --------------------------------------------------------
 
@@ -212,13 +223,6 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `password_resets`
---
-
-INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('admin@admin.com', '$2y$10$tpPhiWKB1zDj.hVfpeZBCOLtmDaS.3il/4yQR5QJ0WGfj6maBIjZK', '2022-10-17 01:14:38');
 
 -- --------------------------------------------------------
 
@@ -245,6 +249,29 @@ CREATE TABLE `patients` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `patients`
+--
+
+INSERT INTO `patients` (`id`, `name`, `fname`, `dob`, `gender`, `marital_status`, `phone`, `email`, `cnic`, `address`, `emr_name`, `relationship`, `emr_phone`, `history`, `reffered_by`, `created_at`, `updated_at`) VALUES
+(1, 'Arslan Majid', 'Majid Hussain', '1989-07-17', 'Others', 'Separated', '03006323103', 'amhmultan@gmail.com', '36302-9246530-2', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'Namra', 'Wife', '03356323103', 'Digestion Problem', 'Dr Ajmal Ch', '2022-08-17 12:17:14', '2022-08-17 12:17:30'),
+(2, 'Namra Shehzadi', 'Chudhri Muneer Ahmad Budar', '1995-10-08', 'Others', 'Separated', '03356323103', 'nammultan@gmail.com', '36302-9246530-2', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'Arslan Majid', 'Husband', '03006323103', 'Haemenjioma', 'Self', '2022-08-17 15:42:57', '2022-08-17 15:43:13'),
+(3, 'Arslan Majid', 'Majid Hussain', '5550-05-05', 'Male', 'Single', '03006323103', 'amhmultan@gmail.com', '36302-9246530-2', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'Namra', 'sd', '03006323103', 'sdsd', 'sds', '2022-08-17 16:20:12', '2022-08-17 16:20:12'),
+(4, 'Arslan Majid', 'Majid Hussain', '5555-05-02', 'Male', 'Single', '03006323103', 'amhmultan@gmail.com', '36302-9246530-2', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'Namra', 'Wife', '03006323103', 'sdsd', 'sdsdsdsdsdsd', '2022-08-17 16:30:35', '2022-08-17 16:30:35'),
+(5, 'Arslan Majid', 'sddssd', '2199-05-06', 'Male', 'Single', '03006323103', 'amhmultan@gmail.com', '36302-9246530-2', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'Namra', 'Wifesdsds', '03006323103', 'sdd', 'weewewe', '2022-08-17 16:31:21', '2022-08-17 16:31:21'),
+(6, '[asdsdsa]', '[sddsdsd]', '[1989-07-17]', '[Male]', '[Single]', '[03006323103]', '[amhmultan@gmail.com]', '[36302-7979826-5]', '[Multan]', '[sdsd]', '[dssdsd]', '[03006323103]', '[sdsdsd]', '[sdsd]', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, '[asdsdsa]', '[sddsdsd]', '[1989-07-17]', '[Male]', '[Single]', '[03006323103]', '[amhmultan@gmail.com]', '[36302-7979826-5]', '[Multan]', '[sdsd]', '[dssdsd]', '[03006323103]', '[sdsdsd]', '[sdsd]', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(8, '[asdsdsa]', '[sddsdsd]', '[1989-07-17]', '[Male]', '[Single]', '[03006323103]', '[amhmultan@gmail.com]', '[36302-7979826-5]', '[Multan]', '[sdsd]', '[dssdsd]', '[03006323103]', '[sdsdsd]', '[sdsd]', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, '[asdsdsa]', '[sddsdsd]', '[1989-07-17]', '[Male]', '[Single]', '[03006323103]', '[amhmultan@gmail.com]', '[36302-7979826-5]', '[Multan]', '[sdsd]', '[dssdsd]', '[03006323103]', '[sdsdsd]', '[sdsd]', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, '[asdsdsa]', '[sddsdsd]', '[1989-07-17]', '[Male]', '[Single]', '[03006323103]', '[amhmultan@gmail.com]', '[36302-7979826-5]', '[Multan]', '[sdsd]', '[dssdsd]', '[03006323103]', '[sdsdsd]', '[sdsd]', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(11, '[asdsdsa]', '[sddsdsd]', '[1989-07-17]', '[Male]', '[Single]', '[03006323103]', '[amhmultan@gmail.com]', '[36302-7979826-5]', '[Multan]', '[sdsd]', '[dssdsd]', '[03006323103]', '[sdsdsd]', '[sdsd]', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(12, '[asdsdsa]', '[sddsdsd]', '[1989-07-17]', '[Male]', '[Single]', '[03006323103]', '[amhmultan@gmail.com]', '[36302-7979826-5]', '[Multan]', '[sdsd]', '[dssdsd]', '[03006323103]', '[sdsdsd]', '[sdsd]', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(13, '[asdsdsa]', '[sddsdsd]', '[1989-07-17]', '[Male]', '[Single]', '[03006323103]', '[amhmultan@gmail.com]', '[36302-7979826-5]', '[Multan]', '[sdsd]', '[dssdsd]', '[03006323103]', '[sdsdsd]', '[sdsd]', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(14, 'Tooba Ghori', 'Sohaib', '2022-09-13', 'Female', 'Married', '03006323103', 'amhmultan@gmail.com', '36302-9246530-2', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'Namra', 'gf', '03006323103', 'dewpression', 'dr Arslan', '2022-09-29 10:45:53', '2022-09-29 10:45:53'),
+(15, 'Arslan Majid', 'Majid Hussain', '2022-10-01', 'Male', 'Married', '03006323103', 'amhmultan@gmail.com', '36302-9246530-2', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'Namra', 'Wife', '03006323103', 'sdsds', 'sdsd', '2022-10-01 09:50:53', '2022-10-01 09:50:53'),
+(16, 'Aroosh', 'Arslan', '2022-10-11', 'Female', 'Single', '03356323103', 'arhmultan@gmail.com', '36302-9246530-2', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'Namra', 'Mother', '03006323103', 'dsfrgtrg', 'wedwrf', '2022-10-10 23:15:09', '2022-10-10 23:15:09'),
+(17, 'Arslan Majid', 'Majid Hussain', '6566-04-01', 'Male', 'Single', '03006323103', 'amhmultan@gmail.com', '36302-9246530-2', 'Al-Rehman Street, Near Al-Ghafoor Masjid, Garden Town, Multan Cantt', 'Arslan Majid', 'Wife', '03456323103', 'SAS', 'ASDA', '2022-10-11 01:22:35', '2022-10-11 01:22:35');
 
 -- --------------------------------------------------------
 
@@ -491,8 +518,10 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'web', '2022-05-07 18:00:20', '2022-10-17 23:34:31'),
-(6, 'Manager', 'web', '2022-10-17 23:27:23', '2022-10-17 23:30:45');
+(1, 'admin', 'web', '2022-05-07 18:00:20', '2022-05-07 18:00:20'),
+(2, 'Front Office', 'web', '2022-05-07 18:00:20', '2022-05-07 18:02:49'),
+(3, 'Doctor', 'web', '2022-05-07 18:03:11', '2022-05-07 18:03:11'),
+(4, 'Pharmacist', 'web', '2022-05-07 18:22:37', '2022-05-07 18:22:37');
 
 -- --------------------------------------------------------
 
@@ -511,60 +540,55 @@ CREATE TABLE `role_has_permissions` (
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (1, 1),
+(1, 3),
 (2, 1),
 (3, 1),
+(3, 3),
 (4, 1),
 (5, 1),
-(5, 6),
 (6, 1),
-(6, 6),
 (7, 1),
-(7, 6),
 (8, 1),
-(8, 6),
 (9, 1),
-(9, 6),
 (10, 1),
-(10, 6),
 (11, 1),
-(11, 6),
 (12, 1),
-(12, 6),
 (13, 1),
-(13, 6),
 (14, 1),
-(14, 6),
 (15, 1),
-(15, 6),
 (16, 1),
-(16, 6),
 (17, 1),
-(17, 6),
+(17, 2),
+(17, 3),
 (19, 1),
-(19, 6),
+(19, 2),
 (20, 1),
-(20, 6),
+(20, 2),
+(20, 3),
 (21, 1),
-(21, 6),
+(21, 2),
 (22, 1),
+(22, 4),
 (23, 1),
+(23, 4),
 (24, 1),
+(24, 4),
 (25, 1),
+(25, 4),
 (26, 1),
 (34, 1),
-(34, 6),
+(34, 2),
 (35, 1),
-(35, 6),
 (36, 1),
 (37, 1),
 (38, 1),
-(38, 6),
+(38, 2),
 (39, 1),
-(39, 6),
+(39, 2),
 (40, 1),
-(40, 6),
+(40, 2),
 (41, 1),
-(41, 6),
+(41, 2),
 (42, 1),
 (43, 1),
 (44, 1),
@@ -575,21 +599,17 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (49, 1),
 (50, 1),
 (51, 1),
-(51, 6),
 (52, 1),
-(52, 6),
 (53, 1),
 (54, 1),
 (55, 1),
 (56, 1),
 (57, 1),
-(57, 6),
+(57, 2),
 (58, 1),
-(58, 6),
+(58, 2),
 (59, 1),
-(59, 6),
-(60, 1),
-(60, 6);
+(60, 1);
 
 -- --------------------------------------------------------
 
@@ -633,6 +653,23 @@ CREATE TABLE `tokens` (
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tokens`
+--
+
+INSERT INTO `tokens` (`id`, `fk_patients_id`, `fees`, `denomination`, `balance`, `created_at`, `updated_at`) VALUES
+(6, 5, 500, 500, 500, '2022-09-29 01:20:45', '2022-09-29 01:20:45'),
+(7, 1, 1000, 500, 500, '2022-09-29 01:34:54', '2022-09-29 01:34:54'),
+(8, 14, 1000, 1000, 0, '2022-09-29 10:46:32', '2022-09-29 10:47:17'),
+(9, 15, 1000, 1000, 500, '2022-10-01 09:51:33', '2022-10-01 09:51:33'),
+(10, 14, 1000, 1000, 0, '2022-10-02 07:32:18', '2022-10-02 07:32:18'),
+(11, 15, 5000, 5000, 0, '2022-10-02 07:33:22', '2022-10-02 07:33:22'),
+(12, 2, 1000, 1000, 0, '2022-10-02 07:36:04', '2022-10-02 07:36:04'),
+(13, 14, 100, 100, 0, '2022-10-02 08:36:36', '2022-10-02 08:36:36'),
+(14, 14, 1000, 1000, 0, '2022-10-06 09:00:37', '2022-10-06 09:00:37'),
+(15, 16, 1000, 1000, 0, '2022-10-10 23:15:56', '2022-10-11 03:15:43'),
+(16, 1, 1000, 1000, 0, '2022-10-11 03:40:37', '2022-10-11 04:00:23');
+
 -- --------------------------------------------------------
 
 --
@@ -655,8 +692,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$Aa2pvG.w7lh0BstOt65csu5tVa9SPOnxBy2U4FRFftT0fecfDV8Ny', 'qrEMZP0Qjb2AUzXIVTQo3XNNkQvqv004cSHZLH0aVSNstNcJLdSWODLL2mzJ', '2022-05-07 18:00:20', '2022-05-07 18:00:20'),
-(6, 'Manager', 'manager@manager.com', NULL, '$2y$10$neMkfUj6o.p6C.97C5T7xOowUSyLR4JTjjVKPJwkae32jjt9LdJnq', 'Mp5FkVNX3kfWSPxDniuEU4xbAPJAcUjxsZ6ev5thgxwlv2UdIIJKjWorzLEc', '2022-10-17 23:33:46', '2022-10-17 23:33:46');
+(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$Aa2pvG.w7lh0BstOt65csu5tVa9SPOnxBy2U4FRFftT0fecfDV8Ny', 'TozK13WLXiXCU4Y7yAjQNOhKF3HkS7Lj8S3MCOfqO3uuMSmUeiQYT30FXyCm', '2022-05-07 18:00:20', '2022-05-07 18:00:20'),
+(3, 'Arslan Majid', 'ph@ph.com', NULL, '$2y$10$GLCQOIpdUlVf5mvL4ANHS.68LpFbNQ0QDkUl.rL8uOz6TW66byftu', 'EBwIknVy8HCVrz0D0KQ3fqxmIYeIkPZ0lyP0pYnkWM0o3xtknLpNl03hYCoN', '2022-05-31 10:36:24', '2022-05-31 10:36:24'),
+(5, 'nammultan', 'nammultan@gmail.com', NULL, '$2y$10$M5LI84HhDmMZfqP7Se.z1eIDlo6sy5oosDhGJyYzEYJHnB5zX2ry.', 'xy5gZg2YGp18LyqKVlXvPDQJiRdwriAwfzoQdIcBO9Jux17cLcyKbbVjX3Mg', '2022-09-29 01:32:57', '2022-10-10 23:08:49');
 
 --
 -- Indexes for dumped tables
@@ -808,7 +846,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `doctor_notes`
 --
 ALTER TABLE `doctor_notes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -826,7 +864,7 @@ ALTER TABLE `frontusers`
 -- AUTO_INCREMENT for table `hospitals`
 --
 ALTER TABLE `hospitals`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `manufacturers`
@@ -844,7 +882,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -880,7 +918,7 @@ ALTER TABLE `p_labs`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -892,13 +930,13 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `tokens`
 --
 ALTER TABLE `tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
