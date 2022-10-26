@@ -15,10 +15,9 @@
         <meta name="generator" content="Themefisher Novena HTML Template v1.0">
 
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+        <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 
-        <!-- 
-        Essential stylesheets
+        <!-- Essential stylesheets
         =====================================-->
         <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="plugins/icofont/icofont.min.css">
