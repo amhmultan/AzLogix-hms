@@ -88,7 +88,7 @@ class TokenController extends Controller
     public function show(Token $token)
     {
         $title = DB::table('hospitals')
-                    ->select('hospitals.title', 'hospitals.logo')
+                    ->select('hospitals.title', 'hospitals.logo', 'hospitals.address', 'hospitals.contact', 'hospitals.email', 'hospitals.website')
                     ->get();
         
 

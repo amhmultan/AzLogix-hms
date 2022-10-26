@@ -21,7 +21,7 @@ class CreatePatientsTable extends Migration
             $table->string('gender');
             $table->string('marital_status');
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('cnic');
             $table->string('address');
             $table->string('emr_name');

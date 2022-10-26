@@ -22,23 +22,21 @@
                       <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MR NO.</th>
                       <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">TOKEN NO.</th>
                       <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PATIENT NAME</th>
-                      <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">CHECKUP DATE</th>
                       <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PRESCRIPTION</th>
-                      <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">CREATED ON</th>
+                      <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">CHECKUP DATE</th>
                       <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">UPDATED ON</th>
                       <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ACTIONS</th>
                     </tr>
                   </thead>
                   <tbody>
                     @can('DoctorNotes access')
-                      
+                    
                       @foreach($doctor_notes as $doctors_note)
                         <tr>
                           <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->id }}</td>
                           <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_patient_id }}</td>
                           <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_token_id  }}</td>
-                          <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_patient_name  }}</td>
-                          <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_token_created_at }}</td>
+                          <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->name  }}</td>
                           <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->prescription }}</td>
                           <td class="text-nowrap text-xs px-4 border-grey-light">{{ $doctors_note->created_at }}</td>
                           <td class="text-nowrap text-xs px-4 border-grey-light">{{ $doctors_note->updated_at }}</td>

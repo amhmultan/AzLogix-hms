@@ -34,9 +34,15 @@ class DoctorNotesController extends Controller
      */
     public function index()
     {
-        $doctor_notes = DoctorNotes::all();
         
+        $doctor_notes = DB::table('doctor_notes')
+                        ->join('patients', 'patients.id','fk_patient_id')
+                        ->join('tokens', 'tokens.id', 'fk_token_id')
+                        ->select('doctor_notes.*','patients.name', 'tokens.created_at')
+                        ->get();
+
         return view('doctor_notes.index', ['doctor_notes' => $doctor_notes]);
+
     }
 
     /**
@@ -71,8 +77,7 @@ class DoctorNotesController extends Controller
         
         $data->fk_patient_id = $request->fk_patient_id;
         $data->fk_token_id = $request->fk_token_id;
-        $data->fk_patient_name = $request->fk_patient_name;
-        $data->fk_token_created_at = $request->fk_token_created_at;
+        
 
         $prescription = $request->prescription;
         $prescriptionName = time().'.'.$prescription->getClientOriginalExtension();

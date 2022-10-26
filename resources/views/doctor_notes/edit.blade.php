@@ -14,43 +14,25 @@
                     
                     <div class="col-md-6">
                       <label for="fk_patient_id" class="text-gray-700 font-black">Patient MR Number:</label>
-                      <select class="form-control" name="fk_patient_id">
+                      <select class="form-control" name="fk_patient_id" disabled>
                         <option value="{{ $doctor_notes->fk_patient_id }}"> {{ old('fk_patient_id',$doctor_notes->fk_patient_id ) }} </option>
                       </select>
                     </div>
   
                     <div class="col-md-6">
                         <label for="fk_token_id" class="text-gray-700 font-black">Patient Token Number:</label>
-                        <select class="form-control" name="fk_token_id">
+                        <select class="form-control" name="fk_token_id" disabled>
                             <option value="{{ $doctor_notes->fk_token_id }}"> {{ old('fk_token_id',$doctor_notes->fk_token_id ) }} </option>
                         </select>
                     </div>
 
                   </div>
                   
-                  <div class="row">
-
-                    <div class="col-md-6">
-                      <label for="fk_patient_name" class="text-gray-700 font-black">Patient Name:</label>
-                      <select class="form-control" name="fk_patient_name">
-                        <option value="{{ $doctor_notes->fk_patient_name }}"> {{ old('fk_patient_name',$doctor_notes->fk_patient_name ) }} </option>
-                      </select>
-                    </div>
-
-                    <div class="col-md-6">
-                      <label for="fk_token_created_at" class="text-gray-700 font-black">Checkup Date:</label>
-                      <select class="form-control" name="fk_token_created_at">
-                        <option value="{{ $doctor_notes->fk_token_created_at }}"> {{ old('fk_token_created_at',$doctor_notes->fk_token_created_at ) }} </option>
-                      </select>
-                    </div>
-
-                  </div>
-
-                  <hr />
+                  
                   
                   <div class="row">
                     
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <label for="prescription" class="text-gray-700 font-black">Edit Prescription:</label>
                         <input type="file" name="prescription" id="prescription" value="{{ old('prescription',$doctor_notes->prescription ) }}" class="form-control">
                     </div>

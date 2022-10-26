@@ -86,6 +86,7 @@
           @csrf
           
           <!-- Hidden postings Starts!-->
+          
           <select class="form-control" name="fk_patient_id" hidden>
             @foreach ($tokens as $token)
               <option value="{{ $token->fk_patients_id }}"> {{ $token->fk_patients_id }} </option>
@@ -96,16 +97,7 @@
               <option value="{{ $token->id }}"> {{ $token->id }} </option>
             @endforeach
           </select>
-          <select class="form-control" name="fk_patient_name" hidden>
-            @foreach ($tokens as $token)
-              <option value="{{ $token->name }}"> {{ $token->name }} </option>
-            @endforeach
-          </select>
-          <select class="form-control" name="fk_token_created_at" hidden>
-            @foreach ($tokens as $token)
-              <option value="{{ $token->created_at }}"> {{ $token->created_at }} </option>
-            @endforeach
-          </select>
+          
           <!-- Hidden postings End!-->
 
           <div class="row mt-4">
