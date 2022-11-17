@@ -33,7 +33,8 @@ class AdminSeeder extends Seeder
         $admin_role = Role::create(['name' => 'Arslan']);
         $writer_role = Role::create(['name' => 'admin']);
 
-        // Modules permissions
+        // Submenu permissions
+        $permission = Permission::create(['name' => 'UserMenu access']);
         $permission = Permission::create(['name' => 'Configuration access']);
         $permission = Permission::create(['name' => 'Hospital access']);
         $permission = Permission::create(['name' => 'Pharmacy access']);
@@ -81,10 +82,10 @@ class AdminSeeder extends Seeder
         $permission = Permission::create(['name' => 'Patient edit']);
         $permission = Permission::create(['name' => 'Patient delete']);
         
-        $permission = Permission::create(['name' => 'PathologyLabConfig access']);
-        $permission = Permission::create(['name' => 'PathologyLabConfig new']);
-        $permission = Permission::create(['name' => 'PathologyLabConfig edit']);
-        $permission = Permission::create(['name' => 'PathologyLabConfig delete']);
+        $permission = Permission::create(['name' => 'PharmacyConfig access']);
+        $permission = Permission::create(['name' => 'PharmacyConfig add']);
+        $permission = Permission::create(['name' => 'PharmacyConfig edit']);
+        $permission = Permission::create(['name' => 'PharmacyConfig delete']);
         
         $permission = Permission::create(['name' => 'Product access']);
         $permission = Permission::create(['name' => 'Product create']);

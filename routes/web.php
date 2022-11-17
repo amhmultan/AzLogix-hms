@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\DoctorNotesController;
-use App\Http\Controllers\Admin\PatientController;
-use App\Models\DoctorNotes;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -94,6 +91,6 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('suppliers','SupplierController');
         Route::resource('tokens','TokenController');
         Route::resource('products','ProductController');
-        Route::resource('p_lab','PLabController');
+        Route::resource('pharmacies','PharmacyController');
         Route::resource('doctor_notes','DoctorNotesController');
 });

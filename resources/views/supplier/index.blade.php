@@ -15,7 +15,7 @@
           
           @if (!$suppliers->isEmpty())
 
-          <table id="supplierTable" class="display table-responsive bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
+          <table id="supplierTable" class="table-responsive bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
             <thead>
               <tr>
                 <th class="py-3 px-1 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ID</th>

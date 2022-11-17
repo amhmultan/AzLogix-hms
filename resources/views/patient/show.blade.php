@@ -16,7 +16,7 @@
                 </div>
                 @endforeach
 
-            <div class="row mx-auto">
+            <div class="row mx-auto mt-5">
                 <div class="col-sm-12">
                     <div class="card border-dark mb-3">
                         <div class="card-header text-center"><h5 class="card-title font-weight-bold">Patient Information</h5></div>

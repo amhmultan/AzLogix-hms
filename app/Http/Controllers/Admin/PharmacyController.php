@@ -6,21 +6,23 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Hospital;
+use App\Models\Pharmacy;
+use Facade\FlareClient\Stacktrace\File;
 
-class HospitalController extends Controller
+class PharmacyController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     function __construct()
     {
-        $this->middleware('role_or_permission:HospitalConfig access|HospitalConfig create|HospitalConfig edit|HospitalConfig delete', ['only' => ['index','show']]);
-        $this->middleware('role_or_permission:HospitalConfig create', ['only' => ['create','store']]);
-        $this->middleware('role_or_permission:HospitalConfig edit', ['only' => ['edit','update']]);
-        $this->middleware('role_or_permission:HospitalConfig delete', ['only' => ['destroy']]);
+        $this->middleware('role_or_permission:PharmacyConfig access|PharmacyConfig add|PharmacyConfig edit|PharmacyConfig delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:PharmacyConfig add', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:PharmacyConfig edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:PharmacyConfig delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -28,14 +30,12 @@ class HospitalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        // $Patient= Patient::paginate(10);
-        // return view('patient.index',['patients'=>$Patient]);
+        $pharmacies = Pharmacy::all();
 
-        $hospitals = Hospital::all();
-
-        return view('hospital.index', ['hospitals' => $hospitals]);
+        return view('pharmacy.index', ['pharmacies' => $pharmacies]);
     }
 
     /**
@@ -45,7 +45,7 @@ class HospitalController extends Controller
      */
     public function create()
     {
-        return view('hospital.new');
+        return view('pharmacy.new');
     }
 
     /**
@@ -56,22 +56,20 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        
         $data= $request->all();
         $data['user_id'] = Auth::user()->id;
 
         
-        if ($image = $request->file('logo')) {
+        if ($image = $request->file('pic')) {
             $destinationPath = 'img/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $data['logo'] = "$profileImage";
+            $data['pic'] = "$profileImage";
         }
 
         
-        $hospital = Hospital::create($data,);
-        return redirect('/admin/hospitals')->withSuccess('Hospital created !!!');
-        
+        $pharmacy = Pharmacy::create($data,);
+        return redirect('/admin/pharmacies')->withSuccess('Pharmacy created !!!');
     }
 
     /**
@@ -80,7 +78,7 @@ class HospitalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Hospital $hospital)
+    public function show($id)
     {
         //
     }
@@ -91,9 +89,9 @@ class HospitalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Hospital $hospital)
+    public function edit(Pharmacy $pharmacy)
     {
-       return view('hospital.edit',['hospital' => $hospital]);
+        return view('pharmacy.edit',['pharmacy' => $pharmacy]);
     }
 
     /**
@@ -105,20 +103,21 @@ class HospitalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $hospitals = Hospital::find($id);
+
+        $pharmacies = Pharmacy::find($id);
    
-        if($request->logo != ''){
+        if($request->pic != ''){
             
              //upload new file
-             $file = $request->logo;
+             $file = $request->pic;
              $filename = time(). '.' .$file->getClientOriginalExtension();
-             $request->logo->move('img', $filename);
+             $request->pic->move('img', $filename);
                 
              //for update in table
-             $hospitals->update(['logo' => $filename]);
+             $pharmacies->update(['pic' => $filename]);
         }
         
-        return redirect('/admin/hospitals')->withSuccess('Hospital updated !!!');
+        return redirect('/admin/pharmacies')->withSuccess('Pharmacy details updated !!!');
    }
 
     /**
@@ -127,9 +126,10 @@ class HospitalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hospital $hospital)
+    public function destroy($id)
     {
-        $hospital->delete();
-        return redirect('/admin/hospitals')->withSuccess('Hospital deleted !!!');
+        $pharmacies = Pharmacy::find($id);
+        $pharmacies->delete();
+        return redirect('/admin/pharmacies')->withSuccess('Pharmacy deleted !!!');
     }
 }

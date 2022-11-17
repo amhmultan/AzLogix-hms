@@ -27,8 +27,6 @@ class CreatePatientsTable extends Migration
             $table->string('emr_name');
             $table->string('relationship');
             $table->string('emr_phone');
-            $table->string('weight');
-            $table->string('height');
             $table->string('history');
             $table->string('reffered_by');
             $table->timestamps();

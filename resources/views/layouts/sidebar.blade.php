@@ -42,7 +42,7 @@
         {{-- Users Sub Menu Starting --}}
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0" id="menu">
             <li>
-                @canany('User access')
+                @canany('UserMenu access')
                 <a href="#submenu1" data-bs-toggle="collapse" class="dropdown-toggle text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.users.index') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#62adfc"><g><rect fill="none" height="24" width="24"/></g><g><g><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M7.35,18.5C8.66,17.56,10.26,17,12,17 s3.34,0.56,4.65,1.5C15.34,19.44,13.74,20,12,20S8.66,19.44,7.35,18.5z M18.14,17.12L18.14,17.12C16.45,15.8,14.32,15,12,15 s-4.45,0.8-6.14,2.12l0,0C4.7,15.73,4,13.95,4,12c0-4.42,3.58-8,8-8s8,3.58,8,8C20,13.95,19.3,15.73,18.14,17.12z"/><path d="M12,6c-1.93,0-3.5,1.57-3.5,3.5S10.07,13,12,13s3.5-1.57,3.5-3.5S13.93,6,12,6z M12,11c-0.83,0-1.5-0.67-1.5-1.5 S11.17,8,12,8s1.5,0.67,1.5,1.5S12.83,11,12,11z"/></g></g></svg>
                     <span class="mx-3">Users Management</span>
@@ -113,10 +113,10 @@
                         </a>
                         @endcanany
 
-                        @canany('PathologyLabConfig access','PathologyLabConfig lab add','PathologyLabConfig lab edit','PathologyLabConfig delete')
-                        <a href="{{ route('admin.p_lab.index')}}" class="text-decoration-none flex items-center mt-2 py-2 px-6 text-dark fw-bold fs-6 hover:bg-red-500 {{ Route::currentRouteNamed('admin.p_lab.index') ? 'active' : '' }}">
+                        @canany('PharmacyConfig access','PharmacyConfig add','PharmacyConfig edit','PharmacyConfig delete')
+                        <a href="{{ route('admin.pharmacies.index')}}" class="text-decoration-none flex items-center mt-2 py-2 px-6 text-dark fw-bold fs-6 hover:bg-red-500 {{ Route::currentRouteNamed('admin.p_lab.index') ? 'active' : '' }}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/> </svg>
-                            <span class="ml-3">Lab Config</span>
+                            <span class="ml-3">Pharmacy Config</span>
                         </a>
                         @endcanany
 
