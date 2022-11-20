@@ -8,7 +8,7 @@
                   @csrf
 
                   <p class="h3 text-danger"><strong><em>Add <span class="text-success">Patient</span></em></strong></p>
-                <hr />
+                  <hr />
                   <div class="row pt-4 pb-4">
 
                     <div class="col-md-3">

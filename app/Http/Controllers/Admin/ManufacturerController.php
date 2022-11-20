@@ -54,6 +54,14 @@ class ManufacturerController extends Controller
     {
         $data= $request->all();
         $data['user_id'] = Auth::user()->id;
+
+        if ($image = $request->file('logo')) {
+            $destinationPath = 'img/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $data['logo'] = "$profileImage";
+        }
+
         $manufacturer = Manufacturer::create($data,);
         return redirect('/admin/manufacturers')->withSuccess('Manufacturer created !!!');
     }

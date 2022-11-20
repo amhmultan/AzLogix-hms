@@ -42,7 +42,7 @@
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $manufacturer->description }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $manufacturer->fbr_no }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $manufacturer->address }}</td>
-                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $manufacturer->logo }}</td>
+                    <td class="img img-responsive"><img src="{{ asset('img/'.$manufacturer->logo) }}"></td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $manufacturer->contact }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $manufacturer->email }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $manufacturer->website }}</td>

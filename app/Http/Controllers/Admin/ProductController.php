@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -29,18 +31,31 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $Product= Product::paginate(6);
-        return view('product.index',['products'=>$Product]);
+        $products = DB::table('products')
+                        ->join('manufacturers', 'manufacturers.id','fk_manufacturer_id')
+                        ->join('suppliers', 'suppliers.id', 'fk_supplier_id')
+                        ->select('products.*','manufacturers.name as manufacturersName', 'suppliers.name as suppliersName')
+                        ->get();
+
+        return view('product.index', ['products' => $products]);
     }
 
-    /**
+    /**as
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('product.new');
+        
+        $products = DB::table('products')
+                    ->join('manufacturers', 'manufacturers.id', '=', 'products.fk_manufacturer_id')
+                    ->join('suppliers', 'suppliers.id', '=', 'products.fk_supplier_id')
+                    ->select('products.*' , 'manufacturers.name as manufacturersName' , 'suppliers.name as suppliersName')
+                    ->get();
+        
+        return view('product.new', ['products' => $products]);
+
     }
 
     /**
@@ -53,6 +68,7 @@ class ProductController extends Controller
     {
         $data= $request->all();
         $data['user_id'] = Auth::user()->id;
+        
         $Product = Product::create($data);
         return redirect('/admin/products')->withSuccess('Product created !!!');
     }
@@ -74,9 +90,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $products, $id)
     {
-       return view('product.edit',['product' => $product]);
+        
+        $products = DB::table('products')
+                    ->join('manufacturers', 'manufacturers.id', '=', 'products.fk_manufacturer_id')
+                    ->join('suppliers', 'suppliers.id', '=', 'products.fk_supplier_id')
+                    ->select('products.*' , 'manufacturers.name as manufacturersName' , 'suppliers.name as suppliersName')
+                    ->where('products.id', '=', $id)
+                    ->first();
+
+        return view('product.edit',['products' => $products]);
     }
 
     /**
@@ -86,9 +110,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        $product->update($request->all());
+        $products = Product::find($id);
+        $products->update($request->all());
+        
         return redirect('/admin/products')->withSuccess('Product updated !!!');
     }
 
@@ -98,9 +124,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        $product->delete();
+        $products = Product::find($id);
+        $products->delete();
         return redirect('/admin/products')->withSuccess('Product deleted !!!');
     }
 }

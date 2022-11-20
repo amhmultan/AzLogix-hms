@@ -1,81 +1,105 @@
 <x-app-layout>
-  <main class="flex-1 bg-gray-200">
-      <div class="container py-10">
-          <div class="text-right">
-            @can('Product create')
-              <a href="{{route('admin.products.create')}}" class="text-decoration-none bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors ">New Product</a>
-            @endcan
-          </div>
-        <div class="overflow-auto">
-          <h3 class="h2 mb-4 fw-bold">Products Information</h3>
-          <hr />
-          <table class="bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
-            <thead>
-              <tr>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Product Id</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Product Name</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Generic Name</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Pack Size</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Trade Price</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Retail Price</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Company Name</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Status</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Purchase Qty</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Batch No.</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Expiry Date</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Remarks</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Created At</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Updated At</th>
-                <th class="py-2 px-2 bg-success font-bold text-sm text-white text-center border border-grey-light">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              @can('Product access')
-                @foreach($products as $product)
-                  <tr class="hover:bg-grey-lighter">
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->id }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->name }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->generic }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->packing }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->trade_price }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->retail_price }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->company_name }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->status }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->quantity }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->batch_number }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->expiry_date }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->remarks }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->created_at }}</td>
-                    <td class="text-xs py-4 px-6 border border-grey-light">{{ $product->updated_at }}</td>
-                    
-                    <td class="py-4 px-6 border-b border-grey-light">
-  
-                      @can('Product edit')
-                      <a href="{{route('admin.products.edit',$product->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
-                      @endcan
-  
-                      @can('Product delete')
-                      <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" class="inline">
-                          @csrf
-                          @method('delete')
-                          <button class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400">Delete</button>
-                      </form>
-                      @endcan
-                    </td>
-                  </tr>
-                @endforeach
-                @endcan
-            </tbody>
-          </table>
+  <main>
+      <div class="container-fluid py-4 px-5">
 
-          @can('Product access')
-          <div class="py-3 px-5">
-            {{ $products->links() }}
+            <div class="row mb-4">
+              <div class="col-sm-6">
+                <p class="h3 text-danger"><strong><em>Products <span class="text-success">Dashboard</span></em></strong></p>
+              </div>
+              <div class="col-sm-6 text-right">
+                @can('Product create')
+                  <a href="{{route('admin.products.create')}}" class="text-decoration-none bg-black text-white font-bold px-5 py-2 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors" accesskey="a"><u>A</u>dd Product</a>
+                @endcan
+              </div>
+            </div>
+          
+          @if (!$products->isEmpty())
+            <div class="overflow-auto">
+              <table id="productsTable" class="bg-white shadow-md rounded text-left border-collapse table-responsive">
+                <thead>
+                  <tr>
+                    <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ID</th>
+                    <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MANUFACTURER</th>
+                    <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">SUPPLIER</th>
+                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">NAME</th>
+                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">GENERIC</th>
+                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">CLASS</th>
+                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PACK SIZE</th>
+                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">TRADE PRICE</th>
+                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">RETAIL PRICE</th>
+                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">STATUS</th>
+                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">CREATED ON</th>
+                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">UPDATED ON</th>
+                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ACTIONS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @can('Product access')
+                  
+                    @foreach($products as $product)
+                      <tr>
+                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->id }}</td>
+                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->manufacturersName }}</td>
+                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->suppliersName  }}</td>
+                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->name  }}</td>
+                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->generic }}</td>
+                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->drug_class }}</td>
+                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->pack_size }}</td>
+                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->trade_price }}</td>
+                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->retail_price }}</td>
+                        @if ($product->status == '1')
+                          <td class="text-nowrap text-xs px-4 text-success text-center border-grey-light">Active</td>
+                        @else
+                          <td class="text-nowrap text-xs px-4 text-danger text-center border-grey-light">Deactive</td>
+                        @endif
+                        <td class="text-nowrap text-xs px-4 border-grey-light">{{ $product->created_at }}</td>
+                        <td class="text-nowrap text-xs px-4 border-grey-light">{{ $product->updated_at }}</td>
+                        
+                        
+                        <td class="text-nowrap text-xs px-3 border-grey-light">
+                          
+                          @can('Product edit')
+                          <a href="{{route('admin.products.edit',$product->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
+                          @endcan
+      
+                          @can('Product delete')
+                          <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" class="inline">
+                              @csrf
+                              @method('delete')
+                              <button class="text-decoration-none text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-blue hover:bg-blue-dark text-red-400">Delete</button>
+                          </form>
+                          @endcan
+                        </td>
+                      </tr>
+                    @endforeach
+                    @endcan
+                </tbody>
+              </table>
+            </div>
+          
+                    
+        @else
+
+          <div class="row flex text-center mt-5 pt-5">
+            <div class="col-sm-12">
+              <h1 class="h4 italic text-danger">NO RECORD FOUND</h1>
+            </div>
           </div>
-          @endcan
-        </div>
+        
+        @endif
 
       </div>
   </main>
 </div>
+@section('script')
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready( function () {
+    $('#productsTable').DataTable(
+    {
+      order: [[0, 'desc']],
+    });
+} );
+</script>
+@stop
 </x-app-layout>

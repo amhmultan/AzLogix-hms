@@ -60,7 +60,7 @@ class PatientController extends Controller
         
         $data= $request->all();
         $data['user_id'] = Auth::user()->id;
-        $Patient = Patient::create($data,);
+        $Patient = Patient::create($data);
         return redirect('/admin/patients')->withSuccess('Patient created !!!');
         
     }
