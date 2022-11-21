@@ -14,9 +14,10 @@
                     <div class="col-md-6">
                       
                       <label for="name" class="text-gray-700 font-black mr-2">Manufacturer Name:</label>
-                      <select class="form-control" name="fk_manufacturer_id">
+                      
+                      <select class="form-control" name="fk_manufacturer_id" id="fk_manufacturer_id">
                         @foreach ($products as $product)
-                          <option class="text-light text-center" value="{{ $product->fk_manufacturer_id }}"> {{ $product->manufacturersName }} </option>
+                          <option class="text-center" value="{{ $product->fk_manufacturer_id }}">{{ $product->mName }}</option>
                         @endforeach
                       </select>
 
@@ -24,9 +25,10 @@
                     <div class="col-md-6">
                       
                       <label for="name" class="text-gray-700 font-black mr-2">Supplier Name:</label>
-                      <select class="form-control" name="fk_supplier_id">
+                      
+                      <select class="form-control" name="fk_supplier_id" id="fk_supplier_id">
                         @foreach ($products as $product)
-                          <option class="text-light text-center" value="{{ $product->fk_supplier_id }}"> {{ $product->suppliersName }} </option>
+                          <option class="text-center" value="{{ $product->fk_supplier_id }}">{{ $product->sName }}</option>
                         @endforeach
                       </select>
 
@@ -78,7 +80,7 @@
                     <div class="col-md-3">
                       <label for="status" class="text-gray-700 font-black">Status:</label>
                       <select class="form-control" name="status">
-                        <option class="text-center">----- SELECT ------</option>
+                        <option class="text-center">------- SELECT -------</option>
                         <option class="text-center" value="1">Active</option>
                         <option class="text-center" value="0">Deactivate</option>
                       </select>

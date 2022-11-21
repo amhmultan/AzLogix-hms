@@ -12,4 +12,15 @@ class Manufacturer extends Model
     protected $fillable = [
         'name','description','fbr_no','address','logo','contact','email','website','remarks',
     ];
+    
+    public function product() 
+    {
+        return $this->has_many(Product::class);
+    }
+
+    public function supplier() 
+    {
+        return $this->has_many(Supplier::class);
+    }
+
 }
