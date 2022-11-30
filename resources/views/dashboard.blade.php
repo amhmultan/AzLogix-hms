@@ -5,7 +5,7 @@
 
             <div class="col-md-3">
                 <div class="card-counter primary">
-                    <i class="fa fa-code-fork"></i>
+                    <i class="fas fa-money-bill-trend-up"></i>
                     <span class="count-numbers">
                         @php
 
@@ -16,13 +16,13 @@
                         @endphp
                             {{ $sales_count }}
                     </span>
-                    <span class="count-name">Sales</span>
+                    <span class="count-name">OPD Sale</span>
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="card-counter danger">
-                    <i class="fa fa-ticket"></i>
+                    <i class="fas fa-person-circle-plus"></i>
                     <span class="count-numbers">
                         @php
                             $patients_count = DB::table('patients')
@@ -37,7 +37,7 @@
 
             <div class="col-md-3">
                 <div class="card-counter success">
-                    <i class="fa fa-database"></i>
+                    <i class="fas fa-flask-vial"></i>
                     <span class="count-numbers">
                         @php
                             $products_count = DB::table('products')->count();
@@ -50,7 +50,7 @@
 
             <div class="col-md-3">
                 <div class="card-counter info">
-                    <i class="fa fa-users"></i>
+                    <i class="fas fa-users"></i>
                     <span class="count-numbers">
                         @php
                             $users_count = DB::table('users')->count();
@@ -59,12 +59,6 @@
                     </span>
                     <span class="count-name">Users</span>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="container card mt-5 border border-dark rounded">
-                <div id="chartContainer" style="height: 540px; width: 100%;" class="my-4"></div>
             </div>
         </div>
 

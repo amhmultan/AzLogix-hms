@@ -1,8 +1,11 @@
 <x-guest-layout>
-    <div class="font-sans min-h-screen antialiased bg-gray-900 pt-24 pb-5">
+  <div  style="background-image: url({{ asset('images/healthcare.jpg') }}); background-repeat: no-repeat; background-size: 100% 100%;">
+
+    <div class="font-sans min-h-screen antialiased pt-24 pb-5">
+
       <div class="row mb-5">
         <h1 class="font-bold text-center tracking-wider text-8xl my-5" style="color:#DF752E">Az<span class="text-white">Logix</span></h1>
-        <h6 class="text-center text-indigo-200">Hospital Management System</span></h6>
+        <h6 class="font-sans font-bold text-center text-2xl	text-pink-700">Hospital Management System</span></h6>
       </div>
         <div class="flex flex-col justify-center sm:w-96 sm:m-auto mx-5 mb-5 space-y-8">
             <!-- Session Status -->
@@ -41,5 +44,7 @@
           </div>
         </div>
     </div>
- 
+
+
+  </div> 
 </x-guest-layout>

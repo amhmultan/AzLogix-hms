@@ -2,7 +2,7 @@
   <main>
       <div class="container-fluid py-4 px-5">
 
-            <div class="row mb-4">
+            <div class="row mb-5">
               <div class="col-sm-6">
                 <p class="h3 text-danger"><strong><em>Manufacturer <span class="text-success">Information</span></em></strong></p>
               </div>
@@ -15,7 +15,7 @@
           
           @if (!$manufacturers->isEmpty())
 
-          <table id="manufacturerTable" class="display table-responsive bg-white shadow-md rounded mt-5 text-left w-full border-collapse">
+          <table id="manufacturerTable" class="table-responsive bg-white shadow-md rounded text-left w-full border-collapse">
             <thead>
               <tr>
                 <th class="py-3 px-1 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ID</th>

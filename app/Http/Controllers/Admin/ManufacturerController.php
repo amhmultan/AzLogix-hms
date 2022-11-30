@@ -83,8 +83,9 @@ class ManufacturerController extends Controller
      * @param  \App\Models\Manufacturer  $manufacturer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Manufacturer $manufacturer)
+    public function edit($id)
     {
+        $manufacturer = Manufacturer::find($id);
         return view('manufacturer.edit',['manufacturer' => $manufacturer]);
     }
 
@@ -95,9 +96,39 @@ class ManufacturerController extends Controller
      * @param  \App\Models\Manufacturer  $manufacturer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Manufacturer $manufacturer)
+    public function update(Request $request, $id)
     {
-        $manufacturer->update($request->all());
+        
+        $manufacturer = Manufacturer::find($id);
+
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'fbr_no' => 'required',
+            'contact' => 'required',
+            'email' => 'required|email',
+            'website' => 'required',
+            'address' => 'required',
+            'remarks' => 'required',
+            
+        ]);
+
+        $file = $request->file('logo');
+        $filename = date('YmdHis') . "." . $file->getClientOriginalName();
+        $path = 'img/';
+        $file->move($path, $filename);
+
+        $update = [
+            'name' => $request->name, 'description' => $request->description,
+            'fbr_no' => $request->fbr_no, 'contact' => $request->contact,
+            'email' => $request->email, 'website' => $request->website,
+            'addressaddress' => $request->address, 'logo' => $filename,
+            'remarks' => $request->remarks
+        ];
+
+
+        $manufacturer->update($update);
+        
         return redirect('/admin/manufacturers')->withSuccess('Manufacturer updated !!!');
     }
 

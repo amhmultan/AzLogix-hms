@@ -70,7 +70,9 @@
                     
                     <div class="col-md-12">
                       <label for="remarks" class="text-gray-700 font-black">Remarks</label>
+                      <span class="ml-2 text-xs text-danger font-italic"> *Only 255 characters allowed </span>
                       <textarea name="remarks" id="remarks" placeholder="Enter Remarks" class="form-control" rows="5">{{ old('remarks') }}</textarea>
+                      <h6 class="float-end text-primary mx-1 my-2" id="count_message"></h6>
                     </div>
 
                   </div>
@@ -89,4 +91,17 @@
         </main>
     </div>
 </div>
+
+@section('script')
+<script>
+  var text_max = 255;
+  $('#count_message').html(text_max + ' remaining');
+    $('#remarks').keyup(function() {
+    var text_length = $('#remarks').val().length;
+    var text_remaining = text_max - text_length;
+    $('#count_message').html(text_remaining + ' remaining');
+  }); 
+</script>
+@stop
+
 </x-app-layout>

@@ -7,7 +7,7 @@
                   @csrf
                   @method('post')
                   <div class="flex flex-col space-y-2">
-                    <label for="name" class="text-gray-700 select-none font-medium">User Name</label>
+                    <label for="name" class="text-gray-700 select-none font-medium">Name</label>
                     <input id="name" type="text" name="name" value="{{ old('name') }}"
                       placeholder="Enter name" class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
                     />

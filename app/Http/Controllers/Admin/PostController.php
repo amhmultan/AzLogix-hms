@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $Post= Post::paginate(6);
+        $Post= Post::paginate(12);
 
         return view('post.index',['posts'=>$Post]);
     }

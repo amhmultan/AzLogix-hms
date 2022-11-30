@@ -105,19 +105,34 @@ class HospitalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $hospitals = Hospital::find($id);
-   
-        if($request->logo != ''){
-            
-             //upload new file
-             $file = $request->logo;
-             $filename = time(). '.' .$file->getClientOriginalExtension();
-             $request->logo->move('img', $filename);
-                
-             //for update in table
-             $hospitals->update(['logo' => $filename]);
-        }
         
+        $hospitals = Hospital::find($id);
+        
+        $request->validate([
+            'title' => 'required',
+            'phc_no' => 'required',
+            'contact' => 'required',
+            'email' => 'required|email',
+            'website' => 'required',
+            'address' => 'required',
+            'remarks' => 'required',
+            
+        ]);
+        
+        $file = $request->file('logo');
+        $filename = date('YmdHis') . "." . $file->getClientOriginalName();
+        $path = 'img/';
+        $file->move($path, $filename);
+
+        $update = [
+            'title' => $request->title, 'phc_no' => $request->phc_no,
+            'contact' => $request->contact, 'email' => $request->email,
+            'website' => $request->website, 'address' => $request->address,
+            'remarks' => $request->remarks, 'logo' => $filename
+        ];
+
+        $hospitals->update($update);
+
         return redirect('/admin/hospitals')->withSuccess('Hospital updated !!!');
    }
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -80,7 +81,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $users = DB::table('users')
+                    ->get();
+                
+        return view('setting.user.show',['users' => $users]);
     }
 
     /**

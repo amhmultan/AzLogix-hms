@@ -105,17 +105,33 @@ class PharmacyController extends Controller
     {
 
         $pharmacies = Pharmacy::find($id);
-   
+        
+        $request->validate([
+            'name' => 'required',
+            'reg_no' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'remarks' => 'required',
+            
+        ]);
+
         if($request->pic != ''){
             
              //upload new file
              $file = $request->pic;
              $filename = time(). '.' .$file->getClientOriginalExtension();
              $request->pic->move('img', $filename);
-                
-             //for update in table
-             $pharmacies->update(['pic' => $filename]);
+             
         }
+
+        $update = [
+            'name' => $request->name, 'reg_no' => $request->reg_no,
+            'phone' => $request->phone, 'address' => $request->address,
+            'remarks' => $request->remarks, 'pic' => $filename
+        ];
+
+        
+        $pharmacies->update($update);
         
         return redirect('/admin/pharmacies')->withSuccess('Pharmacy details updated !!!');
    }

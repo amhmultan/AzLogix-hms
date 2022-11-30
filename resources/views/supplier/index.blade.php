@@ -2,7 +2,7 @@
   <main>
       <div class="container-fluid py-4 px-5">
 
-            <div class="row mb-4">
+            <div class="row mb-5">
               <div class="col-sm-6">
                 <p class="h3 text-danger"><strong><em>Supplier <span class="text-success">Information</span></em></strong></p>
               </div>
@@ -14,11 +14,11 @@
             </div>
           
           @if (!$suppliers->isEmpty())
-
-          <table id="supplierTable" class="bg-white shadow-md rounded text-left border-collapse">
+          
+          <table id="supplierTable" class="table-responsive bg-white shadow-md rounded text-left w-full border-collapse">
             <thead>
               <tr>
-                <th class="py-3 px-1 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ID</th>
+                <th class="py-3 px-1 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">SUPPLIER ID</th>
                 <th class="py-3 px-1 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">NAME</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">DESCRIPTION</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">FBR NO.</th>
@@ -65,7 +65,7 @@
                   @endcan
               </tbody>
             </table>
-  
+            
           @else
   
             <div class="row flex text-center mt-5 pt-5">

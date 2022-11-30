@@ -2,7 +2,7 @@
   <main>
       <div class="container-fluid py-4 px-5">
 
-            <div class="row mb-4">
+            <div class="row mb-5">
               <div class="col-sm-6">
                 <p class="h3 text-danger"><strong><em>Products <span class="text-success">Dashboard</span></em></strong></p>
               </div>
@@ -14,8 +14,8 @@
             </div>
           
           @if (!$products->isEmpty())
-            <div class="overflow-auto">
-              <table id="productsTable" class="bg-white shadow-md rounded text-left border-collapse table-responsive">
+            
+              <table id="productsTable" class="table-responsive bg-white shadow-md rounded text-left w-full border-collapse">
                 <thead>
                   <tr>
                     <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ID</th>
@@ -75,8 +75,7 @@
                     @endcan
                 </tbody>
               </table>
-            </div>
-          
+            
                     
         @else
 

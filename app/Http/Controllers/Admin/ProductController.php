@@ -49,38 +49,40 @@ class ProductController extends Controller
     public function create()
     {
         
-        // $data = [];
-
-        // $products = DB::table('products')
-        //                 ->join('suppliers','suppliers.id','products.fk_supplier_id')
-        //                 ->join('manufacturers', 'manufacturers.id','products.fk_manufacturer_id')
-        //                 ->select('products.*', 'manufacturers.name as mName', 'suppliers.name as sName')
-        //                 ->get();
-
-        
-        // $suppliers = DB::table('suppliers')
-        //                 ->select('suppliers.name as sName')
-        //                 ->get();
-        
-        
-        // $manufacturers = DB::table('manufacturers')
-        //                 ->select('manufacturers.name as mName')
-        //                 ->get();
-
-        // $data = [
-        //     "suppliers" => $suppliers,
-        //     "manufacturers" => $manufacturers,
-        //     "products" => $products,
-        // ];
-        
+        $data = [];
 
         $products = DB::table('products')
                         ->join('suppliers','suppliers.id','products.fk_supplier_id')
                         ->join('manufacturers', 'manufacturers.id','products.fk_manufacturer_id')
                         ->select('products.*', 'manufacturers.name as mName', 'suppliers.name as sName')
                         ->get();
-        //dd($products);
-        return view('product.new', ['products'=>$products]);
+
+        
+        $suppliers = DB::table('suppliers')
+                        ->select('suppliers.name as sName')
+                        ->get();
+        
+        
+        $manufacturers = DB::table('manufacturers')
+                        ->select('manufacturers.name as mName')
+                        ->get();
+
+        $data = [
+            "suppliers" => $suppliers,
+            "manufacturers" => $manufacturers,
+            "products" => $products,
+        ];
+        
+
+        // $products = DB::table('products')
+        //                 ->join('suppliers','suppliers.id','products.fk_supplier_id')
+        //                 ->join('manufacturers', 'manufacturers.id','products.fk_manufacturer_id')
+        //                 ->select('products.fk_manufacturer_id', 'products.fk_supplier_id', 'manufacturers.name as mName', 'suppliers.name as sName')
+        //                 ->get();
+
+        //dd($data);
+        
+        return view('product.new', compact('data'));
 
     }
 
