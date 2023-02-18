@@ -16,28 +16,22 @@
                       <label for="name" class="text-gray-700 font-black mr-2">Manufacturer Name:</label>
                       
                       <select class="form-control" name="fk_manufacturer_id" id="fk_manufacturer_id">
-                        {{-- @foreach ($data->suppliers as $supp)
-                          <option class="text-center" value="fk_manufacturer_id">{{ $supp->mName }}</option>
-                        @endforeach --}}
-                        {{-- @foreach($data['manufacturers'] as $manufacturer)
-                        {{ $manufacturer['mName'] }}<br/>
-                        @endforeach --}}
+                        @foreach($data['manufacturers'] as $manufacturer)
+                          <option class="text-center" value="{{ $manufacturer->id }}">{{ $manufacturer->mName }}</option>
+                        @endforeach
                       </select>
 
                     </div>
+                    
                     <div class="col-md-6">
                       
                       <label for="name" class="text-gray-700 font-black mr-2">Supplier Name:</label>
-                      
-                      {{-- <select class="form-control" name="fk_supplier_id" id="fk_supplier_id">
-                        @foreach ($suppliers as $supplier)
-                          <option class="text-center" value="fk_supplier_id">{{ $supplier->sName }}</option>
+                      <select class="form-control" name="fk_supplier_id" id="fk_supplier_id">
+                        @foreach ($data['suppliers'] as $supplier)
+                          <option class="text-center" value="{{ $supplier->id }}">{{ $supplier->sName }}</option>
                         @endforeach
-                      </select> --}}
+                      </select>
 
-
-                      
-                    
                     </div>
 
                   </div>

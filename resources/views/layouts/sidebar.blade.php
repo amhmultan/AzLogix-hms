@@ -197,11 +197,27 @@
         @canany('Product access','Product add','Product edit','Product delete')
             <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.products.index') ? 'active' : '' }}"
             href="{{ route('admin.products.index')}}">
-            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 384 512" width="24px" fill="#62adfc"><rect fill="none" height="24" width="24"/><path d="M32 192h112C152.8 192 160 199.2 160 208C160 216.8 152.8 224 144 224H32v64h112C152.8 288 160 295.2 160 304C160 312.8 152.8 320 144 320H32v64h112C152.8 384 160 391.2 160 400C160 408.8 152.8 416 144 416H32v32c0 35.2 28.8 64 64 64h192c35.2 0 64-28.8 64-64V128H32V192zM360 0H24C10.75 0 0 10.75 0 24v48C0 85.25 10.75 96 24 96h336C373.3 96 384 85.25 384 72v-48C384 10.75 373.3 0 360 0z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 384 512" width="24px" fill="#62adfc"><rect fill="none" height="24" width="24"/><path d="M32 192h112C152.8 192 160 199.2 160 208C160 216.8 152.8 224 144 224H32v64h112C152.8 288 160 295.2 160 304C160 312.8 152.8 320 144 320H32v64h112C152.8 384 160 391.2 160 400C160 408.8 152.8 416 144 416H32v32c0 35.2 28.8 64 64 64h192c35.2 0 64-28.8 64-64V128H32V192zM360 0H24C10.75 0 0 10.75 0 24v48C0 85.25 10.75 96 24 96h336C373.3 96 384 85.25 384 72v-48C384 10.75 373.3 0 360 0z"/></svg>
             <span class="mx-3">Products Info</span>
             </a>
         @endcanany
-                    
+        
+        @canany('Purchase access','Purchase add','Purchase edit','Purchase delete')
+            <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.purchases.index') ? 'active' : '' }}"
+            href="{{ route('admin.purchases.index')}}">
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#62adfc"><rect fill="none" height="24" width="24"/><path d="M13,10h-2V8h2V10z M13,6h-2V1h2V6z M7,18c-1.1,0-1.99,0.9-1.99,2S5.9,22,7,22s2-0.9,2-2S8.1,18,7,18z M17,18 c-1.1,0-1.99,0.9-1.99,2s0.89,2,1.99,2s2-0.9,2-2S18.1,18,17,18z M8.1,13h7.45c0.75,0,1.41-0.41,1.75-1.03L21,4.96L19.25,4l-3.7,7 H8.53L4.27,2H1v2h2l3.6,7.59l-1.35,2.44C4.52,15.37,5.48,17,7,17h12v-2H7L8.1,13z"/></svg>
+            <span class="mx-3">Purchase Dashboard</span>
+            </a>
+        @endcanany
+
+        @canany('Sale access','Sale add','Sale edit','Sale delete')
+            <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.sales.index') ? 'active' : '' }}"
+            href="{{ route('admin.sales.index')}}">
+            <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#62adfc"><rect fill="none" height="24" width="24"/><path d="M13,10h-2V8h2V10z M13,6h-2V1h2V6z M7,18c-1.1,0-1.99,0.9-1.99,2S5.9,22,7,22s2-0.9,2-2S8.1,18,7,18z M17,18 c-1.1,0-1.99,0.9-1.99,2s0.89,2,1.99,2s2-0.9,2-2S18.1,18,17,18z M8.1,13h7.45c0.75,0,1.41-0.41,1.75-1.03L21,4.96L19.25,4l-3.7,7 H8.53L4.27,2H1v2h2l3.6,7.59l-1.35,2.44C4.52,15.37,5.48,17,7,17h12v-2H7L8.1,13z"/></svg>
+            <span class="mx-3">Sale Dashboard</span>
+            </a>
+        @endcanany
+
         {{-- Pharmacy Menu End --}}
         
         {{-- Pathology Lab Menu Starting --}}

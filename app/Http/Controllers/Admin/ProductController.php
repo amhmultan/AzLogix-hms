@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use App\Models\Manufacturer;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -51,37 +50,21 @@ class ProductController extends Controller
         
         $data = [];
 
-        $products = DB::table('products')
-                        ->join('suppliers','suppliers.id','products.fk_supplier_id')
-                        ->join('manufacturers', 'manufacturers.id','products.fk_manufacturer_id')
-                        ->select('products.*', 'manufacturers.name as mName', 'suppliers.name as sName')
-                        ->get();
-
-        
         $suppliers = DB::table('suppliers')
-                        ->select('suppliers.name as sName')
+                        ->select('suppliers.id','suppliers.name as sName')
                         ->get();
         
         
         $manufacturers = DB::table('manufacturers')
-                        ->select('manufacturers.name as mName')
+                        ->select('manufacturers.id','manufacturers.name as mName')
                         ->get();
 
         $data = [
             "suppliers" => $suppliers,
             "manufacturers" => $manufacturers,
-            "products" => $products,
         ];
         
 
-        // $products = DB::table('products')
-        //                 ->join('suppliers','suppliers.id','products.fk_supplier_id')
-        //                 ->join('manufacturers', 'manufacturers.id','products.fk_manufacturer_id')
-        //                 ->select('products.fk_manufacturer_id', 'products.fk_supplier_id', 'manufacturers.name as mName', 'suppliers.name as sName')
-        //                 ->get();
-
-        //dd($data);
-        
         return view('product.new', compact('data'));
 
     }
@@ -121,14 +104,32 @@ class ProductController extends Controller
     public function edit(Product $products, $id)
     {
         
-        $products = DB::table('products')
-                    ->join('manufacturers', 'manufacturers.id', '=', 'products.fk_manufacturer_id')
-                    ->join('suppliers', 'suppliers.id', '=', 'products.fk_supplier_id')
-                    ->select('products.*' , 'manufacturers.name as manufacturersName' , 'suppliers.name as suppliersName')
-                    ->where('products.id', '=', $id)
-                    ->first();
+        $data = [];
 
-        return view('product.edit',['products' => $products]);
+        $products = DB::table('products')
+                        ->join('suppliers','suppliers.id','products.fk_supplier_id')
+                        ->join('manufacturers', 'manufacturers.id','products.fk_manufacturer_id')
+                        ->select('products.*', 'manufacturers.name as mName', 'suppliers.name as sName')
+                        ->where('products.id', '=', $id)
+                        ->get();
+
+        
+        $suppliers = DB::table('suppliers')
+                        ->select('suppliers.id','suppliers.name as sName')
+                        ->get();
+        
+        
+        $manufacturers = DB::table('manufacturers')
+                        ->select('manufacturers.id','manufacturers.name as mName')
+                        ->get();
+
+        $data = [
+            "suppliers" => $suppliers,
+            "manufacturers" => $manufacturers,
+            "products" => $products,
+        ];
+
+        return view('product.edit',['data' => $data]);
     }
 
     /**
