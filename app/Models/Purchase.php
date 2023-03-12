@@ -5,15 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Purchase extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-
-        'fk_manufacturer_id','fk_supplier_id','name','generic','drug_class','description','pack_size','trade_price','retail_price','status','remarks'
-
+        'fk_product_id', 'fk_manufacturer_id','fk_supplier_id','batch_no','quantity','price','net_amount','discount','gross_amount', 'remarks'
     ];
+
+    public function product()
+    {
+      return $this->belongsTo(Product::class);
+    }
 
     public function manufacturer()
     {
@@ -24,10 +27,4 @@ class Product extends Model
     {
       return $this->belongsTo(Supplier::class);
     }
-
-    public function purchase()
-    {
-      return $this->hasMany(Purchase::class);
-    }
-
 }

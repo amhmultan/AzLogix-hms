@@ -39,7 +39,7 @@
               </div>
             </div>
           </form>
-          <div class="flex justify-center text-gray-500 text-sm">
+          <div class="flex justify-center text-yellow-300 text-sm font-sans font-bold">
             <p>&copy;{{ now()->year }} All right reserved.</p>
           </div>
         </div>

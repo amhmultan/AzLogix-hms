@@ -118,7 +118,7 @@ class HospitalController extends Controller
             'remarks' => 'required',
             
         ]);
-        
+
         $file = $request->file('logo');
         $filename = date('YmdHis') . "." . $file->getClientOriginalName();
         $path = 'img/';

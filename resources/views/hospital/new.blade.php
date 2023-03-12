@@ -11,21 +11,22 @@
                 <hr />
                   <div class="row pt-4 pb-4">
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <label for="title" class="text-gray-700 font-black">Hospital Title:</label>
                       <input id="title" type="text" name="title" value="{{ old('title') }}" class="form-control" />
                     </div>
                     
-                    <div class="col-md-4">
-                      <label for="logo" class="text-gray-700 font-black">Logo:</label>
-                      <input id="logo" type="file" name="logo" value="{{ old('logo') }}" class="form-control" />
-                    </div>
-
-                    <div class="col-md-4">
+                    
+                    <div class="col-md-3">
                       <label for="phc_no" class="text-gray-700 font-black">PHC No:</label>
-                      <input id="phc_no" type="number" name="phc_no" value="{{ old('phc_no') }}" class="form-control" />
+                      <input id="phc_no" type="text" name="phc_no" value="{{ old('phc_no') }}" class="form-control" />
                     </div>
                     
+                    <div class="col-md-3">
+                      <label for="logo" class="text-gray-700 font-black">Logo:</label>
+                      <input type="file" id="logo" name="logo" value="{{ old('logo') }}" class="form-control" />
+                    </div>
+
                   </div>
                   
                   <div class="row mt-4">

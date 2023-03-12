@@ -8,22 +8,23 @@
                 @csrf
                 @method('put')
 
-                <p class="h3 text-danger"><strong><em>Update Hospital<span class="text-success"> Configurations</span></em></strong></p>
+                <p class="text-center text-yellow-600 font-black text-4xl">Update Hospit<span class="text-green-600 font-black text-4xl">al Configurations</span></p>
                <hr />
                  <div class="row pt-5 pb-4">
 
-                   <div class="col-md-4">
+                   <div class="col-md-6">
                      <label for="title" class="text-gray-700 font-black mr-2">Title</label>
                      <input id="title" type="text" name="title" value="{{ old('title',$hospital->title) }}" class="form-control" />
                    </div>
-                   <div class="col-md-4">
-                     <label for="logo" class="text-gray-700 font-black">Logo:</label>
-                     <input id="logo" type="file" name="logo" value="{{ old('logo',$hospital->logo) }}" class="form-control" required/>
+                   <div class="col-md-3">
+                     <label for="phc_no" class="text-gray-700 font-black">PHC Regd. No:</label>
+                     <input id="phc_no" type="text" name="phc_no" value="{{ old('phc_no',$hospital->phc_no) }}" class="form-control" />
                    </div>
-                   <div class="col-md-4">
-                     <label for="phc_no" class="text-gray-700 font-black">PHC No:</label>
-                     <input id="phc_no" type="number" name="phc_no" value="{{ old('phc_no',$hospital->phc_no) }}" class="form-control" />
-                   </div>
+                   <div class="col-md-3">
+                    <label for="logo" class="text-gray-700 font-black">Logo:</label>
+                    <div class="border-4 rounded-lg border-black p-3 m-1"><img src="{{ asset('img/'.$hospital->logo) }}" width="120px"></div>
+                    <input type="file" id="logo" name="logo" value="{{ old('logo',$hospital->logo) }}" class="form-control" />
+                  </div>
 
                  </div>
                 

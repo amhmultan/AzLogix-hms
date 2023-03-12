@@ -24,9 +24,10 @@
         <link href="{{ asset('fontawesome-free-6.2.1-web/css/regular.min.css') }}" rel="stylesheet">
         <link href="{{ asset('fontawesome-free-6.2.1-web/css/solid.min.css') }}" rel="stylesheet">
         
-        <!-- DataTables CDN -->
+        <!-- JQuery Styles -->
         <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
-        
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
         
     </head>
     <body class="font-sans antialiased">
@@ -53,8 +54,12 @@
         <script src="{{ asset('bootstrap-4.1.3-dist/js/bootstrap.bundle.min.js') }}" defer></script>
         <script src="{{ asset('bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js') }}" defer></script>
         
-        <!-- DataTables Scripts -->
+        <!-- JS Scripts -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 
         @yield('script')
 

@@ -15,13 +15,13 @@
           
           @if (!$patients->isEmpty())
             
-          <table id="patientTable" class="table-responsive bg-white shadow-md rounded text-left border-collapse">
+          <table id="patientTable" class="pb-4 table-responsive bg-white shadow-md rounded text-left border-collapse">
             <thead>
               <tr>
                 <th class="py-3 px-1 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MR No.</th>
-                <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">NAME</th>
+                <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PATIENT NAME</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">FATHERS NAME</th>
-                <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">DOB</th>
+                <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">AGE</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">GENDER</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MARITAL STATUS</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PHONE</th>
@@ -29,6 +29,7 @@
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">CNIC #</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ADDRESS</th>
                 <th class="py-3 px-3 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">REGISTERED ON</th>
+                <th class="py-3 px-3 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">REGISTERED BY</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">UPDATED ON</th>
                 <th class="py-3 px-2 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ACTIONS</th>
               </tr>
@@ -40,7 +41,13 @@
                     <td class="text-nowrap text-xs px-4 border-grey-light">{{ $patient->id }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->name }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->fname }}</td>
-                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->dob }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">
+                      @if($patient->dob == null)
+                        {{ '' }}
+                      @else
+                        {{\Carbon\Carbon::parse($patient->dob)->diff(\Carbon\Carbon::now())->format('%y years, %m months and %d days');}}
+                      @endif
+                    </td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->gender }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->marital_status }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->phone }}</td>
@@ -48,6 +55,7 @@
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->cnic }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->address }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->created_at }}</td>
+                    <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->usersName }}</td>
                     <td class="text-nowrap text-xs px-3 border-grey-light">{{ $patient->updated_at }}</td>
                     
                     <td class="text-nowrap text-xs px-3 border-grey-light">
@@ -72,13 +80,6 @@
             </tbody>
           </table>
         
-
-          {{-- @can('Patient access')
-          <div class="py-3 px-5">
-            {{ $patients->links() }}
-          </div>
-          @endcan --}}
-        
         @else
 
           <div class="row flex text-center mt-5 pt-5">
@@ -96,8 +97,8 @@
 <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script>
   $(document).ready( function () {
-    $('#patientTable').DataTable(
-      {
+    $('#patientTable').DataTable({
+        autoWidth: false,
         order: [[0, 'desc']],
       });
 } );

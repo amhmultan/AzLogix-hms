@@ -15,21 +15,27 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('fname');
-            $table->string('dob');
-            $table->string('gender');
-            $table->string('marital_status');
-            $table->string('phone');
-            $table->string('email')->unique();
-            $table->string('cnic');
-            $table->string('address');
-            $table->string('emr_name');
-            $table->string('relationship');
-            $table->string('emr_phone');
-            $table->string('history');
-            $table->string('reffered_by');
+            $table->unsignedBigInteger('fk_user_id');
+            $table->string('name')->nullable();
+            $table->string('fname')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('marital_status')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable()->unique();
+            $table->string('cnic')->nullable();
+            $table->string('address')->nullable();
+            $table->string('emr_name')->nullable();
+            $table->string('relationship')->nullable();
+            $table->string('emr_phone')->nullable();
+            $table->string('history')->nullable();
+            $table->string('reffered_by')->nullable();
             $table->timestamps();
+
+            $table->foreign('fk_user_id')->on('users')->references('id')
+            ->onDelete('CASCADE')
+            ->onUpdate('CASCADE');
+            
         });
     }
 

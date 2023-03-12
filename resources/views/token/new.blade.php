@@ -21,7 +21,7 @@
           <hr />
 
           <div class="row my-4">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <label for="fk_patients_id" class="text-gray-700 font-black">Patient Name:</label>
               <select class="form-control" name="fk_patients_id" disabled>
                 @if ($search != "")
@@ -31,7 +31,18 @@
                 @else
                 <option></option>
                 @endif
-                
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="text-gray-700 font-black">Contact Number:</label>
+              <select class="form-control" disabled>
+                @if ($search != "")
+                @foreach ($patients as $patient)
+                  <option>{{ $patient->phone }}</option>    
+                @endforeach
+                @else
+                <option></option>
+                @endif
               </select>
             </div>
           </div>
@@ -45,6 +56,7 @@
               <option value="{{ $patient->id }}"> {{ $patient->id }} {{ $patient->name }} </option>    
             @endforeach
           </select>
+          
           <div class="row mt-4">
             <div class="col-md-4">
               <label for="fees" class="text-gray-700 font-black">Fees:</label>

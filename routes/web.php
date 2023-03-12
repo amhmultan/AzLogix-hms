@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\PurchaseController;
+use App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -95,4 +97,8 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('doctor_notes','DoctorNotesController');
         Route::resource('purchases','PurchaseController');
         Route::resource('sales','SaleController');
-});
+        Route::get('productlist', [PurchaseController::class, 'productlist']);
+    });
+    
+    
+    

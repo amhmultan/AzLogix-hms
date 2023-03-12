@@ -37,15 +37,17 @@
                           <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_patient_id }}</td>
                           <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_token_id  }}</td>
                           <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->name  }}</td>
-                          <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->prescription }}</td>
+                          <td class="text-nowrap text-xs px-4 text-center border-grey-light"> 
+                            @can('DoctorNotes access')
+                            <a href="{{route('admin.doctor_notes.show',$doctors_note->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-green-400">Show</a>
+                            @endcan
+                          </td>
                           <td class="text-nowrap text-xs px-4 border-grey-light">{{ $doctors_note->created_at }}</td>
                           <td class="text-nowrap text-xs px-4 border-grey-light">{{ $doctors_note->updated_at }}</td>
                           
                           
                           <td class="text-nowrap text-xs px-3 border-grey-light">
-                            @can('DoctorNotes access')
-                              <a href="{{route('admin.doctor_notes.show',$doctors_note->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-green-400">Show</a>
-                            @endcan
+                           
                             @can('DoctorNotes edit')
                             <a href="{{route('admin.doctor_notes.edit',$doctors_note->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
                             @endcan

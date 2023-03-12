@@ -103,7 +103,7 @@ class AdminSeeder extends Seeder
         $permission = Permission::create(['name' => 'Product delete']);
 
         $permission = Permission::create(['name' => 'Purchase access']);
-        $permission = Permission::create(['name' => 'Purchase add']);
+        $permission = Permission::create(['name' => 'Purchase create']);
         $permission = Permission::create(['name' => 'Purchase edit']);
         $permission = Permission::create(['name' => 'Purchase delete']);
         

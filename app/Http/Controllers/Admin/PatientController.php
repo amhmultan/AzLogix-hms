@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Patient;
-use App\Models\Hospital;
 
 class PatientController extends Controller
 {
@@ -31,12 +30,14 @@ class PatientController extends Controller
      */
     public function index()
     {
-        // $Patient= Patient::paginate(10);
-        // return view('patient.index',['patients'=>$Patient]);
-
-        $patients = Patient::all();
+        
+        $patients = DB::table('patients')
+                        ->join('users', 'users.id','fk_user_id')
+                        ->select('patients.*', 'users.name as usersName')
+                        ->get();
 
         return view('patient.index', ['patients' => $patients]);
+        
     }
 
     /**
@@ -59,8 +60,9 @@ class PatientController extends Controller
     {
         
         $data= $request->all();
-        $data['user_id'] = Auth::user()->id;
+        $data['fk_user_id'] = Auth::user()->id;
         $Patient = Patient::create($data);
+
         return redirect('/admin/patients')->withSuccess('Patient created !!!');
         
     }

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="container bg-white shadow-md rounded my-6 px-5 py-4">
+    <div class="container-fluid bg-white p-5">
         @can('Token access')
 
             <div class="container" id="printableArea">
@@ -8,16 +8,18 @@
                 @foreach ($hospitals as $hospital)
                 <div class="row">
                     <div class="col-sm-2">
-                        <img src="{{ asset('img/'.$hospital->logo) }}" width="100px" class="border border-dark border-4 p-2">
+                        <img src="{{ asset('img/'.$hospital->logo) }}" width="200px" class="border border-dark border-4 p-2">
                     </div>
-                    <div class="col-sm-9" style="margin-left: -5%">
-                        <h1 class="display-5 text-primary text-uppercase font-weight-bold">{{ $hospital->title }}</h1>
-                        <span class="text-dark">{{ $hospital->address }}</span><br>
-                        <span class="text-dark">{{ $hospital->contact }} {{ $hospital->email }}</span><br>
-                        <span class="text-dark">{{ $hospital->website }}</span>
+                    <div class="col-sm-8">
+                        <p class="font-weight-bold h4 text-primary text-uppercase">{{ $hospital->title }}</p>
+                        <span class="italic">{{ $hospital->address }}</span><br>
+                        <span class="italic"><strong>Contact Number:</strong> {{ $hospital->contact }} </span><br>
+                        <span class="italic"><strong>Email:</strong> {{ $hospital->email }}</span><br>
+                        <span class="italic"><strong>Website:</strong> {{ $hospital->website }}</span>
                     </div>
-                </div>
+                </div>    
                 @endforeach
+
                 <hr />
             <div class="row mx-auto mt-2">
                 <div class="col-sm-12">

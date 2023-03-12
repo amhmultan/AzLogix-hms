@@ -1,23 +1,25 @@
 <x-app-layout>
   <div>
        <main>
-           <div class="container bg-white shadow-md rounded my-6 px-5 py-4">
+        <div class="container-fluid py-4 px-5">
              
 
                <form method="POST" action="{{ route('admin.patients.update',$patient->id)}}">
                 @csrf
                 @method('put')
+                <p class="text-center text-yellow-600 font-black text-4xl">Update Pat<span class="text-green-600 font-black text-4xl">ient Details</span></p>
+                <hr class="my-4" />
+                <span class="text-danger fw-bold italic"> * </span><span class="fw-bold text-primary italic">Required Fields</span>
 
-                <p class="h3 text-danger"><strong><em>Update <span class="text-success">Patient</span></em></strong></p>
-               <hr />
+                
                  <div class="row pt-5 pb-4">
 
                    <div class="col-md-2">
                      <label for="mr_number" class="text-gray-700 font-black mr-2">MR. No.</label>
-                     <input id="mr_number" type="number" name="mr_number" value="{{ old('id',$patient->id) }}" class="form-control" />
+                     <input id="mr_number" type="number" name="mr_number" value="{{ old('id',$patient->id) }}" class="form-control" disabled/>
                    </div>
                    <div class="col-md-4">
-                     <label for="name" class="text-gray-700 font-black">Patient Name:</label>
+                     <label for="name" class="text-gray-700 font-black">Patient Name:<span class="text-danger"> * </span></label>
                      <input id="name" type="text" name="name" value="{{ old('name',$patient->name) }}" class="form-control" />
                    </div>
                    <div class="col-md-4">
@@ -35,7 +37,8 @@
                   <div class="col-md-2">
                     <label for="gender" class="text-gray-700 font-black">Gender:</label>
                     <select class="form-control" name="gender">
-                     <option value="Male">Male</option>
+                      <option value=""> ---- Please Select ---- </option>
+                      <option value="Male">Male</option>
                      <option value="Female" @if($patient->gender) selected @endif>Female</option>
                      <option value="Others" @if($patient->gender) selected @endif>Others</option>
                     </select>
@@ -43,7 +46,8 @@
                   <div class="col-md-2">
                     <label for="marital_status" class="text-gray-700 font-black">Marital Status:</label>
                     <select class="form-control" name="marital_status">
-                     <option value="Single">Single</option>
+                      <option value=""> ---- Please Select ---- </option>
+                      <option value="Single">Single</option>
                      <option value="Married" @if($patient->marital_status) selected @endif>Married</option>
                      <option value="Widowed" @if($patient->marital_status) selected @endif>Widowed</option>
                      <option value="Divorced" @if($patient->marital_status) selected @endif>Divorced</option>
@@ -51,7 +55,7 @@
                     </select>
                   </div>
                   <div class="col-md-2">
-                    <label for="phone" class="text-gray-700 font-black">Phone Number</label>
+                    <label for="phone" class="text-gray-700 font-black">Phone Number<span class="text-danger"> * </span></label>
                     <input type="tel" id="phone" name="phone" placeholder="XXXXXXXXXXX" pattern="[0-9]{4}[0-9]{7}" value="{{ old('phone',$patient->phone) }}" class="form-control" required>
                   </div>
                 
@@ -70,7 +74,7 @@
                  <div class="row mt-4">
 
                    <div class="col-md-12">
-                     <label for="address" class="text-gray-700 font-black">Address</label>
+                     <label for="address" class="text-gray-700 font-black">Address<span class="text-danger"> * </span></label>
                      <textarea name="address" id="address" placeholder="Enter address" class="form-control" rows="5">{{ old('address',$patient->address) }}</textarea>
                    </div>
 
