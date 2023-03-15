@@ -21,8 +21,12 @@
   .card-counter.danger{
     background-color: #ef5350;
     color: #FFF;
-  }  
+  }
 
+  .card-counter.warning{
+    background-color: #E4A11B;
+    color: #FFF;
+  }
   .card-counter.success{
     background-color: #66bb6a;
     color: #FFF;
@@ -39,7 +43,7 @@
   }  
 
   .card-counter i{
-    font-size: 5em;
+    font-size: 4em;
     opacity: 0.2;
   }
 
@@ -59,5 +63,5 @@
     text-transform: capitalize;
     opacity: 0.5;
     display: block;
-    font-size: 50px;
+    font-size: 30px;
   }

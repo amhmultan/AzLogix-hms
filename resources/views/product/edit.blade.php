@@ -16,7 +16,7 @@
                     <label for="name" class="text-gray-700 font-black mr-2">Manufacturer Name:</label>
                     <select class="form-control" name="fk_manufacturer_id">
                       @foreach ($data['manufacturers'] as $manufacturer)
-                        <option class="text-center" value="{{ $manufacturer->id }}"> {{ old('',$manufacturer->mName) }}</option>
+                        <option class="text-center" value="{{ $manufacturer->id }}" selected> {{ old('',$manufacturer->mName) }}</option>
                       @endforeach
                     </select>
                   </div>
@@ -24,7 +24,7 @@
                     <label for="name" class="text-gray-700 font-black mr-2">Supplier Name:</label>
                     <select class="form-control" name="fk_supplier_id">
                       @foreach ($data['suppliers'] as $supplier)
-                        <option class="text-center" value="{{ $supplier->id }}"> {{ $supplier->sName }} </option>
+                        <option class="text-center" value="{{ $supplier->id }}" selected> {{ $supplier->sName }} </option>
                       @endforeach
                     </select>
                   </div>

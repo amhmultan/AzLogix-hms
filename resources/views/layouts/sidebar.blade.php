@@ -9,7 +9,7 @@
     </div>
     
     {{-- Searchbar --}}
-    <div class="relative text-center pt-3">
+    <div class="relative text-center pt-3" data-widget="sidebar-search">
         <span class="absolute inset-y-0 left-0 pl-3 pt-3 flex items-center">
             <svg class="h-6 w-6 text-gray-500" viewBox="0 0 24 24" fill="none">
                 <path
@@ -20,7 +20,7 @@
         </span>
 
         <input class="form-input w-32 sm:w-60 rounded-md pl-10 pr-2 focus:border-indigo-600" type="text"
-        placeholder="Search">
+        placeholder="Search Menu" id="search" autofocus>
     </div>
         
 
@@ -135,13 +135,48 @@
         </h6>    
         @endcan
         
+        @canany('Speciality access','Speciality create','Speciality edit','Speciality delete')
+        <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.specialities.index') ? 'active' : '' }}"
+            href="{{ route('admin.specialities.index')}}">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#62adfc"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+            
+            <span class="mx-3">Specialty Info</span>
+        </a>
+        @endcanany
+
+        @canany('Doctor access','Doctor create','Doctor edit','Doctor delete')
+        <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.doctors.index') ? 'active' : '' }}"
+            href="{{ route('admin.doctors.index')}}">
+            
+            <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+            <svg width="25px" height="25px" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M154.43 82.5312C173.459 117.556 205.218 122.311 243.126 118.117" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M150.09 86.5879C140.296 98.5304 134.136 110.444 129.975 126.872" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M130.429 131.586C117.525 139.947 135.196 152.018 135.196 152.739C135.196 229.349 250.087 260.198 250.087 161.051" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M118.367 215.001C87.2977 146.373 97.9899 60.6461 164.799 33.3594" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M187.835 33C307.054 33.0003 275.092 138.363 282.29 203.481" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M186.274 144.558C186.274 141.486 186.274 138.409 186.274 135.336" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M212.424 144.452C212.424 139.561 213.503 138.736 212.424 135.019" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M144.154 218.021C130.491 255.064 179.516 277.407 185.35 311.852C185.489 312.657 186.432 356.683 188.884 356.683C197.622 356.683 188.825 310.119 192.414 304.557C218.528 264.074 247.734 267.575 247.734 213.848" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M45 364.747C60.1863 306.064 60.1863 250.394 141.759 217.304" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M250.039 217.304C306.492 219.949 354.861 302.323 354.861 356.683" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M247.454 214.385C252.064 225.679 270.412 261.433 272.454 273.673" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M264.979 274.103C308.843 245.731 308.11 334.174 263.765 302.154C252.367 293.926 265.752 280.95 271.052 272.934" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M144.572 219.081C125.029 233.198 104.685 262.672 102.722 285.53" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M69.0321 364.747C41.0835 350.369 78.0741 270.547 109.175 286.469C133.814 299.08 128.247 362.011 101.532 364.747" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M285.611 332.155C275.829 331.226 266.341 333.888 256.665 335.278" stroke="#62adfc" stroke-opacity="0.9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            
+            <span class="mx-3">Doctor Info</span>
+        </a>
+        @endcanany
 
         @canany('Patient access','Patient add','Patient edit','Patient delete')
         <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.patients.index') ? 'active' : '' }}"
             href="{{ route('admin.patients.index')}}">
             <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#62adfc"><rect fill="none" height="24" width="24"/><path d="M12,10c2.21,0,4-1.79,4-4c0-2.21-1.79-4-4-4S8,3.79,8,6C8,8.21,9.79,10,12,10z M12,4c1.1,0,2,0.9,2,2c0,1.1-0.9,2-2,2 s-2-0.9-2-2C10,4.9,10.9,4,12,4z M18.39,12.56C16.71,11.7,14.53,11,12,11c-2.53,0-4.71,0.7-6.39,1.56C4.61,13.07,4,14.1,4,15.22V22 h2v-6.78c0-0.38,0.2-0.72,0.52-0.88C7.71,13.73,9.63,13,12,13c0.76,0,1.47,0.07,2.13,0.2l-1.55,3.3H9.75C8.23,16.5,7,17.73,7,19.25 C7,20.77,8.23,22,9.75,22h2.18H18c1.1,0,2-0.9,2-2v-4.78C20,14.1,19.39,13.07,18.39,12.56z M10.94,20H9.75C9.34,20,9,19.66,9,19.25 c0-0.41,0.34-0.75,0.75-0.75h1.89L10.94,20z M18,20h-4.85l2.94-6.27c0.54,0.2,1.01,0.41,1.4,0.61C17.8,14.5,18,14.84,18,15.22V20z"/></svg>
             
-            <span class="mx-3">Patients</span>
+            <span class="mx-3">Patient Registration</span>
         </a>
         @endcanany
         
@@ -223,4 +258,24 @@
         
         
     </nav>
-</div> 
+</div>
+
+@section('script')
+    
+    <script>
+    $(document).ready(function () {
+
+    $("#search").on("keyup", function () {
+    if (this.value.length > 0) {   
+    $("a,h6").hide().filter(function () {
+    return $(this).text().toLowerCase().indexOf($("#search").val().toLowerCase()) != -1;
+    }).show(); 
+    }  
+    else { 
+    $("a,h6").show();
+    }
+    }); 
+
+    });    
+    </script>
+@stop

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Speciality;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -70,6 +71,16 @@ class AdminSeeder extends Seeder
         
         // Hospital Menus persmissions
         $permission = Permission::create(['name' => 'Hospital access']);
+        $permission = Permission::create(['name' => 'Speciality access']);
+        $permission = Permission::create(['name' => 'Speciality create']);
+        $permission = Permission::create(['name' => 'Speciality edit']);
+        $permission = Permission::create(['name' => 'Speciality delete']);
+        
+        $permission = Permission::create(['name' => 'Doctor access']);
+        $permission = Permission::create(['name' => 'Doctor create']);
+        $permission = Permission::create(['name' => 'Doctor edit']);
+        $permission = Permission::create(['name' => 'Doctor delete']);
+        
         $permission = Permission::create(['name' => 'Patient access']);
         $permission = Permission::create(['name' => 'Patient create']);
         $permission = Permission::create(['name' => 'Patient edit']);
@@ -116,5 +127,26 @@ class AdminSeeder extends Seeder
         $writer->assignRole($writer_role);
 
         $admin_role->givePermissionTo(Permission::all());
+
+        // Specilties List seeding
+        $specialty = Speciality::create(['title' => 'Anesthesiologist']);
+        $specialty = Speciality::create(['title' => 'Dermatologist']);
+        $specialty = Speciality::create(['title' => 'Radiologist']);
+        $specialty = Speciality::create(['title' => 'Medicine Specialist']);
+        $specialty = Speciality::create(['title' => 'Neurologist']);
+        $specialty = Speciality::create(['title' => 'Gynecologist']);
+        $specialty = Speciality::create(['title' => 'Ophthalmologist']);
+        $specialty = Speciality::create(['title' => 'Optometrist']);
+        $specialty = Speciality::create(['title' => 'Vitreoretinal Specialist']);
+        $specialty = Speciality::create(['title' => 'Pathologist']);
+        $specialty = Speciality::create(['title' => 'Pediatrician']);
+        $specialty = Speciality::create(['title' => 'Physiotherapist']);
+        $specialty = Speciality::create(['title' => 'Psychiatrist']);
+        $specialty = Speciality::create(['title' => 'Oncologist']);
+        $specialty = Speciality::create(['title' => 'Surgeon']);
+        $specialty = Speciality::create(['title' => 'Urologist']);
+        $specialty = Speciality::create(['title' => 'Nephrologist']);
+        $specialty = Speciality::create(['title' => 'Hepatologist']);
+        $specialty = Speciality::create(['title' => 'Diabetologist']);
     }
 }

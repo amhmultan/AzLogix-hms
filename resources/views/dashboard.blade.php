@@ -57,8 +57,8 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card-counter bg-warning">
-                <i class="fa fa-tablets"></i>
+            <div class="card-counter warning">
+                <i class="fas fa-tablets"></i>
                 <span class="count-numbers">
                     @php
                         $products_count = DB::table('products')->count();

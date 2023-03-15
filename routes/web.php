@@ -97,6 +97,8 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('doctor_notes','DoctorNotesController');
         Route::resource('purchases','PurchaseController');
         Route::resource('sales','SaleController');
+        Route::resource('specialities','SpecialityController');
+        Route::resource('doctors','DoctorController');
         Route::get('productlist', [PurchaseController::class, 'productlist']);
     });
     
