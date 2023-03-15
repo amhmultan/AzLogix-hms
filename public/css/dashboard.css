@@ -18,6 +18,11 @@
     color: #FFF;
   }
 
+  .card-counter.secondary{
+    background-color: #9FA6B2;
+    color: #FFF;
+  }
+
   .card-counter.danger{
     background-color: #ef5350;
     color: #FFF;
@@ -64,4 +69,19 @@
     opacity: 0.5;
     display: block;
     font-size: 30px;
+  }
+
+  .card-counter .btn{
+    box-shadow: 2px 2px 10px #DADADA;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 10px 0px;
+    background-color: #5a2ac98c;
+    color: #FFF;
+    font-weight: bolder;
+    height: 50px;
+    width: auto;
+    border-radius: 1px;
+    transition: .3s linear all;
+    display: block;
   }

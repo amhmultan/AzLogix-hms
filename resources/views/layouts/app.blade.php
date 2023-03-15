@@ -13,6 +13,7 @@
         <!-- Custom Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/clock.css') }}">
         <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
 
         <!-- Bootstrap Styles Links -->
@@ -49,6 +50,7 @@
         
         <!-- Custom Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/clock.js') }}" defer></script>
         
         <!-- Bootstrap Scripts -->
         <script src="{{ asset('bootstrap-4.1.3-dist/js/bootstrap.bundle.min.js') }}" defer></script>

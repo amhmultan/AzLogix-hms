@@ -28,9 +28,9 @@
                     </div>
                     
                     <div class="col-md-3">
-                        <label for="pic" class="text-gray-700 font-black">Picture:</label>
+                        <label for="pic" class="text-gray-700 font-black">Picture:<span class="text-danger"> * </span></label>
                         <div class="border-4 rounded-lg border-black p-3 m-1"><img src="{{ asset('img/'.$doctor->pic) }}" width="120px"></div>
-                        <input type="file" id="pic" name="pic" value="{{ old('pic',$doctor->pic) }}" class="form-control" />
+                        <input type="file" id="pic" name="pic" value="{{ old('pic',$doctor->pic) }}" class="form-control" required/>
                     </div>
 
                   </div>
@@ -57,9 +57,10 @@
                     <div class="col-md-3">
                       <label for="specialty" class="text-gray-700 font-black">Specialty:<span class="text-danger"> * </span></label>
                         <select class="form-control" name="specialty" id="specialty" required>
-                          @foreach ($data['specialities'] as $specialty)
-                            <option value="{{ $specialty->id }}" selected>{{ $specialty->sTitle }}</option>
-                          @endforeach
+                          <option value=""> -- Please Select -- </option>
+                            @foreach ($data['specialities'] as $specialty)
+                              <option value="{{ $specialty->id }}">{{ $specialty->sTitle }}</option>
+                            @endforeach
                         </select>
                     </div>
                     @foreach ($data['doctors'] as $doctor)
