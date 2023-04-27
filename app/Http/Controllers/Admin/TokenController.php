@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Patient;
 use App\Models\Token;
 
 class TokenController extends Controller
@@ -35,10 +34,12 @@ class TokenController extends Controller
     {
         
         $tokens = DB::table('tokens')
-        ->select('tokens.id', 'tokens.fk_patients_id', 'patients.name', 'tokens.fees', 'tokens.denomination', 'tokens.balance', 'tokens.created_at', 'tokens.updated_at')
-        ->leftJoin('patients','tokens.fk_patients_id','=','patients.id')
-        ->get();
-        
+                    ->leftJoin('patients','tokens.fk_patients_id','=','patients.id')
+                    ->leftJoin('doctors','tokens.fk_doctors_id','=','doctors.id')
+                    ->leftJoin('specialities','tokens.fk_specialty_id','=','specialities.id')
+                    ->select('tokens.id', 'tokens.fk_patients_id', 'patients.name as pName', 'tokens.fk_doctors_id','doctors.name as dName', 'tokens.fk_specialty_id', 'specialities.title as sTitle', 'tokens.fees', 'tokens.denomination', 'tokens.balance', 'tokens.created_at', 'tokens.updated_at')
+                    ->get();
+                    
         return view('token.index', ['tokens' => $tokens]);
 
     }
@@ -52,13 +53,29 @@ class TokenController extends Controller
     {
         
         $search = $request['search'] ?? "";
-        
+
+        $data = [];
+
         $patients = DB::table('patients')
                     ->where('patients.id','LIKE',"%$search%")
                     ->get();
         
-                            
-        return view('token.new', ['search' => $search], ['patients' => $patients]);
+        
+        $doctors = DB::table('doctors')
+                    ->select('doctors.id','doctors.name as dName')
+                    ->get();
+
+        $specialities = DB::table('specialities')
+                    ->select('specialities.id','specialities.title')
+                    ->get();
+
+        $data = [
+            "patients" => $patients,
+            "doctors" => $doctors,
+            "specialities" => $specialities,
+        ];
+
+        return view('token.new', ['search' => $search], ['data' => $data]);
         
     }
 
@@ -88,20 +105,19 @@ class TokenController extends Controller
     public function show(Token $token)
     {
         $title = DB::table('hospitals')
-                    ->select('hospitals.title', 'hospitals.logo', 'hospitals.address', 'hospitals.contact', 'hospitals.email', 'hospitals.website')
+                    ->select('hospitals.title', 'hospitals.logo', 'hospitals.address', 'hospitals.contact', 'hospitals.email', 'hospitals.website','hospitals.phc_no')
                     ->get();
         
 
         $id = $token->id;
         $token = DB::table('patients')
                     ->join('tokens','tokens.fk_patients_id','patients.id')
-                    ->select('tokens.*','patients.name')
+                    ->join('doctors','tokens.fk_doctors_id','=','doctors.id')
+                    ->join('specialities','tokens.fk_specialty_id','=','specialities.id')
+                    ->select('tokens.*','patients.name as pName','doctors.name as dName','specialities.title as sTitle', 'doctors.pmdc')
                     ->where('tokens.id', $id)
                     ->get();
 
-        
-
-        //dd($token);
         return view('token.show',['token' => $token], ['hospitals' => $title]);
     }
 
@@ -114,7 +130,33 @@ class TokenController extends Controller
     public function edit(Token $token)
     {
         
-        return view('token.edit',['token' => $token]);
+        $data = [];
+        
+        $id = $token->id;
+        
+        $token = DB::table('tokens')
+                        ->join('patients','tokens.fk_patients_id','=','patients.id')
+                        ->join('doctors','tokens.fk_doctors_id','=','doctors.id')
+                        ->join('specialities','tokens.fk_specialty_id','=','specialities.id')
+                        ->select('tokens.*','patients.name as pName','patients.phone','doctors.name as dName','specialities.title as sTitle')
+                        ->where('tokens.id', '=', $id)
+                        ->get();
+        
+        $doctors = DB::table('doctors')
+                    ->select('doctors.id','doctors.name')
+                    ->get();
+
+        $specialities = DB::table('specialities')
+                    ->select('specialities.id','specialities.title')
+                    ->get();
+
+        $data = [
+            "tokens" => $token,
+            "doctors" => $doctors,
+            "specialities" => $specialities,
+        ];
+        
+        return view('token.edit',['data' => $data]);
 
     }
 
@@ -125,9 +167,10 @@ class TokenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Token $token)
+    public function update(Request $request, $id)
     {
         
+        $token = Token::find($id);
         $token->update($request->all());
         return redirect('/admin/tokens')->withSuccess('Patient token updated !!!');
 

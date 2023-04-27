@@ -18,5 +18,10 @@ class Speciality extends Model
     {
       return $this->hasMany(Doctor::class);
     }
+    
+    public function token()
+    {
+      return $this->hasMany(Token::class);
+    }
 
 }

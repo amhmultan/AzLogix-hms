@@ -19,4 +19,9 @@ class Doctor extends Model
       return $this->hasMany(Speciality::class);
     }
 
+    public function token()
+    {
+      return $this->hasMany(Token::class);
+    }
+
 }

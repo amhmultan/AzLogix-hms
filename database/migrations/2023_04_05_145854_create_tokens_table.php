@@ -17,6 +17,8 @@ class CreateTokensTable extends Migration
 
             $table->id();
             $table->unsignedBigInteger('fk_patients_id');
+            $table->unsignedBigInteger('fk_doctors_id');
+            $table->unsignedBigInteger('fk_specialty_id');
             $table->integer('fees')->unsigned();
             $table->integer('denomination')->unsigned();
             $table->integer('balance')->unsigned();
@@ -25,6 +27,16 @@ class CreateTokensTable extends Migration
             $table->foreign('fk_patients_id')->on('patients')->references('id') 
             ->onDelete('CASCADE')
             ->onUpdate('CASCADE');
+            
+            $table->foreign('fk_doctors_id')->on('doctors')->references('id')
+            ->onDelete('CASCADE')
+            ->onUpdate('CASCADE');
+            
+            $table->foreign('fk_specialty_id')->on('specialities')->references('id')
+            ->onDelete('CASCADE')
+            ->onUpdate('CASCADE');
+
+
            });
     }
 

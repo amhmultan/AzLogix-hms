@@ -18,9 +18,12 @@
             <table id="tokenTable" class="table-responsive bg-white shadow-md rounded text-left border-collapse">
               <thead>
                 <tr>
+                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PRESCRIPTION</th>
                   <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">Token ID</th>
                   <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MR NO.</th>
                   <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PATIENT NAME</th>
+                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">DOCTORS NAME</th>
+                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">SPECIALTY</th>
                   <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">FEES</th>
                   <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PAID</th>
                   <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">BALANCE</th>
@@ -33,9 +36,16 @@
                 @can('Token access')
                   @foreach($tokens as $token)
                     <tr>
+                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">
+                        @can('Token access')
+                          <a href="{{route('admin.tokens.show',$token->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-green-400">Show</a>
+                        @endcan
+                      </td>
                       <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->id }}</td>
                       <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->fk_patients_id }}</td>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->name }}</td>
+                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->pName }}</td>
+                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->dName }}</td>
+                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->sTitle }}</td>
                       <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->fees }}</td>
                       <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->denomination }}</td>
                       <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->balance }}</td>
@@ -44,9 +54,7 @@
                       
                       
                       <td class="text-nowrap text-xs px-3 border-grey-light">
-                        @can('Token access')
-                          <a href="{{route('admin.tokens.show',$token->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-green-400">Show</a>
-                        @endcan
+                        
                         @can('Token edit')
                         <a href="{{route('admin.tokens.edit',$token->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
                         @endcan

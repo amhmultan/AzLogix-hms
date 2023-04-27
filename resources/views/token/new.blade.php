@@ -25,7 +25,7 @@
               <label for="fk_patients_id" class="text-gray-700 font-black">Patient Name:</label>
               <select class="form-control" name="fk_patients_id" disabled>
                 @if ($search != "")
-                @foreach ($patients as $patient)
+                @foreach ($data['patients'] as $patient)
                   <option>{{ $patient->name }}</option>    
                 @endforeach
                 @else
@@ -37,7 +37,7 @@
               <label class="text-gray-700 font-black">Contact Number:</label>
               <select class="form-control" disabled>
                 @if ($search != "")
-                @foreach ($patients as $patient)
+                @foreach ($data['patients'] as $patient)
                   <option>{{ $patient->phone }}</option>    
                 @endforeach
                 @else
@@ -52,11 +52,34 @@
           <form method="POST" action="{{ route('admin.tokens.store') }}" enctype="multipart/form-data">
           @csrf
           <select class="form-control" name="fk_patients_id" hidden>
-            @foreach ($patients as $patient)
+            @foreach ($data['patients'] as $patient)
               <option value="{{ $patient->id }}"> {{ $patient->id }} {{ $patient->name }} </option>    
             @endforeach
           </select>
           
+          <div class="row my-4">
+            <div class="col-md-6">
+              <label class="text-gray-700 font-black">Doctor:</label>
+              <select class="form-control" name="fk_doctors_id">
+                <option value=""> -- Please Select -- </option>
+                @foreach ($data['doctors'] as $doctor)
+                  <option value="{{$doctor->id}}"> {{ $doctor->dName }} </option>
+                @endforeach
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="text-gray-700 font-black">Specialty:</label>
+              <select class="form-control" name="fk_specialty_id">
+                <option value=""> -- Please Select -- </option>
+                @foreach ($data['specialities'] as $specialty)
+                  <option value="{{$specialty->id}}"> {{ $specialty->title }} </option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          
+          <hr />
+
           <div class="row mt-4">
             <div class="col-md-4">
               <label for="fees" class="text-gray-700 font-black">Fees:</label>
