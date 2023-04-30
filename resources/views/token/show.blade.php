@@ -99,7 +99,66 @@
                     </div> --}}
                 </div>
                 <hr />
+                @if ($tokens->sTitle == 'Ophthalmologist')
+                <div class="vl"></div>
+                
+                <div class="container">
+                    <div class="col-sm-6" style="float: right; margin-top:-33%">
+                        <table class="table table-bordered" style="outline-style: double;">
+                            <tbody>
+                                
+                                    <tr>
+                                        <th class="h4 text-center font-weight-bold">℞</th>
+                                        <th style="font-family: Arial, Helvetica, sans-serif;" class="text-center font-weight-bold align-middle">SPH</th>
+                                        <th style="font-family: Arial, Helvetica, sans-serif;" class="text-center font-weight-bold align-middle">CYL</th>
+                                        <th style="font-family: Arial, Helvetica, sans-serif;" class="text-center font-weight-bold align-middle">AXIS</th>
+                                        <th style="font-family: Arial, Helvetica, sans-serif;" class="text-center font-weight-bold align-middle">PRISM</th>
+                                        <th style="font-family: Arial, Helvetica, sans-serif;" class="text-center font-weight-bold align-middle">BASE</th>
+                                    </tr>
+                                
+                                <tr>
+                                    <th style="font-family: Arial, Helvetica, sans-serif;" class="text-center font-weight-bold align-middle">OD</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th style="font-family: Arial, Helvetica, sans-serif;" class="text-center font-weight-bold align-middle">OS</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th style="font-family: Arial, Helvetica, sans-serif;" class="font-weight-bold align-middle" colspan="2" rowspan="2">PD</th>
+                                    
+                                    <th colspan="4"><small class="h6 font-weight-bold">Remarks:</small></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">&nbsp</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                @else
+                
+                <div class="container">
+                    <div class="col-sm-12">
+                        <div class="vl"></div>
+                    </div>
+                </div>
+                
+                @endif
+                
         </div>
+
+        <br /><br />
+        
         <div class="container mt-5">
             <div class="row">
                 <div class="col-sm-12 text-center">

@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
         <link rel="stylesheet" href="{{ asset('css/clock.css') }}">
         <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/prescription.css') }}">
 
         <!-- Bootstrap Styles Links -->
         <link href="{{ asset('bootstrap-5.1.3-dist/css/bootstrap.min.css') }}" rel="stylesheet">
