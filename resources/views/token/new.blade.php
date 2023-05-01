@@ -67,6 +67,7 @@
                 @endforeach
               </select>
             </div>
+
             <div class="col-md-6">
               <label class="text-gray-700 font-black">Specialty:</label>
               <select class="form-control" name="fk_specialty_id">
@@ -76,6 +77,7 @@
                 @endforeach
               </select>
             </div>
+
           </div>
           
           <hr />

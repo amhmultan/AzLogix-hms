@@ -99,9 +99,10 @@
                     </div> --}}
                 </div>
                 <hr />
-                @if ($tokens->sTitle == 'Ophthalmologist')
-                <div class="vl"></div>
                 
+                @if ($tokens->sTitle == 'Ophthalmologist')
+                
+                <div class="vl"></div>
                 <div class="container">
                     <div class="col-sm-6" style="float: right; margin-top:-33%">
                         <table class="table table-bordered" style="outline-style: double;">

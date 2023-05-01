@@ -201,7 +201,7 @@
         {{-- Hospital Menu Ending --}}
 
         {{-- Pharmacy Menu Starting --}}
-        @canany('Pharmacy access')
+        {{-- @canany('Pharmacy access')
         <h6 class="text-muted text-uppercase pl-3 mt-3">
             <span>Pharmacy</span>
         </h6>
@@ -220,8 +220,6 @@
             <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.suppliers.index') ? 'active' : '' }}"
             href="{{ route('admin.suppliers.index')}}">
             
-            <?xml version="1.0" encoding="iso-8859-1"?>
-            <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve" height="24px" width="24px" fill="#62adfc"><g><g><path d="M56,11H41V7h2c0.6,0,1-0.4,1-1V2c0-0.6-0.4-1-1-1H17c-0.6,0-1,0.4-1,1v4c0,0.6,0.4,1,1,1h2v4H4c-2.2,0-4,1.8-4,4v15 c0,0.6,0.4,1,1,1h3v27c0,0.6,0.4,1,1,1h33v-2H6V31h14v-2H5H2V15c0-1.1,0.9-2,2-2h16h20h16c1.1,0,2,0.9,2,2v14h-3H40v2h14v2h2v-2h3 c0.6,0,1-0.4,1-1V15C60,12.8,58.2,11,56,11z M18,3h24v2H18V3z M21,11V7h18v4H21z"/><path d="M37,26H23c-0.6,0-1,0.4-1,1v6c0,0.6,0.4,1,1,1h14c0.6,0,1-0.4,1-1v-6C38,26.4,37.6,26,37,26z M36,32H24v-4h12V32z"/><path d="M59,35H41c-0.6,0-1,0.4-1,1v22c0,0.6,0.4,1,1,1h18c0.6,0,1-0.4,1-1V36C60,35.4,59.6,35,59,35z M58,37v4H42v-4H58z M42,57 V43h16v14H42z"/><rect x="45" y="45" width="2" height="2"/><rect x="49" y="45" width="2" height="2"/><rect x="53" y="45" width="2" height="2"/><rect x="45" y="49" width="2" height="2"/> <rect x="49" y="49" width="2" height="2"/><rect x="53" y="49" width="2" height="2"/><rect x="45" y="53" width="2" height="2"/><rect x="49" y="53" width="2" height="2"/><rect x="53" y="53" width="2" height="2"/><rect x="43" y="38" width="2" height="2"/><rect x="46" y="38" width="2" height="2"/><rect x="49" y="38" width="2" height="2"/><rect x="52" y="38" width="2" height="2"/><rect x="55" y="38" width="2" height="2"/></g></g><g></g><g></g><g></g><g></g>
             <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
             
@@ -251,7 +249,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#62adfc"><g><rect fill="none" height="24" width="24"/><path d="M17,2H7C5.9,2,5,2.9,5,4v2c0,1.1,0.9,2,2,2h10c1.1,0,2-0.9,2-2V4C19,2.9,18.1,2,17,2z M17,6H7V4h10V6z M20,22H4 c-1.1,0-2-0.9-2-2v-1h20v1C22,21.1,21.1,22,20,22z M18.53,10.19C18.21,9.47,17.49,9,16.7,9H7.3c-0.79,0-1.51,0.47-1.83,1.19L2,18 h20L18.53,10.19z M9.5,16h-1C8.22,16,8,15.78,8,15.5C8,15.22,8.22,15,8.5,15h1c0.28,0,0.5,0.22,0.5,0.5C10,15.78,9.78,16,9.5,16z M9.5,14h-1C8.22,14,8,13.78,8,13.5C8,13.22,8.22,13,8.5,13h1c0.28,0,0.5,0.22,0.5,0.5C10,13.78,9.78,14,9.5,14z M9.5,12h-1 C8.22,12,8,11.78,8,11.5C8,11.22,8.22,11,8.5,11h1c0.28,0,0.5,0.22,0.5,0.5C10,11.78,9.78,12,9.5,12z M12.5,16h-1 c-0.28,0-0.5-0.22-0.5-0.5c0-0.28,0.22-0.5,0.5-0.5h1c0.28,0,0.5,0.22,0.5,0.5C13,15.78,12.78,16,12.5,16z M12.5,14h-1 c-0.28,0-0.5-0.22-0.5-0.5c0-0.28,0.22-0.5,0.5-0.5h1c0.28,0,0.5,0.22,0.5,0.5C13,13.78,12.78,14,12.5,14z M12.5,12h-1 c-0.28,0-0.5-0.22-0.5-0.5c0-0.28,0.22-0.5,0.5-0.5h1c0.28,0,0.5,0.22,0.5,0.5C13,11.78,12.78,12,12.5,12z M15.5,16h-1 c-0.28,0-0.5-0.22-0.5-0.5c0-0.28,0.22-0.5,0.5-0.5h1c0.28,0,0.5,0.22,0.5,0.5C16,15.78,15.78,16,15.5,16z M15.5,14h-1 c-0.28,0-0.5-0.22-0.5-0.5c0-0.28,0.22-0.5,0.5-0.5h1c0.28,0,0.5,0.22,0.5,0.5C16,13.78,15.78,14,15.5,14z M15.5,12h-1 c-0.28,0-0.5-0.22-0.5-0.5c0-0.28,0.22-0.5,0.5-0.5h1c0.28,0,0.5,0.22,0.5,0.5C16,11.78,15.78,12,15.5,12z"/></g></svg>
             <span class="mx-3">Sale Invoice</span>
             </a>
-        @endcanany
+        @endcanany --}}
 
         {{-- Pharmacy Menu End --}}
         
