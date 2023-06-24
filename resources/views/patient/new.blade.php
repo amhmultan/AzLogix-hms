@@ -12,7 +12,7 @@
             <input id="name" type="text" name="name" value="{{ old('name') }}" class="form-control" required/>
           </div>
           <div class="col-md-3">
-            <label for="name" class="text-gray-700 font-black">Father Name:</label>
+            <label for="name" class="text-gray-700 font-black">Guardian Name:</label>
             <input id="fname" type="text" name="fname" value="{{ old('fname') }}" class="form-control" />
           </div>
           <div class="col-md-2">

@@ -7,17 +7,24 @@
                 
                 @foreach ($hospitals as $hospital)
                 <div class="row">
+                    
+                    <div class="col-sm-9">
+                        @foreach ($token as $tokens)
+                        <div class="row">
+                            <h1 class="display-6 fw-bold">{{$tokens->dName}}</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <span>{{ $tokens->remarks }}</span>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+
                     <div class="col-sm-3">
-                        <img src="{{ asset('img/'.$hospital->logo) }}" width="200px" class="border border-dark border-4">
+                        <img src="{{ asset('img/'.$hospital->logo) }}" width="200px" height="200px" class="mt-4">
                     </div>
-                    <div class="col-sm-8">
-                        <p class="font-weight-bold h4 text-primary text-uppercase">{{ $hospital->title }}</p>
-                        <span class="italic">{{ $hospital->address }}</span><br>
-                        <span class="italic"><strong>Contact Number:</strong> {{ $hospital->contact }} </span><br>
-                        <span class="italic"><strong>PHC No:</strong> {{ $hospital->phc_no }} </span><br>
-                        <span class="italic"><strong>Email:</strong> {{ $hospital->email }}</span><br>
-                        <span class="italic"><strong>Website:</strong> {{ $hospital->website }}</span>
-                    </div>
+                    
                 </div>    
                 @endforeach
                 <hr />
@@ -44,14 +51,20 @@
                         {{ $tokens->pName }}
                     </div>
                     <div class="col-md-3">
+                        <span class="font-weight-bold pr-5 mr-5">Guardian:</span>
+                    </div>
+                    <div class="col-md-3">
+                        {{ $tokens->fName }}
+                    </div>
+                    {{-- <div class="col-md-3">
                         <span class="font-weight-bold pr-5 mr-5">Doctor:</span>
                     </div>
                     <div class="col-md-3">
                         {{ $tokens->dName }}
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         <span class="font-weight-bold pr-5 mr-5">Specialty:</span>
                     </div>
                     <div class="col-md-3">
@@ -62,10 +75,10 @@
                     </div>
                     <div class="col-md-3">
                         {{ $tokens->pmdc }}
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         <span class="font-weight-bold pr-5 mr-5">Fees:</span>
                     </div>
                     <div class="col-md-3">
@@ -76,21 +89,29 @@
                     </div>
                     <div class="col-md-3">
                         {{ $tokens->denomination }}
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row">
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         <span class="font-weight-bold pr-5 mr-5">Balance:</span>
                     </div>
                     <div class="col-md-3">
                         {{ $tokens->balance }}
+                    </div> --}}
+                    <div class="col-md-3">
+                        <span class="font-weight-bold pr-5 mr-5">Checkup On:</span>
                     </div>
                     <div class="col-md-3">
-                        <span class="font-weight-bold pr-5 mr-5">Created At:</span>
+                        {{ $date = date('d-m-Y', strtotime($tokens->created_at)) }}
+                    </div>
+                    @foreach ($hospitals as $hospital)
+                    <div class="col-md-3">
+                        <span class="font-weight-bold pr-5 mr-5">PHC No:</span>
                     </div>
                     <div class="col-md-3">
-                        {{ $tokens->created_at }}
+                        {{ $hospital->phc_no }}
                     </div>
+                    @endforeach
                     {{-- <div class="col-md-3">
                         <span class="font-weight-bold pr-5 mr-5">Updated On:</span>
                     </div>
@@ -102,7 +123,7 @@
                 
                 @if ($tokens->sTitle == 'Ophthalmologist')
                 
-                <div class="vl"></div>
+                <div class="vl" style="height: 1000px;"></div>
                 <div class="container">
                     <div class="col-sm-6" style="float: right; margin-top:-33%">
                         <table class="table table-bordered" style="outline-style: double;">
@@ -145,8 +166,21 @@
                         </table>
                     </div>
                 </div>
-
+                <hr />
+                @foreach ($hospitals as $hospital)
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <p class="font-weight-bold h4 text-primary text-uppercase">{{ $hospital->title }}</p>
+                        <span class="italic">{{ $hospital->address }}</span><br>
+                        <span class="italic"><strong>Contact Number:</strong> {{ $hospital->contact }} </span>
+                        {{-- <span class="italic"><strong>PHC No:</strong> {{ $hospital->phc_no }} </span> --}}
+                        <span class="italic"><strong>Email:</strong> {{ $hospital->email }}</span>
+                        <span class="italic"><strong>Website:</strong> {{ $hospital->website }}</span>
+                    </div>
+                </div>
+                @endforeach
                 @else
+                
                 
                 <div class="container">
                     <div class="col-sm-12">
@@ -157,8 +191,6 @@
                 @endif
                 
         </div>
-
-        <br /><br />
         
         <div class="container mt-5">
             <div class="row">

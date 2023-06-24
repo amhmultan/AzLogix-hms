@@ -114,7 +114,7 @@ class TokenController extends Controller
                     ->join('tokens','tokens.fk_patients_id','patients.id')
                     ->join('doctors','tokens.fk_doctors_id','=','doctors.id')
                     ->join('specialities','tokens.fk_specialty_id','=','specialities.id')
-                    ->select('tokens.*','patients.name as pName','doctors.name as dName','specialities.title as sTitle', 'doctors.pmdc')
+                    ->select('tokens.*','patients.name as pName','patients.fname as fName','doctors.name as dName','specialities.title as sTitle', 'doctors.pmdc', 'doctors.remarks')
                     ->where('tokens.id', $id)
                     ->get();
 

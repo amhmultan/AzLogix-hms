@@ -38,7 +38,7 @@
                     @endphp
                     {{ $patients_count }}
                 </span>
-                <span class="count-name">Patients</span>
+                <span class="count-name">Today OPD</span>
                 <a class="btn" href="{{ route('admin.tokens.index')}}" role="button">More Info</a>
             </div>
         </div>
@@ -51,7 +51,7 @@
                     @endphp
                     {{ $registered_count }}
                 </span>
-                <span class="count-name">Registered</span>
+                <span class="count-name">Total Patients</span>
                 <a class="btn" href="{{ route('admin.patients.index')}}" role="button">More Info</a>
             </div>
         </div>
@@ -93,7 +93,7 @@
                     @endphp
                     {{ $products_count }}
                 </span>
-                <span class="count-name">Products</span>
+                <span class="count-name">Medicines</span>
                 <a class="btn" href="{{ route('admin.products.index')}}" role="button">More Info</a>
             </div>
         </div>
