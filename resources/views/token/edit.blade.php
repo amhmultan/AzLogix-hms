@@ -41,7 +41,7 @@
                   
                   <div class="col-md-6">
                     <label for="name" class="text-gray-700 font-black mr-2">Update Doctor:</label>
-                    <select class="form-control" name="fk_doctors_id">
+                    <select class="form-control" name="fk_doctors_id" required>
                       @foreach ($data['doctors'] as $doctor)
                         <option class="text-center" value="{{ $doctor->id }}" > {{ old('',$doctor->name) }} </option>
                       @endforeach
@@ -50,7 +50,7 @@
 
                   <div class="col-md-6">
                     <label for="fk_specialty_id" class="text-gray-700 font-black mr-2">Update Doctor:</label>
-                    <select class="form-control" name="fk_specialty_id">
+                    <select class="form-control" name="fk_specialty_id" required>
                       @foreach ($data['specialities'] as $specialty)
                         <option class="text-center" value="{{ $specialty->id }}"> {{ $specialty->title }} </option>
                       @endforeach
@@ -63,17 +63,17 @@
                   
                   <div class="col-md-4">
                       <label for="fees" class="text-gray-700 font-black">Fees:</label>
-                      <input id="fees" type="number" name="fees" value="{{ old('fees',$token->fees) }}" class="form-control" />
+                      <input id="fees" type="number" name="fees" value="{{ old('fees',$token->fees) }}" class="form-control" oninput="calculateBalance()" required />
                     </div>
 
                     <div class="col-md-4">
                       <label for="denomination" class="text-gray-700 font-black">Denomination:</label>
-                      <input id="denomination" type="number" name="denomination" value="{{ old('denomination',$token->denomination) }}" class="form-control" />
+                      <input id="denomination" type="number" name="denomination" value="{{ old('denomination',$token->denomination) }}" class="form-control" oninput="calculateBalance()" required />
                     </div>
 
                   <div class="col-md-4">
                     <label for="balance" class="text-gray-700 font-black">Balance</label>
-                    <input id="balance" type="number" name="balance" value="{{ old('balance',$token->balance) }}" class="form-control" />
+                    <input id="balance" type="number" name="balance" value="{{ old('balance',$token->balance) }}" class="form-control" readonly />
                   </div>
 
 
@@ -90,4 +90,19 @@
           </div>
 
   </main>
+  @section('script')
+     <script type="text/javascript">
+        function calculateBalance() {
+            // Get values from input fields
+            var fees = parseFloat(document.getElementById('fees').value) || 0;
+            var denomination = parseFloat(document.getElementById('denomination').value) || 0;
+
+            // Calculate balance
+            var balance = fees - denomination;
+
+            // Update the readonly input field
+            document.getElementById('balance').value = balance.toFixed(2);
+        }
+     </script>
+    @stop
 </x-app-layout>

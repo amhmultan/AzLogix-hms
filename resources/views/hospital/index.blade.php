@@ -68,7 +68,6 @@
             </tbody>
           </table>
         
-        
         @else
 
           <div class="row flex text-center mt-5 pt-5">
@@ -83,11 +82,11 @@
   </main>
 </div>
 @section('script')
-<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-<script>
-  $(document).ready( function () {
-    $('#hospitalTable').DataTable();
-} );
-</script>
+  <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready( function () {
+      $('#hospitalTable').DataTable();
+  } );
+</script>  
 @stop
 </x-app-layout>

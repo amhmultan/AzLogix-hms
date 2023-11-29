@@ -32,13 +32,13 @@
                 <i class="fas fa-person-circle-plus"></i>
                 <span class="count-numbers">
                     @php
-                        $patients_count = DB::table('patients')
+                        $patients_count = DB::table('tokens')
                                             ->whereDate('created_at', today())
                                             ->count();
                     @endphp
                     {{ $patients_count }}
                 </span>
-                <span class="count-name">Today OPD</span>
+                <span class="count-name">Today's OPD</span>
                 <a class="btn" href="{{ route('admin.tokens.index')}}" role="button">More Info</a>
             </div>
         </div>

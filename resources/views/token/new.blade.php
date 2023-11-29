@@ -84,16 +84,16 @@
 
           <div class="row mt-4">
             <div class="col-md-4">
-              <label for="fees" class="text-gray-700 font-black">Fees:</label>
-              <input id="fees" type="number" name="fees" value="{{ old('fees') }}" class="form-control" />
+              <label for="fees" class="text-gray-700 font-black">Total Fees:</label>
+              <input id="fees" type="number" name="fees" value="{{ old('fees') }}" class="form-control" oninput="calculateBalance()" required />
             </div>
             <div class="col-md-4">
-              <label for="denomination" class="text-gray-700 font-black">Denomination:</label>
-              <input id="denomination" type="number" name="denomination" value="{{ old('denomination') }}" class="form-control" />
+              <label for="denomination" class="text-gray-700 font-black">Cash Recieved:</label>
+              <input id="denomination" type="number" name="denomination" value="{{ old('denomination') }}" class="form-control" oninput="calculateBalance()" required />
             </div>
             <div class="col-md-4">
               <label for="balance" class="text-gray-700 font-black">Balance</label>
-              <input id="balance" type="number" name="balance" value="{{ old('balance') }}" class="form-control" />
+              <input id="balance" type="number" name="balance" value="" class="form-control" readonly />
             </div>
             <div class="row mt-5">
               <div class="col-md-12 text-center">
@@ -105,4 +105,21 @@
 
         </div>
     </main>
+    
+    @section('script')
+     <script type="text/javascript">
+        function calculateBalance() {
+            // Get values from input fields
+            var fees = parseFloat(document.getElementById('fees').value) || 0;
+            var denomination = parseFloat(document.getElementById('denomination').value) || 0;
+
+            // Calculate balance
+            var balance = fees - denomination;
+
+            // Update the readonly input field
+            document.getElementById('balance').value = balance.toFixed(2);
+        }
+     </script>
+    @stop
+
 </x-app-layout>

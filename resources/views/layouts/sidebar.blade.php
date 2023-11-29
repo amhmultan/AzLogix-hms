@@ -306,19 +306,19 @@
 @section('script')
     
     <script>
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-    $("#search").on("keyup", function () {
-    if (this.value.length > 0) {   
-    $("a,h6").hide().filter(function () {
-    return $(this).text().toLowerCase().indexOf($("#search").val().toLowerCase()) != -1;
-    }).show(); 
-    }  
-    else { 
-    $("a,h6").show();
-    }
-    }); 
+        $("#search").on("keyup", function () {
+        if (this.value.length > 0) {   
+        $("a,h6").hide().filter(function () {
+        return $(this).text().toLowerCase().indexOf($("#search").val().toLowerCase()) != -1;
+        }).show(); 
+        }  
+        else { 
+        $("a,h6").show();
+        }
+        }); 
 
-    });    
+        });    
     </script>
 @stop
