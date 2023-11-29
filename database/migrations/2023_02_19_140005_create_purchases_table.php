@@ -16,25 +16,21 @@ class CreatePurchasesTable extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('fk_product_id');
-            $table->unsignedBigInteger('fk_manufacturer_id');
-            $table->unsignedBigInteger('fk_supplier_id');
+            $table->string('product_name');
             $table->string('batch_no', 255);
             $table->integer('quantity');
             $table->double('trade_price', 8, 2);
             $table->double('retail_price', 8, 2);
+            $table->double('net_amount', 8, 2);
             $table->integer('discount');
             $table->integer('tax');
-            $table->double('net_amount', 8, 2);
             $table->double('gross_amount', 8, 2);
-            $table->double('grand_amount', 8, 2);
+            $table->unsignedBigInteger('fk_supplier_id');
+            $table->string('supplier_name');
             $table->string('remarks');
             $table->timestamps();
 
             $table->foreign('fk_product_id')->on('products')->references('id')
-            ->onDelete('CASCADE')
-            ->onUpdate('CASCADE');
-
-            $table->foreign('fk_manufacturer_id')->on('manufacturers')->references('id')
             ->onDelete('CASCADE')
             ->onUpdate('CASCADE');
             

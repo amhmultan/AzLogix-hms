@@ -10,17 +10,24 @@ class Purchase extends Model
     use HasFactory;
 
     protected $fillable = [
-        'fk_product_id', 'fk_manufacturer_id','fk_supplier_id','batch_no','quantity','price','net_amount','discount','gross_amount', 'remarks'
+        'fk_product_id',
+        'product_name',
+        'batch_no',
+        'quantity',
+        'trade_price',
+        'retail_price',
+        'net_amount',
+        'discount',
+        'tax',
+        'gross_amount',
+        'fk_supplier_id',
+        'supplier_name',
+        'remarks'
     ];
 
     public function product()
     {
       return $this->belongsTo(Product::class);
-    }
-
-    public function manufacturer()
-    {
-      return $this->belongsTo(Manufacturer::class);
     }
     
     public function supplier()

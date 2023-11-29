@@ -28,9 +28,9 @@
                         </thead>
                         <tbody>
                           <tr>
-                            <td><input type="number" id="product-id" class="form-control" autofocus /></td>
-                            <td><input type="text" id="product-name" class="form-control" /></td>
-                            <td><input type="number" name="batch_no[]" class="form-control" /></td>
+                            <td><input type="number" id="productsetid" name="product-id[]" class="form-control" disabled /></td>
+                            <td><input type="text" id="product-name" name="product-name[]" class="form-control" /></td>
+                            <td><input type="text" name="batch_no[]" class="form-control" /></td>
                             <td><input type="number" name="quantity[]" class="form-control" /></td>
                             <td><input type="number" name="trade_price[]" class="form-control" /></td>
                             <td><input type="number" name="retail_price[]" class="form-control" /></td>
@@ -48,29 +48,25 @@
                     <hr />
                     
                     <div class="row pb-4">
-                      <div class="col-md-11">
+                      <div class="col-md-2">
                         <label for="name" class="text-gray-700 font-black mr-2">Supplier Name:</label>
                         <select class="form-control" name="fk_supplier_id" id="fk_supplier_id">
-                          <option class="text-center">-- Please Select -- </option>
+                          <option class="text-center" value="">-- Please Select -- </option>
                           @foreach ($data['suppliers'] as $supplier)
                             <option class="text-center" value="{{ $supplier->id }}">{{ $supplier->sName }}</option>
                           @endforeach
                         </select>
                       </div>
+                        
+                        <div class="col-md-1 pt-4">
+                          <a class="btn btn-lg btn-warning text-dark fw-bold" href="{{route('admin.suppliers.create')}}" role="button" target="_blank">Add</a>
+                        </div>
                       
-                      <div class="col-md-1 pt-4">
-                        <a class="btn btn-lg btn-warning text-dark fw-bold" href="{{route('admin.suppliers.create')}}" role="button" target="_blank">Add</a>
-                      </div>
-
-                    </div>
-
-                    <div class="row">
-  
-                      <div class="col-md-12">
+                      <div class="col-md-9">
                         <label for="remarks" class="text-gray-700 font-black">Remarks:</label>
-                        <textarea name="remarks" id="remarks" placeholder="Enter Remarks" class="form-control" rows="5">{{ old('remarks') }}</textarea>
+                        <textarea name="remarks" id="remarks" placeholder="Enter Remarks" class="form-control" rows="1">{{ old('remarks') }}</textarea>
                       </div>
-  
+                      
                     </div>
                     
                     <div class="row mt-5">
@@ -90,14 +86,49 @@
 
   @section('script')
   
-    <script>
+  <script language="JavaScript" type="text/javascript">
       
+      
+      $( document ).ready(function() {
+      
+      // Searching Ajax Products scripts
+        $( "#product-name").autocomplete({
+          autoFill: true,
+          minLength: 1,
+          dataType: "json",
+          cache: false,
+          source : function(request, response) 
+          {
+            $.ajax({
+                url : "/AzLogix-hms/public/admin/productlist",
+                dataType : "json",
+                method:'GET',
+                data : { term: request.term },
+                success: function(data){
+                    response(data.map(function(val){
+                        console.log(val);
+                          $('#productsetid').val(val.id);
+                        return {
+                          value: val.name
+                        };
+                    }));
+
+                }
+            });
+          }
+          });
+
+      
+
       // Appending row
-      $('thead').on('click', '.addRow', function(){
+        $('tbody tr:last td:first input').focus();
+        var i = 0;
+        $('thead').on('click', '.addRow', function(){
+        i = i + 1;
         var tr = "<tr>"+
-                    "<td><input type='number' id='product-id' class='form-control' autofocus/></td>"+
-                    "<td><input type='text' id='product-name' name='product_name[]' class='form-control' /></td>"+
-                    "<td><input type='number' name='batch_no[]' class='form-control' /></td>"+
+                    "<td><input type='number' id='Productsetid' name='product-id[]' class='form-control' disabled /></td>"+
+                    "<td><input type='text' id='product-name"+i+"' name='product-name[]' class='form-control' /></td>"+
+                    "<td><input type='text' name='batch_no[]' class='form-control' /></td>"+
                     "<td><input type='number' name='quantity[]' class='form-control' /></td>"+
                     "<td><input type='number' name='trade_price[]' class='form-control'/></td>"+
                     "<td><input type='number' name='retail_price[]' class='form-control' /></td>"+
@@ -106,49 +137,11 @@
                     "<td><input type='number' name='tax[]' class='form-control' /></td>"+
                     "<td><input type='number' name='gross_amount[]' class='form-control' /></td>"+
                     "<td><a href='javascript:void(0)' class='btn btn-danger deleteRow'>-</a></td>"+
-                  "</tr>"
+                    "</tr>"
         $('tbody').append(tr);
-        });
-
-      // Deleting row
-      $('tbody').on('click', '.deleteRow', function(){
-        $(this).parent().parent().remove();
-      });
-
-
-
-
-
-      // Searching Ajax Products scripts
-
-      $( document ).ready(function() {
-      $( "#product-id" ).autocomplete({
-        minLength: 1,
-        dataType: "json",
-        cache: false,
-        source : function(request, response) 
-        {
-          $.ajax({
-              url : "/AzLogix-hms/public/admin/productlist",
-              dataType : "json",
-              method:'GET',
-              data : { term: request.term },
-              success: function(data){
-                  response(data.map(function(value){
-                      // console.log(value);
-                      return {
-                        value: value.id
-                      };
-                  }));
-
-              }
-          });
-        }
-        });
-      });
-
-      $( document ).ready(function() {
-      $( "#product-name" ).autocomplete({
+                
+        $( "#product-name"+i ).autocomplete({
+        autoFill: true,
         minLength: 1,
         dataType: "json",
         cache: false,
@@ -161,7 +154,8 @@
               data : { term: request.term },
               success: function(data){
                   response(data.map(function(val){
-                      // console.log(val);
+                      //console.log(val);
+                      $('#Productsetid').val(val.id);
                       return {
                         value: val.name
                       };
@@ -171,8 +165,16 @@
           });
         }
         });
-      });
+        
+        $('tbody tr:last td:first input').focus();
 
+        });
+
+      // Deleting row
+      $('tbody').on('click', '.deleteRow', function(){
+        $(this).parent().parent().remove();
+      });
+    });
     </script>
   @stop
 

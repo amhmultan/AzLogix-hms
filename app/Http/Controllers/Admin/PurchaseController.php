@@ -29,13 +29,11 @@ class PurchaseController extends Controller
     public function index()
     {
         $purchases = DB::table('purchases')
-                        ->join('manufacturers', 'manufacturers.id','fk_manufacturer_id')
                         ->join('suppliers', 'suppliers.id', 'fk_supplier_id')
                         ->join('products', 'products.id','fk_product_id')
-                        ->select('purchases.*', 'manufacturers.name as mName', 'products.name as pName', 'suppliers.name as sName')
+                        ->select('purchases.*', 'products.name as pName', 'suppliers.name as sName')
                         ->get();
 
-        //dd($purchases);
         return view('purchase.index', ['purchases' => $purchases]);
     }
 
@@ -57,16 +55,10 @@ class PurchaseController extends Controller
         $suppliers = DB::table('suppliers')
                         ->select('suppliers.id','name as sName')
                         ->get();
-        
-        
-        $manufacturers = DB::table('manufacturers')
-                        ->select('manufacturers.id','name as mName')
-                        ->get();
 
         $data = [
             "products" => $products,
             "suppliers" => $suppliers,
-            "manufacturers" => $manufacturers,
         ];
         
         return view('purchase.new', compact('data'));
@@ -80,13 +72,14 @@ class PurchaseController extends Controller
      */
     public function productlist(Request $request)
     {
+        
         $res = Product::select("products.id", "products.name")
-                ->where("products.id","LIKE","%{$request->term}%")
-                ->Orwhere("products.name","LIKE","%{$request->term}%")
+                ->where("products.name","LIKE","%{$request->term}%")
+                ->where('status', 1)
                 ->get();
-    
-        //dd($res);
+
         return response()->json($res);
+
     }
 
     /**
@@ -97,7 +90,15 @@ class PurchaseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $data= $request->all();
+        // $data['user_id'] = Auth::user()->id;
+        
+        // $Purchase = Purchase::create($data);
+        // return redirect('/admin/purchases')->withSuccess('Purchase added !!!');
+
+
+        dd($request->all());
+
     }
 
     /**
