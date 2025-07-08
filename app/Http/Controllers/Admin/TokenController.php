@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Token;
+use App\Models\Doctor;
 
 class TokenController extends Controller
 {
@@ -50,34 +51,26 @@ class TokenController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
-    {
-        
-        $search = $request['search'] ?? "";
+{
+    $search = $request->input('search', '');
 
-        $data = [];
+    $patients = DB::table('patients')
+                ->where('id', 'like', "%$search%")
+                ->get();
 
-        $patients = DB::table('patients')
-                    ->where('patients.id','LIKE',"%$search%")
-                    ->get();
-        
-        
-        $doctors = DB::table('doctors')
-                    ->select('doctors.id','doctors.name as dName')
-                    ->get();
+    $doctors = Doctor::with('specialty')->get();
 
-        $specialities = DB::table('specialities')
-                    ->select('specialities.id','specialities.title')
-                    ->get();
+    $specialities = DB::table('specialities')->select('id', 'title')->get();
 
-        $data = [
-            "patients" => $patients,
-            "doctors" => $doctors,
-            "specialities" => $specialities,
-        ];
+    $data = [
+        "patients" => $patients,
+        "doctors" => $doctors,
+        "specialities" => $specialities,
+    ];
 
-        return view('token.new', ['search' => $search], ['data' => $data]);
-        
-    }
+    return view('token.new', compact('data', 'search'));
+}
+
 
     /**
      * Store a newly created resource in storage.
@@ -102,24 +95,34 @@ class TokenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Token $token)
+   public function show(Token $token)
     {
-        $title = DB::table('hospitals')
-                    ->select('hospitals.title', 'hospitals.logo', 'hospitals.address', 'hospitals.contact', 'hospitals.email', 'hospitals.website','hospitals.phc_no')
-                    ->get();
-        
+        // Get hospital info (only first row)
+        $hospital = DB::table('hospitals')->first();
 
-        $id = $token->id;
-        $token = DB::table('patients')
-                    ->join('tokens','tokens.fk_patients_id','patients.id')
-                    ->join('doctors','tokens.fk_doctors_id','=','doctors.id')
-                    ->join('specialities','tokens.fk_specialty_id','=','specialities.id')
-                    ->select('tokens.*','patients.name as pName','patients.fname as fName','doctors.name as dName','specialities.title as sTitle', 'doctors.pmdc', 'doctors.remarks')
-                    ->where('tokens.id', $id)
-                    ->get();
+        // Get full token info including doctor, patient, and specialty
+        $tokenInfo = DB::table('tokens')
+                    ->join('patients', 'tokens.fk_patients_id', '=', 'patients.id')
+                    ->join('doctors', 'tokens.fk_doctors_id', '=', 'doctors.id')
+                    ->join('specialities', 'tokens.fk_specialty_id', '=', 'specialities.id')
+                    ->select(
+                        'tokens.*',
+                        'patients.name as pName',
+                        'patients.fname as fName',
+                        'doctors.name as dName',
+                        'specialities.title as sTitle',
+                        'doctors.pmdc',
+                        'doctors.remarks'
+                    )
+                    ->where('tokens.id', $token->id)
+                    ->first(); // use ->first() instead of ->get() to get a single object
 
-        return view('token.show',['token' => $token], ['hospitals' => $title]);
+        return view('token.show', [
+            'token' => $tokenInfo,
+            'hospital' => $hospital,
+        ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

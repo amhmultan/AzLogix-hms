@@ -30,7 +30,7 @@ class DoctorController extends Controller
     public function index()
     {
         $doctors = DB::table('doctors')
-                    ->join('specialities','specialities.id','specialty')
+                    ->join('specialities','specialities.id','speciality_id')
                     ->select('doctors.*','specialities.title as sTitle')
                     ->get();
 
@@ -44,11 +44,9 @@ class DoctorController extends Controller
      */
     public function create()
     {   
-        $specialty = DB::table('specialities')
-                        ->select('specialities.id','specialities.title')
-                        ->get();
-        
-        return view('doctor.new', ['specialty' => $specialty]);
+        $specialities = \App\Models\Speciality::all(); // Load all specialties
+
+        return view('doctor.new', ['specialities' => $specialities]);
     }
 
     /**
@@ -59,17 +57,39 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        $data= $request->all();
-        $data['fk_user_id'] = Auth::user()->id;
+        // $data= $request->all();
+        // $data['fk_user_id'] = Auth::user()->id;
 
-        if ($image = $request->file('pic')) {
-            $destinationPath = 'img/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $data['pic'] = "$profileImage";
-        }
+        // if ($image = $request->file('pic')) {
+        //     $destinationPath = 'img/';
+        //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+        //     $image->move($destinationPath, $profileImage);
+        //     $data['pic'] = "$profileImage";
+        // }
 
-        $Doctor = Doctor::create($data);
+        // $Doctor = Doctor::create($data);
+        $validated = $request->validate([
+        'name' => 'required',
+        'dob' => 'required',
+        'contact' => 'required',
+        'email' => 'nullable|email',
+        'cnic' => 'nullable|string',
+        'pmdc' => 'required',
+        'schedule' => 'nullable|string',
+        'address' => 'nullable|string',
+        'remarks' => 'nullable|string',
+        'pic' => 'nullable|image',
+        'speciality_id' => 'required|exists:specialities,id', // ✅ THIS IS IMPORTANT
+    ]);
+
+    // handle file upload if needed...
+    if ($request->hasFile('pic')) {
+        $fileName = time() . '.' . $request->pic->extension();
+        $request->pic->move(public_path('uploads'), $fileName);
+        $validated['pic'] = $fileName;
+    }
+
+        Doctor::create($validated);
 
         return redirect('/admin/doctors')->withSuccess('Doctor information created !!!');
     }

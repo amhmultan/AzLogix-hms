@@ -21,14 +21,14 @@ class CreateDoctorsTable extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('address')->nullable();
             $table->string('dob')->nullable();
-            $table->unsignedBigInteger('specialty');
+            $table->unsignedBigInteger('speciality_id');
             $table->string('schedule')->nullable();
             $table->string('cnic')->nullable();
             $table->string('pmdc');
             $table->string('remarks')->nullable();
             $table->timestamps();
 
-            $table->foreign('specialty')->on('specialities')->references('id')
+            $table->foreign('speciality_id')->on('specialities')->references('id')
             ->onDelete('CASCADE')
             ->onUpdate('CASCADE');
         });

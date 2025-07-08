@@ -11,17 +11,17 @@ class Doctor extends Model
 
     protected $fillable = 
     [
-        'pic','name','contact','email','address','dob','specialty','schedule','remarks','cnic','pmdc'
+        'pic', 'name', 'contact', 'email', 'address', 'dob',
+        'speciality_id', 'schedule', 'remarks', 'cnic', 'pmdc'
     ];
 
     public function specialty()
     {
-      return $this->hasMany(Speciality::class);
+        return $this->belongsTo(Speciality::class, 'speciality_id');
     }
 
     public function token()
     {
-      return $this->hasMany(Token::class);
+        return $this->hasMany(Token::class);
     }
-
 }

@@ -47,11 +47,11 @@
               <input id="schedule" type="text" name="schedule" value="{{ old('schedule') }}" class="form-control" />
             </div>
             <div class="col-md-3">
-              <label for="specialty" class="text-gray-700 font-black">Specialty:<span class="text-danger"> * </span></label>
-                <select class="form-control" name="specialty" id="specialty" required>
+              <label for="speciality_id" class="text-gray-700 font-black">Specialty:<span class="text-danger"> * </span></label>
+                <select class="form-control" name="speciality_id" id="speciality_id" required>
                   <option value=""> -- Please Select -- </option>
-                  @foreach($specialty as $specialties)
-                    <option value="{{ $specialties->id }}">{{ $specialties->title }}</option>
+                  @foreach($specialities as $speciality)
+                    <option value="{{ $speciality->id }}">{{ $speciality->title }}</option>
                   @endforeach
                 </select>
             </div>

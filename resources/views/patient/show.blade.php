@@ -6,17 +6,27 @@
             <div class="container" id="printableArea">
                 
                 @foreach ($hospitals as $hospital)
-                <div class="row mt-2 mb-2 mx-5">
+                <div class="row">
+
                     <div class="col-sm-2">
                         <img src="{{ asset('img/'.$hospital->logo) }}" width="100px" class="border border-dark border-4 p-2">
                     </div>
+
                     <div class="col-sm-10">
-                        <h1 class="display-5 text-primary text-uppercase font-weight-bold">{{ $hospital->title }}</h1>
+                        <h1 class="display-3 text-primary text-uppercase font-weight-bold">{{ $hospital->title }}</h1>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <h1 class="h3 text-uppercase font-weight-bold">{{ $hospital->address }}</h1>
+                        <p class="h4 font-weight-bold"> {{ $hospital->contact }} </p>
+                        <a class="text-sm text-primary text-decoration-underline" href="{{ $hospital->website }}">{{ $hospital->website }}</a>
                     </div>
                 </div>
                 @endforeach
 
-            <div class="row mx-auto mt-5">
+            <div class="row mx-auto mt-3">
                 <div class="col-sm-12">
                     <div class="card border-dark mb-3">
                         <div class="card-header text-center"><h5 class="card-title font-weight-bold">Patient Information</h5></div>
