@@ -16,19 +16,8 @@
                       <label for="name" class="text-gray-700 font-black mr-2">Manufacturer Name:</label>
                       
                       <select class="form-control" name="fk_manufacturer_id" id="fk_manufacturer_id">
-                        @foreach($data['manufacturers'] as $manufacturer)
+                        @foreach($manufacturers as $manufacturer)
                           <option class="text-center" value="{{ $manufacturer->id }}">{{ $manufacturer->mName }}</option>
-                        @endforeach
-                      </select>
-
-                    </div>
-                    
-                    <div class="col-md-6">
-                      
-                      <label for="name" class="text-gray-700 font-black mr-2">Supplier Name:</label>
-                      <select class="form-control" name="fk_supplier_id" id="fk_supplier_id">
-                        @foreach ($data['suppliers'] as $supplier)
-                          <option class="text-center" value="{{ $supplier->id }}">{{ $supplier->sName }}</option>
                         @endforeach
                       </select>
 
@@ -67,14 +56,6 @@
                     <div class="col-md-3">
                       <label for="pack_size" class="text-gray-700 font-black">Pack Size</label>
                       <input id="pack_size" type="text" name="pack_size" value="{{ old('pack_size') }}" class="form-control" />
-                    </div>
-                    <div class="col-md-3">
-                      <label for="trade_price" class="text-gray-700 font-black">Trade Price</label>
-                      <input type="text" name="trade_price" id="trade_price" pattern="^\Rs.\d{1,3}*(\.\d+)?$" value="{{ old('trade_price') }}" data-type="currency" placeholder="Rs.1,000.00" class="form-control">
-                    </div>
-                    <div class="col-md-3">
-                      <label for="retail_price" class="text-gray-700 font-black">Retail Price</label>
-                      <input type="text" name="retail_price" id="retail_price" pattern="^\Rs.\d{1,3}*(\.\d+)?$" value="{{ old('retail_price') }}" data-type="currency" placeholder="Rs.1,000.00" class="form-control">
                     </div>
                     
                     <div class="col-md-3">

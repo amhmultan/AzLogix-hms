@@ -20,14 +20,6 @@
                       @endforeach
                     </select>
                   </div>
-                  <div class="col-md-6">
-                    <label for="name" class="text-gray-700 font-black mr-2">Supplier Name:</label>
-                    <select class="form-control" name="fk_supplier_id">
-                      @foreach ($data['suppliers'] as $supplier)
-                        <option class="text-center" value="{{ $supplier->id }}" selected> {{ $supplier->sName }} </option>
-                      @endforeach
-                    </select>
-                  </div>
                 </div>
                 @foreach ($data['products'] as $product)
                 <div class="row pb-4">
@@ -61,14 +53,6 @@
                   <div class="col-md-3">
                     <label for="pack_size" class="text-gray-700 font-black">Pack Size</label>
                     <input id="pack_size" type="text" name="pack_size" value="{{ old('pack_size',$product->pack_size) }}" class="form-control" />
-                  </div>
-                  <div class="col-md-3">
-                    <label for="trade_price" class="text-gray-700 font-black">Trade Price</label>
-                    <input type="text" name="trade_price" id="trade_price" pattern="^\Rs.\d{1,3}*(\.\d+)?$" value="{{ old('trade_price',$product->trade_price) }}" data-type="currency" placeholder="Rs.1,000.00" class="form-control">
-                  </div>
-                  <div class="col-md-3">
-                    <label for="retail_price" class="text-gray-700 font-black">Retail Price</label>
-                    <input type="text" name="retail_price" id="retail_price" pattern="^\Rs.\d{1,3}*(\.\d+)?$" value="{{ old('retail_price',$product->retail_price) }}" data-type="currency" placeholder="Rs.1,000.00" class="form-control">
                   </div>
                   
                   <div class="col-md-3">

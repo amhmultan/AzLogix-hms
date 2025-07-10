@@ -95,11 +95,10 @@ Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
         Route::resource('products','ProductController');
         Route::resource('pharmacies','PharmacyController');
         Route::resource('doctor_notes','DoctorNotesController');
-        Route::resource('purchases','PurchaseController');
+        Route::resource('purchases','PurchaseInvoiceController');
         Route::resource('sales','SaleController');
         Route::resource('specialities','SpecialityController');
         Route::resource('doctors','DoctorController');
-        Route::get('productlist', [PurchaseController::class, 'productlist']);
     });
     
     

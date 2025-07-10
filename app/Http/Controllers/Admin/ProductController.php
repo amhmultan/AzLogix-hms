@@ -29,8 +29,7 @@ class ProductController extends Controller
     {
         $products = DB::table('products')
                         ->join('manufacturers', 'manufacturers.id','fk_manufacturer_id')
-                        ->join('suppliers', 'suppliers.id', 'fk_supplier_id')
-                        ->select('products.*','manufacturers.name as manufacturersName', 'suppliers.name as suppliersName')
+                        ->select('products.*','manufacturers.name as manufacturersName')
                         ->get();
 
         return view('product.index', ['products' => $products]);
@@ -43,25 +42,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        
-        $data = [];
-
-        $suppliers = DB::table('suppliers')
-                        ->select('suppliers.id','suppliers.name as sName')
-                        ->get();
-        
-        
+       
         $manufacturers = DB::table('manufacturers')
                         ->select('manufacturers.id','manufacturers.name as mName')
                         ->get();
 
-        $data = [
-            "suppliers" => $suppliers,
-            "manufacturers" => $manufacturers,
-        ];
-        
 
-        return view('product.new', compact('data'));
+        return view('product.new', compact('manufacturers'));
 
     }
 
@@ -103,24 +90,16 @@ class ProductController extends Controller
         $data = [];
 
         $products = DB::table('products')
-                        ->join('suppliers','suppliers.id','products.fk_supplier_id')
                         ->join('manufacturers', 'manufacturers.id','products.fk_manufacturer_id')
-                        ->select('products.*', 'manufacturers.name as mName', 'suppliers.name as sName')
+                        ->select('products.*', 'manufacturers.name as mName')
                         ->where('products.id', '=', $id)
-                        ->get();
-
-        
-        $suppliers = DB::table('suppliers')
-                        ->select('suppliers.id','suppliers.name as sName')
-                        ->get();
-        
+                        ->get();        
         
         $manufacturers = DB::table('manufacturers')
                         ->select('manufacturers.id','manufacturers.name as mName')
                         ->get();
 
         $data = [
-            "suppliers" => $suppliers,
             "manufacturers" => $manufacturers,
             "products" => $products,
         ];

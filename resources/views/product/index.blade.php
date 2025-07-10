@@ -20,13 +20,10 @@
                   <tr>
                     <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ID</th>
                     <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MANUFACTURER</th>
-                    <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">SUPPLIER</th>
                     <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">NAME</th>
                     <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">GENERIC</th>
                     <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">CLASS</th>
                     <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PACK SIZE</th>
-                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">TRADE PRICE</th>
-                    <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">RETAIL PRICE</th>
                     <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">STATUS</th>
                     <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">CREATED ON</th>
                     <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">UPDATED ON</th>
@@ -40,13 +37,12 @@
                       <tr>
                         <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->id }}</td>
                         <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->manufacturersName }}</td>
-                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->suppliersName  }}</td>
                         <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->name  }}</td>
                         <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->generic }}</td>
                         <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->drug_class }}</td>
                         <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->pack_size }}</td>
-                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->trade_price }}</td>
-                        <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $product->retail_price }}</td>
+                        
+                        {{-- Status --}}
                         @if ($product->status == '1')
                           <td class="text-nowrap text-xs px-4 text-success text-center border-grey-light">Active</td>
                         @else
