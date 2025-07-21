@@ -81,6 +81,11 @@ class AdminSeeder extends Seeder
         $permission = Permission::create(['name' => 'Doctor edit']);
         $permission = Permission::create(['name' => 'Doctor delete']);
         
+        $permission = Permission::create(['name' => 'Appointment access']);
+        $permission = Permission::create(['name' => 'Appointment create']);
+        $permission = Permission::create(['name' => 'Appointment edit']);
+        $permission = Permission::create(['name' => 'Appointment delete']);
+
         $permission = Permission::create(['name' => 'Patient access']);
         $permission = Permission::create(['name' => 'Patient create']);
         $permission = Permission::create(['name' => 'Patient edit']);

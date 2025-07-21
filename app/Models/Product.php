@@ -25,9 +25,14 @@ class Product extends Model
       return $this->belongsTo(Supplier::class);
     }
 
-    public function purchase()
+    public function purchase_invoice_items()
     {
-      return $this->hasMany(PurchaseInvoiceItem::class);
+        return $this->hasMany(PurchaseInvoiceItem::class, 'product_id');
+    }
+
+    public function sale_invoice_items()
+    {
+        return $this->hasMany(SaleInvoiceItem::class, 'fk_product_id');
     }
 
 }

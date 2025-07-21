@@ -1,6 +1,6 @@
 <x-app-layout>
   <main>
-      <div class="container-fluid py-4 px-5">
+      <div class="container-fluid py-4 px-5 overflow-x-auto w-full">
 
             <div class="row mb-5">
               <div class="col-sm-6">
@@ -15,7 +15,7 @@
           
           @if (!$products->isEmpty())
             
-              <table id="productsTable" class="table-responsive bg-white shadow-md rounded text-left w-full border-collapse">
+              <table id="productsTable" class="min-w-full bg-white shadow-md rounded text-left border-collapse">
                 <thead>
                   <tr>
                     <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ID</th>

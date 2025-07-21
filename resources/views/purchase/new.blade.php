@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container-fluid py-4 px-5">
+    <div class="container bg-white shadow-md rounded my-6 px-5 py-4">
         <div class="row mb-4">
             <div class="col-sm-6">
                 <h2 class="text-danger font-bold">Add <span class="text-success">Purchase Invoice</span></h2>
@@ -104,6 +104,7 @@
             <input type="hidden" name="tax_percentage" id="tax_percentage_input">
 
             <div class="text-right">
+                <a class="btn btn-info mx-2" href="{{ route('admin.purchases.index')}}" accesskey="b" role="button"><u>B</u>ack</a>
                 <button type="submit" class="btn btn-success">Save Invoice</button>
             </div>
         </form>

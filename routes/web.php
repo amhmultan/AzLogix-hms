@@ -1,7 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\PurchaseController;
+
+use App\Http\Controllers\Admin\PurchaseInvoiceController;
+use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\Admin\PatientController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\StockReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,26 +85,34 @@ Route::get('/admin/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
-    ->group(function(){
-        Route::resource('roles','RoleController');
-        Route::resource('permissions','PermissionController');
-        Route::resource('users','UserController');
-        Route::resource('hospitals','HospitalController');
-        Route::resource('posts','PostController');
-        Route::resource('patients','PatientController');
-        Route::resource('tokens','TokenController');
-        Route::resource('manufacturers','ManufacturerController');
-        Route::resource('suppliers','SupplierController');
-        Route::resource('tokens','TokenController');
-        Route::resource('products','ProductController');
-        Route::resource('pharmacies','PharmacyController');
-        Route::resource('doctor_notes','DoctorNotesController');
-        Route::resource('purchases','PurchaseInvoiceController');
-        Route::resource('sales','SaleController');
-        Route::resource('specialities','SpecialityController');
-        Route::resource('doctors','DoctorController');
-    });
-    
-    
-    
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::resource('roles','App\Http\Controllers\Admin\RoleController');
+    Route::resource('permissions','App\Http\Controllers\Admin\PermissionController');
+    Route::resource('users','App\Http\Controllers\Admin\UserController');
+    Route::resource('hospitals','App\Http\Controllers\Admin\HospitalController');
+    Route::resource('posts','App\Http\Controllers\Admin\PostController');
+    Route::resource('patients','App\Http\Controllers\Admin\PatientController');
+    Route::resource('tokens','App\Http\Controllers\Admin\TokenController');
+    Route::resource('manufacturers','App\Http\Controllers\Admin\ManufacturerController');
+    Route::resource('suppliers','App\Http\Controllers\Admin\SupplierController');
+    Route::resource('products','App\Http\Controllers\Admin\ProductController');
+    Route::resource('pharmacies','App\Http\Controllers\Admin\PharmacyController');
+    Route::resource('doctor_notes','App\Http\Controllers\Admin\DoctorNotesController');
+    Route::resource('sales','App\Http\Controllers\Admin\SaleController');
+    Route::resource('specialities','App\Http\Controllers\Admin\SpecialityController');
+    Route::resource('doctors','App\Http\Controllers\Admin\DoctorController');
+    Route::resource('appointments','App\Http\Controllers\Admin\AppointmentController');
+    Route::resource('purchases','App\Http\Controllers\Admin\PurchaseInvoiceController');
+
+    // Custom prints
+    Route::get('purchases/{purchase}/print', [PurchaseInvoiceController::class, 'print'])->name('purchases.print');
+    Route::get('sales/{sale}/print', [SaleController::class, 'print'])->name('sales.print');
+
+    // Reports
+    Route::get('reports', function () {
+        return view('reports.index');
+    })->name('reports.index');
+
+    Route::get('reports', [StockReportController::class, 'index'])->name('reports.index');
+    Route::get('reports/print', [StockReportController::class, 'print'])->name('reports.print');
+});

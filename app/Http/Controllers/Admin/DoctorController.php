@@ -57,41 +57,32 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        // $data= $request->all();
-        // $data['fk_user_id'] = Auth::user()->id;
-
-        // if ($image = $request->file('pic')) {
-        //     $destinationPath = 'img/';
-        //     $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        //     $image->move($destinationPath, $profileImage);
-        //     $data['pic'] = "$profileImage";
-        // }
-
-        // $Doctor = Doctor::create($data);
         $validated = $request->validate([
-        'name' => 'required',
-        'dob' => 'required',
-        'contact' => 'required',
-        'email' => 'nullable|email',
-        'cnic' => 'nullable|string',
-        'pmdc' => 'required',
-        'schedule' => 'nullable|string',
-        'address' => 'nullable|string',
-        'remarks' => 'nullable|string',
-        'pic' => 'nullable|image',
-        'speciality_id' => 'required|exists:specialities,id', // ✅ THIS IS IMPORTANT
-    ]);
+        'name'           => 'required|string',
+        'dob'            => 'required|date',
+        'contact'        => 'required|string',
+        'email'          => 'nullable|email',
+        'cnic'           => 'nullable|string',
+        'pmdc'           => 'required|string',
+        'schedule'       => 'nullable|string',
+        'address'        => 'nullable|string',
+        'remarks'        => 'nullable|string',
+        'speciality_id'  => 'required|exists:specialities,id',
+        'pic'            => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    // handle file upload if needed...
-    if ($request->hasFile('pic')) {
-        $fileName = time() . '.' . $request->pic->extension();
-        $request->pic->move(public_path('uploads'), $fileName);
-        $validated['pic'] = $fileName;
-    }
+        if ($request->hasFile('pic')) {
+            $fileName = time() . '.' . $request->pic->extension();
+            $request->pic->move(public_path('uploads'), $fileName);
+            $validated['pic'] = $fileName;
+        }
+
+        $validated['fk_user_id'] = auth()->id(); // If you track user
 
         Doctor::create($validated);
 
-        return redirect('/admin/doctors')->withSuccess('Doctor information created !!!');
+        return redirect()->route('admin.doctors.index')
+            ->withSuccess('Doctor information created successfully!');
     }
 
     /**
@@ -113,25 +104,10 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctors, $id)
     {
-        $data = [];
+        $doctor = Doctor::findOrFail($id);
+        $specialities = Speciality::select('id', 'title')->get();
 
-        $doctors = DB::table('doctors')
-                    ->join('specialities','specialities.id','specialty')
-                    ->select('doctors.*','specialities.title as sTitle')
-                    ->where('doctors.id', '=', $id)
-                    ->get();
-
-        $specialities = DB::table('specialities')
-                    ->select('specialities.id','specialities.title as sTitle')
-                    ->get();
-
-        
-        $data = [
-            "doctors" => $doctors,
-            "specialities" => $specialities,
-        ];
-
-        return view('doctor.edit',['data' => $data]);
+        return view('doctor.edit', compact('doctor', 'specialities'));
     }
 
     /**
@@ -141,43 +117,37 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Doctor $doctor)
     {
-        $doctors = Doctor::find($id);
-        
-        $request->validate([
-            'name' => 'required',
-            'dob' => 'nullable',
-            'contact' => 'nullable',
-            'pic' => 'nullable',
-            'email' => 'nullable|email',
-            'cnic' => 'nullable',
-            'pmdc' => 'nullable',
-            'schedule' => 'nullable',
-            'specialty' => 'required',
-            'address' => 'nullable',
-            'remarks' => 'nullable',
-            
+        $validated = $request->validate([
+        'name'           => 'required|string',
+        'dob'            => 'required|date',
+        'contact'        => 'required|string',
+        'email'          => 'nullable|email',
+        'cnic'           => 'nullable|string',
+        'pmdc'           => 'required|string',
+        'schedule'       => 'nullable|string',
+        'address'        => 'nullable|string',
+        'remarks'        => 'nullable|string',
+        'speciality_id'  => 'required|exists:specialities,id',
+        'pic'            => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
-        $image = $request->file('pic');
-        $destinationPath = 'img/';
-        $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-        $image->move($destinationPath, $profileImage);
-        $data['pic'] = "$profileImage";
-        
-        $update =   [
-                    'name' => $request->name, 'dob' => $request->dob,
-                    'contact' => $request->contact, 'email' => $request->email,
-                    'cnic' => $request->cnic, 'address' => $request->address,
-                    'pmdc' => $request->pmdc, 'schedule' => $request->schedule,
-                    'specialty' => $request->specialty, 'remarks' => $request->remarks,
-                    'pic' => $profileImage
-                    ];
-        
-        $doctors->update($update);
-                    
-        return redirect('/admin/doctors')->withSuccess('Doctor information updated !!!');
+
+        if ($request->hasFile('pic')) {
+            // Optionally delete old file
+            if ($doctor->pic && file_exists(public_path('uploads/' . $doctor->pic))) {
+                unlink(public_path('uploads/' . $doctor->pic));
+            }
+
+            $fileName = time() . '.' . $request->pic->extension();
+            $request->pic->move(public_path('uploads'), $fileName);
+            $validated['pic'] = $fileName;
+        }
+
+        $doctor->update($validated);
+
+        return redirect()->route('admin.doctors.index')
+            ->withSuccess('Doctor information updated successfully!');
     }
 
     /**

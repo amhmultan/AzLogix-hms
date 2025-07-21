@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\PurchaseInvoice;
 use App\Models\PurchaseInvoiceItem;
+use App\Models\Pharmacy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -105,10 +106,21 @@ class PurchaseInvoiceController extends Controller
     }
 
     public function update(Request $request, PurchaseInvoice $purchase_invoice)
-{
-    //
-}
+    {
+        //
+    }
 
+    public function print($id)
+    {
+        $purchase_invoice = PurchaseInvoice::with(['supplier', 'items.product'])->findOrFail($id);
+        $pharmacy = Pharmacy::first();
+        
+        if (!$pharmacy) {
+            return redirect()->back()->withErrors('Pharmacy information not found.');
+        }
+
+        return view('purchase.print', compact('purchase_invoice', 'pharmacy'));
+    }
 
     public function destroy($id)
     {

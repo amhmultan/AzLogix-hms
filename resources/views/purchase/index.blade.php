@@ -34,7 +34,7 @@
                         <tbody>
                             @foreach($invoices as $invoice)
                                 <tr>
-                                    <td class="text-xs px-4 py-2 text-center border">{{ $invoice->invoice_number }}</td>
+                                    <td class="text-xs px-4 py-2 text-center border">PI-{{ $invoice->invoice_number }}</td>
                                     <td class="text-xs px-4 py-2 text-center border">{{ $invoice->purchase_date }}</td>
                                     <td class="text-xs px-4 py-2 text-center border">{{ $invoice->supplier->name ?? '-' }}</td>
                                     <td class="text-xs px-4 py-2 text-center border">Rs. {{ number_format($invoice->total_amount, 2) }}</td>
@@ -44,6 +44,9 @@
                                     <td class="text-xs px-4 py-2 text-center border">{{ $invoice->updated_at->format('Y-m-d') }}</td>
                                     <td class="text-xs px-4 py-2 text-center border">{{ $invoice->notes }}</td>
                                     <td class="text-xs px-4 py-2 text-center border">
+                                    <a href="{{ route('admin.purchases.print', $invoice->id) }}" class="bg-indigo-500 text-white px-3 mx-1 py-1 rounded hover:bg-indigo-600 text-xs text-decoration-none" target="_blank">
+                                        Print
+                                    </a>
                                         @can('Patient access')
                                             <a href="{{ route('admin.purchases.show', $invoice->id) }}" class="bg-yellow-600 text-white px-3 py-1 rounded hover:bg-yellow-700 text-xs text-decoration-none">Show</a>
                                         @endcan

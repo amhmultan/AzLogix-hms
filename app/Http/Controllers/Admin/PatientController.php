@@ -117,4 +117,5 @@ class PatientController extends Controller
         $patient->delete();
         return redirect('/admin/patients')->withSuccess('Patient deleted !!!');
     }
+
 }
