@@ -1,78 +1,88 @@
-<header class="flex justify-between items-center py-2 px-6 bg-white border-b-4 border-indigo-600">
-    <div class="flex items-center">
-        {{-- <button @click="sidebarOpen = true" class="text-gray-500 focus:outline-none px-6">
-            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round"></path>
-            </svg>
-        </button> --}}
-
+<header class="container-fluid mx-auto bg-white shadow-md px-4 py-2">
+    <div class="flex justify-between items-center w-full">
         
-        <div class="px-5">
-            <h3 class="text-blue-700 text-base font-semibold">Welcome : {{ auth()->user()->name }}</h3>                
-
-                <p class="text-yellow-600 text-sm font-medium">Role : <b>
-                    @foreach(auth()->user()->roles as $role)
-                        {{ $role->name }}
-                    @endforeach 
-                </b> </p>
+        <!-- Left Side -->
+        <div class="w-1/3 text-left">
+            <h3 class="text-blue-700 text-base font-semibold">
+                Welcome: {{ auth()->user()->name }}
+            </h3>
+            <p class="text-yellow-600 text-sm font-medium">
+                Role:
+                @foreach(auth()->user()->roles as $role)
+                    {{ $role->name }}
+                @endforeach
+            </p>
         </div>
 
-        <div class="px-5">
-            
-            @if(\Session::has('success'))
-                <div class="text-green-600 pl-5">
-                    <ul>
-                        <li>{!! \Session::get('success') !!}</li>
-                    </ul>
-                </div>
-            @endif
-            
-            @if(\Session::has('error'))
-                <div class="text-green-600 pl-5">
-                    <ul>
-                        <li>{!! \Session::get('error') !!}</li> 
-                    </ul>
-                </div>
-            @endif
-            
-            @if ($errors->any())
-                <div class="text-red-600  pl-5">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+        <!-- Middle (Clock / Alerts) -->
+        <div class="w-1/3 text-center">
+            @if(!session()->has('success') && !session()->has('error') && !$errors->any())
+                <x-digital-clock />
+            @else
+                @if(session()->has('success'))
+                    <div class="text-green-600 text-sm">
+                        <ul>
+                            <li>{!! session('success') !!}</li>
+                        </ul>
+                    </div>
+                @endif
+
+                @if(session()->has('error'))
+                    <div class="text-red-600 text-sm">
+                        <ul>
+                            <li>{!! session('error') !!}</li> 
+                        </ul>
+                    </div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="text-red-600 text-sm">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             @endif
         </div>
-    </div>
 
-    <div class="flex items-center">    
-        <div x-data="{ dropdownOpen: false }" class="relative">
-            <button @click="dropdownOpen = ! dropdownOpen"
-                class="relative block h-12 w-20 rounded-full overflow-hidden shadow focus:outline-none">
-                <img class="h-full w-full object-cover"
-                    src="{{url('/img/logo.PNG')}}"
-                    alt="AMH">
-            </button>
+        <!-- Right Side (User Menu) -->
+        <div class="w-1/3 text-right">
+            <div class="dropdown d-inline-block">
+                <button class="btn dropdown-toggle p-0 border-0 bg-transparent" type="button" id="userDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ url('/img/logo.png') }}" alt="AMH Logix Logo"
+                        class="rounded-circle" height="80" width="80">
+                </button>
 
-            <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"
-                style="display: none;"></div>
-
-            <div x-show="dropdownOpen"
-                class="absolute right-0 mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-10"
-                style="display: none;">
-                <a href="{{route('admin.users.show', auth()->user()->id)}}"
-                    class="text-decoration-none block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profile</a>
-
-                <form method="POST" action="{{ route('admin.logout') }}">
-                @csrf
-                    <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();
-                                                this.closest('form').submit();"
-                    class="text-decoration-none block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</a>
-                </form>
+                <ul class="dropdown-menu dropdown-menu-end mt-2 shadow-sm border-0 rounded" aria-labelledby="userDropdown" style="min-width: 160px;">
+                    {{-- <li class="px-3 py-2 text-muted small">
+                        {{ auth()->user()->name }}<br>
+                        <span class="text-secondary">
+                            @foreach(auth()->user()->roles as $role)
+                                {{ $role->name }}
+                            @endforeach
+                        </span>
+                    </li> --}}
+                    {{-- <li><hr class="dropdown-divider"></li> --}}
+                    <li>
+                        <a class="dropdown-item" href="{{ route('admin.users.show', auth()->user()->id) }}">
+                            <i class="fas fa-user me-2"></i> Profile
+                        </a>
+                    </li>
+                    <li>
+                        <form method="POST" action="{{ route('admin.logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt me-2"></i> Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
             </div>
         </div>
+
+
     </div>
 </header>

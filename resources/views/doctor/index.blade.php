@@ -94,7 +94,8 @@
     </div>
   </main>
 
-  @section('script')
+
+  @push('scripts')
     <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
       $(document).ready(function () {
@@ -103,5 +104,5 @@
         });
       });
     </script>
-  @endsection
+  @endpush
 </x-app-layout>

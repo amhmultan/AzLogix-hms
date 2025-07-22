@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Speciality;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -127,31 +126,13 @@ class AdminSeeder extends Seeder
         $permission = Permission::create(['name' => 'Sale add']);
         $permission = Permission::create(['name' => 'Sale edit']);
         $permission = Permission::create(['name' => 'Sale delete']);
+        // Stock Report permissions
+        $permission = Permission::create(['name' => 'Report access']);
 
         $admin->assignRole($admin_role);
         $writer->assignRole($writer_role);
 
         $admin_role->givePermissionTo(Permission::all());
-
-        // Specilties List seeding
-        $specialty = Speciality::create(['title' => 'Anesthesiologist']);
-        $specialty = Speciality::create(['title' => 'Dermatologist']);
-        $specialty = Speciality::create(['title' => 'Radiologist']);
-        $specialty = Speciality::create(['title' => 'Medicine Specialist']);
-        $specialty = Speciality::create(['title' => 'Neurologist']);
-        $specialty = Speciality::create(['title' => 'Gynecologist']);
-        $specialty = Speciality::create(['title' => 'Ophthalmologist']);
-        $specialty = Speciality::create(['title' => 'Optometrist']);
-        $specialty = Speciality::create(['title' => 'Vitreoretinal Specialist']);
-        $specialty = Speciality::create(['title' => 'Pathologist']);
-        $specialty = Speciality::create(['title' => 'Pediatrician']);
-        $specialty = Speciality::create(['title' => 'Physiotherapist']);
-        $specialty = Speciality::create(['title' => 'Psychiatrist']);
-        $specialty = Speciality::create(['title' => 'Oncologist']);
-        $specialty = Speciality::create(['title' => 'Surgeon']);
-        $specialty = Speciality::create(['title' => 'Urologist']);
-        $specialty = Speciality::create(['title' => 'Nephrologist']);
-        $specialty = Speciality::create(['title' => 'Hepatologist']);
-        $specialty = Speciality::create(['title' => 'Diabetologist']);
+        
     }
 }
