@@ -111,7 +111,7 @@
     </div>
   </main>
 
-  @section('script')
+  @push('scripts')
     <script>
       function calculateBalance() {
         let fees = parseFloat(document.getElementById('fees').value) || 0;
@@ -135,6 +135,6 @@
         });
       });
     </script>
-  @stop
+  @endpush
 
 </x-app-layout>

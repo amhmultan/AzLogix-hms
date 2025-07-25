@@ -338,7 +338,7 @@
     </nav>
 </div>
 
-@section('script')
+@push('scripts')
     
     <script>
         $(document).ready(function () {
@@ -356,4 +356,4 @@
 
         });    
     </script>
-@stop
+@endpush
