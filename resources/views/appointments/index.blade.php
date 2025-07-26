@@ -12,7 +12,7 @@
           @can('Appointment create')
             <a href="{{ route('admin.appointments.create') }}"
                class="text-decoration-none bg-black text-white font-bold px-5 py-2 rounded shadow hover:bg-blue-500 transition"
-               accesskey="a"><u>A</u>dd Appointment Arslan</a>
+               accesskey="a"><u>A</u>dd Appointment</a>
           @endcan
         </div>
       </div>
