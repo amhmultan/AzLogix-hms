@@ -1,16 +1,16 @@
 <x-app-layout>
     <div class="container bg-white shadow-md rounded my-6 p-4">
-        <h2 class="text-2xl font-bold text-primary mb-4">Stock Report</h2>
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="text-xl font-bold text-gray-700">Stock Report</h2>
+        <div class="d-flex justify-content-between mb-3">
+            <h2 class="text-2xl font-bold text-primary">Stock Report</h2>
             <a href="{{ route('admin.reports.print') }}" target="_blank" class="btn btn-success">
                 <i class="fas fa-print mr-1"></i> Print Report
             </a>
         </div>
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-bordered text-center">
                 <thead class="table-primary">
                     <tr>
+                        <th>S.No.</th>
                         <th>Product Name</th>
                         <th>Total Purchased</th>
                         <th>Total Sold</th>
@@ -22,6 +22,7 @@
                 <tbody>
                     @foreach ($stockData as $item)
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $item['name'] }}</td>
                             <td>{{ $item['total_purchased'] }}</td>
                             <td>{{ $item['total_sold'] }}</td>

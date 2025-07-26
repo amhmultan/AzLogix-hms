@@ -213,6 +213,16 @@
         </a>
         @endcanany
 
+        @canany('TokenReport access','TokenReport add','TokenReport edit','TokenReport delete')
+        <a class="text-decoration-none flex items-center mt-2 py-2 px-6 fw-bold fs-6 text-white hover:bg-indigo-600 hover:text-white {{ Route::currentRouteNamed('admin.tokens.token_report') ? 'active' : '' }}"
+        href="{{ route('admin.tokens.token_report') }}">
+            {{-- SVG Icon --}}
+            <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+            <svg fill="#000000" width="24px" height="24px" viewBox="0 0 24 24" id="report-pie-chart-6" data-name="Flat Color" xmlns="http://www.w3.org/2000/svg" class="icon flat-color"><path id="primary" d="M16,19A7,7,0,0,1,16,5a6.63,6.63,0,0,1,1,.08V4a2,2,0,0,0-2-2H4A2,2,0,0,0,2,4V20a2,2,0,0,0,2,2H15a2,2,0,0,0,2-2V18.92A6.63,6.63,0,0,1,16,19Z" style="fill: #62adfc"></path><path id="secondary" d="M10,12a6,6,0,1,0,6-6A6,6,0,0,0,10,12Zm5-3.86V11H12.14A4,4,0,0,1,15,8.14ZM12.14,13H16a1,1,0,0,0,1-1V8.14A4,4,0,1,1,12.14,13Z" style="fill: rgb(44, 169, 188);"></path></svg>
+            <span class="mx-3">Token Report</span>
+        </a>
+        @endcanany
+
         {{-- Hospital Menu Ending --}}
         
         {{-- Pharmacy Menu Starting --}}

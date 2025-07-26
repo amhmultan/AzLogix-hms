@@ -14,65 +14,65 @@
               </div>
             
             @if (!$tokens->isEmpty())
-              
-            <table id="tokenTable" class="table-responsive bg-white shadow-md rounded text-left border-collapse">
-              <thead>
-                <tr>
-                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PRESCRIPTION</th>
-                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">Token ID</th>
-                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MR NO.</th>
-                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PATIENT NAME</th>
-                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">DOCTORS NAME</th>
-                  <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">SPECIALTY</th>
-                  <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">FEES</th>
-                  <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PAID</th>
-                  <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">BALANCE</th>
-                  <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">REGISTERED ON</th>
-                  <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">UPDATED ON</th>
-                  <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ACTIONS</th>
-                </tr>
-              </thead>
-              <tbody>
-                @can('Token access')
-                  @foreach($tokens as $token)
-                    <tr>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">
-                        @can('Token access')
-                          <a href="{{route('admin.tokens.show',$token->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-green-400">Show</a>
-                        @endcan
-                      </td>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->id }}</td>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->fk_patients_id }}</td>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->pName }}</td>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->dName }}</td>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->sTitle }}</td>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->fees }}</td>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->denomination }}</td>
-                      <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $token->balance }}</td>
-                      <td class="text-nowrap text-xs px-4 border-grey-light">{{ $token->created_at }}</td>
-                      <td class="text-nowrap text-xs px-4 border-grey-light">{{ $token->updated_at }}</td>
-                      
-                      
-                      <td class="text-nowrap text-xs px-3 border-grey-light">
-                        
-                        @can('Token edit')
-                        <a href="{{route('admin.tokens.edit',$token->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
-                        @endcan
-    
-                        @can('Token delete')
-                        <form action="{{ route('admin.tokens.destroy', $token->id) }}" method="POST" class="inline">
-                            @csrf
-                            @method('delete')
-                            <button class="text-decoration-none text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-blue hover:bg-blue-dark text-red-400">Delete</button>
-                        </form>
-                        @endcan
-                      </td>
+              <div class="table-responsive bg-white shadow-md rounded border-collapse p-3">
+                <table id="tokenTable" class="table w-100 border-collapse">
+                  <thead>
+                    <tr class="bg-indigo-500 text-white">
+                      <th class="py-3 px-4 border text-center">PRESCRIPTION</th>
+                      <th class="py-3 px-4 border text-center">Token ID</th>
+                      <th class="py-3 px-4 border text-center">MR NO.</th>
+                      <th class="py-3 px-4 border text-center">PATIENT NAME</th>
+                      <th class="py-3 px-4 border text-center">DOCTORS NAME</th>
+                      <th class="py-3 px-4 border text-center">SPECIALTY</th>
+                      <th class="py-3 px-4 border text-center">FEES</th>
+                      <th class="py-3 px-4 border text-center">PAID</th>
+                      <th class="py-3 px-4 border text-center">BALANCE</th>
+                      <th class="py-3 px-4 border text-center">REGISTERED ON</th>
+                      <th class="py-3 px-4 border text-center">UPDATED ON</th>
+                      <th class="py-3 px-4 border text-center">ACTIONS</th>
                     </tr>
-                  @endforeach
-                  @endcan
-              </tbody>
-            </table>
-          
+                  </thead>
+                  <tbody>
+                    @can('Token access')
+                      @foreach($tokens as $token)
+                        <tr class="text-center">
+                          <td class="px-4 py-2 border">
+                            @can('Token access')
+                              <a href="{{route('admin.tokens.show',$token->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-green-400">Show</a>
+                            @endcan
+                          </td>
+                          <td class="px-4 py-2 border">{{ $token->id }}</td>
+                          <td class="px-4 py-2 border">{{ $token->fk_patients_id }}</td>
+                          <td class="px-4 py-2 border">{{ $token->pName }}</td>
+                          <td class="px-4 py-2 border">{{ $token->dName }}</td>
+                          <td class="px-4 py-2 border">{{ $token->sTitle }}</td>
+                          <td class="px-4 py-2 border">{{ $token->fees }}</td>
+                          <td class="px-4 py-2 border">{{ $token->denomination }}</td>
+                          <td class="px-4 py-2 border">{{ $token->balance }}</td>
+                          <td class="px-4 py-2 border">{{ $token->created_at }}</td>
+                          <td class="px-4 py-2 border">{{ $token->updated_at }}</td>
+                          
+                          
+                          <td class="px-4 py-2 border">
+                            
+                            @can('Token edit')
+                            <a href="{{route('admin.tokens.edit',$token->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
+                            @endcan
+        
+                            @can('Token delete')
+                            <form action="{{ route('admin.tokens.destroy', $token->id) }}" method="POST" class="inline">
+                                @csrf
+                                @method('delete')
+                                <button class="text-decoration-none text-grey-lighter font-bold py-1 px-1 rounded text-xs bg-blue hover:bg-blue-dark text-red-400">Delete</button>
+                            </form>
+                            @endcan
+                          </td>
+                        </tr>
+                      @endforeach
+                      @endcan
+                  </tbody>
+                </table>
+              </div>
            @else
   
             <div class="row flex text-center mt-5 pt-5">
@@ -86,7 +86,7 @@
         </div>
     </main>
   </div>
-  @section('script')
+  @push('scripts')
   <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready( function () {
@@ -96,5 +96,5 @@
       });
   } );
   </script>
-  @stop
+  @endpush
   </x-app-layout>

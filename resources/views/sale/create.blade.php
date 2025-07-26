@@ -129,7 +129,7 @@
     @endif
   </div>
 
-  @section('script')
+  @push('scripts')
   <script>
     let rowIndex = 1;
 
@@ -195,5 +195,5 @@
       document.getElementById('tax_percentage_input').value = taxAmount.toFixed(2);
     }
   </script>
-  @endsection
+  @endpush
 </x-app-layout>

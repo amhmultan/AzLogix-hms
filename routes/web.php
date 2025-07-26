@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin;
 use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StockReportController;
+use App\Http\Controllers\Admin\TokenReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -92,12 +93,19 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('hospitals','App\Http\Controllers\Admin\HospitalController');
     Route::resource('posts','App\Http\Controllers\Admin\PostController');
     Route::resource('patients','App\Http\Controllers\Admin\PatientController');
+    Route::get('/tokens/token-report', [TokenReportController::class, 'index'])
+    ->name('tokens.token_report');
+    Route::get('/tokens/token-report/data', [TokenReportController::class, 'data'])
+        ->name('tokens.token_report.data');
     Route::resource('tokens','App\Http\Controllers\Admin\TokenController');
     Route::resource('manufacturers','App\Http\Controllers\Admin\ManufacturerController');
     Route::resource('suppliers','App\Http\Controllers\Admin\SupplierController');
     Route::resource('products','App\Http\Controllers\Admin\ProductController');
     Route::resource('pharmacies','App\Http\Controllers\Admin\PharmacyController');
     Route::resource('doctor_notes','App\Http\Controllers\Admin\DoctorNotesController');
+    // Extra route for printing doctor notes
+    Route::get('doctor_notes/{id}/print', [App\Http\Controllers\Admin\DoctorNotesController::class, 'print'])
+        ->name('doctor_notes.print');
     Route::resource('sales','App\Http\Controllers\Admin\SaleController');
     Route::resource('specialities','App\Http\Controllers\Admin\SpecialityController');
     Route::resource('doctors','App\Http\Controllers\Admin\DoctorController');
@@ -115,4 +123,5 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
     Route::get('reports', [StockReportController::class, 'index'])->name('reports.index');
     Route::get('reports/print', [StockReportController::class, 'print'])->name('reports.print');
+
 });

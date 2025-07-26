@@ -15,7 +15,7 @@
         "laravel/tinker": "^3.0",
         "laravel/ui": "^3.0",
         "spatie/laravel-permission": "^5.1",
-        "yajra/laravel-datatables-oracle": "~9.0"
+        "yajra/laravel-datatables-oracle": "^9.21"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

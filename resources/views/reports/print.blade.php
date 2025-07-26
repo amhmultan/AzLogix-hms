@@ -31,18 +31,18 @@
         }
     </style>
 </head>
-<body>
+<body class="p-4">
 
-    <div class="no-print" style="text-align: right; margin-bottom: 10px;">
-        <button onclick="window.print()">Print</button>
+    <div class="no-print">
+        <button style="background-color: #28a745; color: white; border: none; padding: 10px 15px; border-radius: 5px; text-align: center;" onclick="window.print()">Print</button>
     </div>
 
-    <h2>Stock Report</h2>
+    <h2 class="text-2xl font-bold text-primary">Stock Report</h2>
 
-    <table>
+    <table class="table table-bordered text-center">
         <thead>
             <tr>
-                <th>#</th>
+                <th>S.No.</th>
                 <th>Product</th>
                 <th>Total Purchased</th>
                 <th>Total Sold</th>

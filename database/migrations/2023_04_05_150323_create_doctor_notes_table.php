@@ -18,7 +18,13 @@ class CreateDoctorNotesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('fk_patient_id');
             $table->unsignedBigInteger('fk_token_id');
-            $table->string('prescription', 255);
+            $table->string('prescription', 255)->nullable();
+            $table->string('mode')->default('upload'); // 'upload' or 'manual'
+            $table->text('complaints')->nullable();
+            $table->text('history')->nullable();
+            $table->text('investigations')->nullable();
+            $table->text('prescription_text')->nullable();
+            $table->text('remarks')->nullable();
             $table->timestamps();
 
             $table->foreign('fk_patient_id')->on('patients')->references('id')
@@ -28,7 +34,7 @@ class CreateDoctorNotesTable extends Migration
             $table->foreign('fk_token_id')->on('tokens')->references('id')
             ->onDelete('CASCADE')
             ->onUpdate('CASCADE');
-
+            
             });
     }
 

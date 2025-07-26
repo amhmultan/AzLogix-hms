@@ -129,6 +129,12 @@ class AdminSeeder extends Seeder
         // Stock Report permissions
         $permission = Permission::create(['name' => 'Report access']);
 
+        // Token Report permissions
+        $permission = Permission::create(['name' => 'TokenReport access']);
+        $permission = Permission::create(['name' => 'TokenReport add']);
+        $permission = Permission::create(['name' => 'TokenReport edit']);
+        $permission = Permission::create(['name' => 'TokenReport delete']);
+
         $admin->assignRole($admin_role);
         $writer->assignRole($writer_role);
 

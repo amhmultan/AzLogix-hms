@@ -8,7 +8,7 @@
             <strong><em>Doctors <span class="text-success">Information</span></em></strong>
           </p>
         </div>
-        <div class="col-sm-6 text-end">
+        <div class="col-sm-6 text-right">
           @can('Doctor create')
             <a href="{{ route('admin.doctors.create') }}"
                class="text-decoration-none bg-black text-white font-bold px-5 py-2 rounded shadow hover:bg-blue-500 transition"
@@ -17,31 +17,31 @@
         </div>
       </div>
 
-      @if($doctors->isNotEmpty())
+      @if(!$doctors->isEmpty())
         <div class="table-responsive bg-white p-3 shadow rounded">
           <table id="doctorTable" class="table w-100 border-collapse">
             <thead>
-              <tr class="bg-indigo-500 text-white text-sm text-center">
-                <th class="py-3 px-4 border">ID</th>
-                <th class="py-3 px-4 border">Picture</th>
-                <th class="py-3 px-4 border">Name</th>
-                <th class="py-3 px-4 border">Contact</th>
-                <th class="py-3 px-4 border">Email</th>
-                <th class="py-3 px-4 border">Address</th>
-                <th class="py-3 px-4 border">Date of Birth</th>
-                <th class="py-3 px-4 border">Specialty</th>
-                <th class="py-3 px-4 border">Schedule</th>
-                <th class="py-3 px-4 border">CNIC No.</th>
-                <th class="py-3 px-4 border">PMDC No.</th>
-                <th class="py-3 px-4 border">Remarks</th>
-                <th class="py-3 px-4 border">Created On</th>
-                <th class="py-3 px-4 border">Updated On</th>
-                <th class="py-3 px-4 border">Actions</th>
+              <tr class="bg-indigo-500 text-white">
+                <th class="py-3 px-4 border text-center">ID</th>
+                <th class="py-3 px-4 border text-center">Picture</th>
+                <th class="py-3 px-4 border text-center">Name</th>
+                <th class="py-3 px-4 border text-center">Contact</th>
+                <th class="py-3 px-4 border text-center">Email</th>
+                <th class="py-3 px-4 border text-center">Address</th>
+                <th class="py-3 px-4 border text-center">Date of Birth</th>
+                <th class="py-3 px-4 border text-center">Specialty</th>
+                <th class="py-3 px-4 border text-center">Schedule</th>
+                <th class="py-3 px-4 border text-center">CNIC No.</th>
+                <th class="py-3 px-4 border text-center">PMDC No.</th>
+                <th class="py-3 px-4 border text-center">Remarks</th>
+                <th class="py-3 px-4 border text-center">Created On</th>
+                <th class="py-3 px-4 border text-center">Updated On</th>
+                <th class="py-3 px-4 border text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
               @foreach($doctors as $doctor)
-                <tr class="text-center text-xs">
+                <tr class="text-center">
                   <td class="px-4 py-2 border">{{ $doctor->id }}</td>
                   <td class="px-4 py-2 border">
                     @if($doctor->pic)
@@ -96,7 +96,7 @@
 
 
   @push('scripts')
-    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script>
       $(document).ready(function () {
         $('#doctorTable').DataTable({

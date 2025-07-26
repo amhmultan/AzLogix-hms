@@ -4,7 +4,7 @@
   
               <div class="row mb-5">
                 <div class="col-sm-6">
-                  <p class="h3 text-danger"><strong><em>Doctor Notes <span class="text-success">Dashboard</span></em></strong></p>
+                  <p class="h3 text-danger"><strong><em>Prescr<span class="text-success">iptions</span></em></strong></p>
                 </div>
                 <div class="col-sm-6 text-right">
                   @can('DoctorNotes add')
@@ -14,40 +14,40 @@
               </div>
             
             @if (!$doctor_notes->isEmpty())
-              
-                <table id="doctorNotesTable" class="table-responsive bg-white shadow-md rounded text-left border-collapse">
+              <div class="table-responsive bg-white p-3 shadow rounded">
+              <table id="doctorNotesTable" class="table w-100 border-collapse py-5 my-2">
                   <thead>
-                    <tr>
-                      <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PRESCRIPTION ID</th>
-                      <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">MR NO.</th>
-                      <th class="py-3 px-5 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">TOKEN NO.</th>
-                      <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PATIENT NAME</th>
-                      <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">PRESCRIPTION</th>
-                      <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">CHECKUP DATE</th>
-                      <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">UPDATED ON</th>
-                      <th class="py-3 px-4 bg-indigo-500 font-bold text-sm text-white text-center border border-grey-light">ACTIONS</th>
+                    <tr class="bg-indigo-500 text-white">
+                      <th class="py-3 px-4 border text-center">PRESCRIPTION ID</th>
+                      <th class="py-3 px-4 border text-center">MR NO.</th>
+                      <th class="py-3 px-4 border text-center">TOKEN NO.</th>
+                      <th class="py-3 px-4 border text-center">PATIENT NAME</th>
+                      <th class="py-3 px-4 border text-center">PRESCRIPTION</th>
+                      <th class="py-3 px-4 border text-center">CHECKUP DATE</th>
+                      <th class="py-3 px-4 border text-center">UPDATED ON</th>
+                      <th class="py-3 px-4 border text-center">ACTIONS</th>
                     </tr>
                   </thead>
                   <tbody>
                     @can('DoctorNotes access')
                     
                       @foreach($doctor_notes as $doctors_note)
-                        <tr>
-                          <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->id }}</td>
-                          <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_patient_id }}</td>
-                          <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->fk_token_id  }}</td>
-                          <td class="text-nowrap text-xs px-4 text-center border-grey-light">{{ $doctors_note->name  }}</td>
-                          <td class="text-nowrap text-xs px-4 text-center border-grey-light"> 
+                        <tr class="text-center">
+                          <td class="px-4 py-2 border">{{ $doctors_note->id }}</td>
+                          <td class="px-4 py-2 border">{{ $doctors_note->fk_patient_id }}</td>
+                          <td class="px-4 py-2 border">{{ $doctors_note->fk_token_id  }}</td>
+                          <td class="px-4 py-2 border">{{ $doctors_note->name  }}</td>
+                          <td class="px-4 py-2 border"> 
                             @can('DoctorNotes access')
                             <a href="{{route('admin.doctor_notes.show',$doctors_note->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-green-400">Show</a>
                             @endcan
                           </td>
-                          <td class="text-nowrap text-xs px-4 border-grey-light">{{ $doctors_note->created_at }}</td>
-                          <td class="text-nowrap text-xs px-4 border-grey-light">{{ $doctors_note->updated_at }}</td>
-                          
-                          
-                          <td class="text-nowrap text-xs px-3 border-grey-light">
-                           
+                          <td class="px-4 py-2 border">{{ $doctors_note->created_at }}</td>
+                          <td class="px-4 py-2 border">{{ $doctors_note->updated_at }}</td>
+
+
+                          <td class="px-4 py-2 border">
+
                             @can('DoctorNotes edit')
                             <a href="{{route('admin.doctor_notes.edit',$doctors_note->id)}}" class="text-decoration-none text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark text-blue-400">Edit</a>
                             @endcan
@@ -81,7 +81,7 @@
         </div>
     </main>
   </div>
-  @section('script')
+  @push('scripts')
   <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready( function () {
@@ -91,5 +91,6 @@
       });
   } );
   </script>
-  @stop
+  @endpush
+
   </x-app-layout>
